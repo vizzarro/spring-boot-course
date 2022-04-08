@@ -14,6 +14,8 @@
 
   <modules>
     <module>sc-helloworld</module>
+	<module>sc-lesson1</module>
+
   </modules>
   
 </project>

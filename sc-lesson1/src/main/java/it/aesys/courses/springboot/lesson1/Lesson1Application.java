@@ -15,20 +15,22 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 
 @RestController
-@RequestMapping(path = "/hw")
+@RequestMapping(path = "/")
 @SpringBootApplication
-public class ScHelloworldApplication {
+public class Lesson1Application {
 
-	private static final Logger logger = LoggerFactory.getLogger(ScHelloworldApplication.class);
+	private static final Logger logger = LoggerFactory.getLogger(Lesson1Application.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(ScHelloworldApplication.class, args);
+		SpringApplication.run(Lesson1Application.class, args);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String helloWorld() {
-
-		return "<H1>HELLO WORLD!!!</H!>";
+	public String lesson() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("<H1>SPRING BOOT LESSON 1</H!>");
+		builder.append("<H2>alessandro.vizzarro@aesys.tech</H2>");
+		return builder.toString();
 	}
 
 	@Bean
