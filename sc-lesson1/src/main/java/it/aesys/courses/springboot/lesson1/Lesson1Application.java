@@ -1,4 +1,4 @@
-package it.aesys.courses.springboot.schelloworld;
+package it.aesys.courses.springboot.lesson1;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
