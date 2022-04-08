@@ -15,7 +15,8 @@
   <modules>
     <module>sc-helloworld</module>
 	<module>sc-lesson1</module>
-
+    <module>sc-lesson2</module>
+    <module>sc-lesson3</module>
   </modules>
   
 </project>
