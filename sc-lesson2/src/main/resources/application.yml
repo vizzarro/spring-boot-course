@@ -1,0 +1,12 @@
+app:
+  lesson: LESSON 1
+
+lesson:
+  author: alessandro.vizzarro@aesys.tech
+  welcome-message: Welcome to ${app.lesson} !!!
+
+my:
+  service:
+    name: MyService
+    version: v1
+    enabled: true

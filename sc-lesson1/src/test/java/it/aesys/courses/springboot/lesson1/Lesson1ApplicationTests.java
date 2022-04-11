@@ -1,10 +1,10 @@
-package it.aesys.courses.springboot.schelloworld;
+package it.aesys.courses.springboot.lesson1;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ScHelloworldApplicationTests {
+class Lesson1ApplicationTests {
 
 	@Test
 	void contextLoads() {
