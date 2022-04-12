@@ -1,9 +1,11 @@
 package it.aesys.courses.springboot.lesson2;
 
 import it.aesys.courses.springboot.lesson2.services.MyServiceImpl;
+import it.aesys.courses.springboot.lesson2.services.WelcomeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +15,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
@@ -25,29 +28,21 @@ public class Lesson2Application {
 
 	private static final Logger logger = LoggerFactory.getLogger(Lesson2Application.class);
 
-	@Value("${app.lesson}")
-	private String lessonNumber;
-
-	@Value("${lesson.welcome-message}")
-	private String lessonMessage;
-
-	@Value("${lesson.author}")
-	private String lessonAuthor;
-
 	@Autowired
 	private MyServiceImpl service;
+
+	@Autowired
+	@Qualifier("welcome")
+	private WelcomeService welcomeService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Lesson2Application.class, args);
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String lesson() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("<H1>SPRING BOOT COURSE "+lessonNumber+" </H!>");
-		builder.append("<H2>"+lessonMessage+"</H2>");
-		builder.append("<H3>"+lessonAuthor+"</H3>");
-		return builder.toString();
+	@RequestMapping(method = RequestMethod.GET, params = { "token" })
+	public String lesson(@RequestParam(name="token",required = false) String token) {
+
+		return welcomeService.welcome(token);
 	}
 
 	@Bean

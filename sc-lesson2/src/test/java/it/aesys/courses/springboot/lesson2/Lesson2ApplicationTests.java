@@ -1,4 +1,4 @@
-package it.aesys.courses.springboot.schelloworld;
+package it.aesys.courses.springboot.lesson2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

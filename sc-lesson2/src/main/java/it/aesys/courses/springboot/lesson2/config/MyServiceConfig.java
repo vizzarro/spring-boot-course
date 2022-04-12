@@ -8,16 +8,18 @@ public class MyServiceConfig {
     private String name;
     private String version;
     private Boolean enabled;
+    private String token;
 
     public MyServiceConfig() {
         super();
     }
 
-    public MyServiceConfig(String name, String version, Boolean enabled) {
+    public MyServiceConfig(String name, String version, Boolean enabled, String token) {
         this();
         this.name = name;
         this.version = version;
         this.enabled = enabled;
+        this.token = token;
     }
 
     public String getName() {
@@ -42,5 +44,13 @@ public class MyServiceConfig {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
