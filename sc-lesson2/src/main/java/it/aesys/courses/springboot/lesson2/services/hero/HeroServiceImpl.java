@@ -3,12 +3,14 @@ package it.aesys.courses.springboot.lesson2.services.hero;
 import it.aesys.courses.springboot.lesson2.dao.HeroRepository;
 import it.aesys.courses.springboot.lesson2.model.hero.Hero;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class HeroServiceImpl {
+@Profile("devel")
+public class HeroServiceImpl implements HeroService{
 
         private HeroRepository repository;
         
@@ -33,5 +35,10 @@ public class HeroServiceImpl {
         public Hero find(String id) {
                 
                 return repository.find(id);
+        }
+
+        @Override
+        public void delete(String id) {
+
         }
 }

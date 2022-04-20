@@ -1,7 +1,10 @@
+
 lesson:
   welcome-message: Welcome my friend, it's time to write your beatiful codes!!
 
 server:
+  port: 8081
   error:
     whitelabel:
       enabled: true
+
