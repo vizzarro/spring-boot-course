@@ -29,8 +29,11 @@ public class Lesson1Application {
 
 	@Value("${lesson.author}")
 	private String lessonAuthor;
+
+	private ConfigService configService;
 	
 	public static void main(String[] args) {
+
 		SpringApplication.run(Lesson1Application.class, args);
 	}
 
@@ -42,18 +45,6 @@ public class Lesson1Application {
 		return builder.toString();
 	}
 
-	@Bean
-	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-		return args -> {
-
-			logger.info("Let's inspect the beans provided by Spring Boot:");
-			String[] beanNames = ctx.getBeanDefinitionNames();
-			Arrays.sort(beanNames);
-			for (String beanName : beanNames) {
-				logger.info(beanName);
-			}
-		};
-	}
 
 
 

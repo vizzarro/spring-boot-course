@@ -3,4 +3,11 @@ app:
 
 lesson:
   author: alessandro.vizzarro@aesys.tech
-  welcome-message: Welcome to ${app.lesson} !!!
+  welcome-message: Welcome to Lesson 1 !!!
+
+print-something:
+  service-qualifier-key: Print1
+  service1:
+    value: Ciao Alessandro!
+  service2:
+    value: Ciao Francesco!

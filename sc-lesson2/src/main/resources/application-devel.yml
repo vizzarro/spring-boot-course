@@ -1,2 +1,7 @@
 lesson:
   welcome-message: Welcome my friend, it's time to write your beatiful codes!!
+
+server:
+  error:
+    whitelabel:
+      enabled: true
