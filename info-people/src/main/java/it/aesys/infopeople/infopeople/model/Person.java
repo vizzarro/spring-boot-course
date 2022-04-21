@@ -10,6 +10,8 @@ public class Person {
     private String taxCode;
     private Address address;
 
+    public Person() {}
+
     public Person(String name, String surname, Date birthday, String taxCode, Address address) {
         this.name = name;
         this.surname = surname;
