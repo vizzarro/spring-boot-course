@@ -6,9 +6,9 @@ import it.aesys.courses.springboot.lesson2.request.HeroRequest;
 import it.aesys.courses.springboot.lesson2.services.hero.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,41 +21,39 @@ public class HeroCreatorProductionController {
     private HeroService heroService;
 
     @PostMapping
-    public ResponseEntity<Hero> createHero( @RequestBody HeroRequest request) {
+    public Hero createHero( @Valid @RequestBody HeroRequest request) {
 
-        return ResponseEntity.ok(heroService.insert(request.getHero()));
+        return heroService.insert(request.getHero());
 
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Hero> updateHero(@PathVariable String id,   @RequestBody HeroRequest request) {
+    public Hero updateHero(@PathVariable String id,   @RequestBody HeroRequest request) {
 
-        return ResponseEntity.ok(heroService.update(request.getHero(),id));
+        return heroService.update(request.getHero(),id);
 
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteHero(@PathVariable String id) {
+    public void deleteHero(@PathVariable String id) {
         heroService.delete(id);
-        return ResponseEntity.noContent().build();
-
     }
 
     @GetMapping
-    public ResponseEntity<List<Hero>> findAll() {
+    public List<Hero> findAll() {
 
         List<Hero> list = new ArrayList<>();
 
-        return ResponseEntity.ok(heroService.findAll());
+        return heroService.findAll();
 
     }
 
 
     @GetMapping("{id}")
-    public ResponseEntity<Hero> find(@PathVariable String id) {
+    public Hero find(@PathVariable String id) {
 
 
-        return ResponseEntity.ok(heroService.find(id));
+        return heroService.find(id);
 
     }
 }

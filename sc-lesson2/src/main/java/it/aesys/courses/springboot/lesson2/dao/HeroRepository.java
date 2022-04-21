@@ -1,5 +1,8 @@
 package it.aesys.courses.springboot.lesson2.dao;
 
+import it.aesys.courses.springboot.lesson2.controllers.exceptions.BadRequestException;
+import it.aesys.courses.springboot.lesson2.controllers.exceptions.NotFoundException;
+import it.aesys.courses.springboot.lesson2.model.errors.Error;
 import it.aesys.courses.springboot.lesson2.model.hero.Hero;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -20,7 +23,12 @@ public class HeroRepository {
     }
 
     public Hero update(Hero hero, String id) {
-        if (!id.equals(hero.getId())) throw new RuntimeException("Id is not valid");
+        if (!id.equals(hero.getId())) {
+            BadRequestException exception = new BadRequestException();
+            exception.setPath("/api/hero");
+            exception.getErrors().add(new Error("id","id not valid"));
+            throw exception;
+        }
         if (heroInMemDatabaseMap.containsKey(id)) {
             Hero oldHero = heroInMemDatabaseMap.get(id);
             oldHero.setUpdatingDate(new Date());
@@ -40,7 +48,7 @@ public class HeroRepository {
             return oldHero;
         }
 
-        return null;
+        throw new NotFoundException("Resource with id "+id+" not found");
     }
 
 

@@ -4,12 +4,13 @@ import it.aesys.courses.springboot.lesson2.model.hero.ClassHero;
 import it.aesys.courses.springboot.lesson2.model.hero.Hero;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+
 
 public class HeroRequest {
 
     private ClassHero classHero;
 
+    @Valid
     private Hero hero;
 
     private HeroRequest() {
