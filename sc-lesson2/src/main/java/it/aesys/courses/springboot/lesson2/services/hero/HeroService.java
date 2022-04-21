@@ -14,5 +14,5 @@ public interface HeroService {
 
     public Hero find(String id) ;
 
-    public void delete(String id) ;
+    void delete(String id) ;
 }

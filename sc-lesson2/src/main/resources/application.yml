@@ -2,7 +2,7 @@ spring:
   messages:
     basename=messages,config.i18n.messages
   profiles:
-    active: devel
+    active: production
     group:
       devel[0] : devel-ws
       devel[1] : devel-db

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Profile("devel")
+@Profile("production")
 public class HeroServiceImpl implements HeroService{
 
         private HeroRepository repository;
@@ -39,6 +39,7 @@ public class HeroServiceImpl implements HeroService{
 
         @Override
         public void delete(String id) {
+                repository.remove(id);
 
         }
 }

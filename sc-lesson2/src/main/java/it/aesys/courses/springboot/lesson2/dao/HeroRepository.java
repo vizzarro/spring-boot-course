@@ -53,5 +53,7 @@ public class HeroRepository {
         return heroInMemDatabaseMap.get(id);
     }
 
+    public void remove(String id) { heroInMemDatabaseMap.remove(id); }
+
 
 }
