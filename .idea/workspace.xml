@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25d26918-4d10-499b-8800-6ff0fa1e8c0a" name="Changes" comment="add model" />
+    <list default="true" id="fe555a2b-e471-4497-8dfc-ab7c9994aeca" name="Changes" comment="add model">
+      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/services/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/services/PersonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/services/PersonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/services/PersonServiceImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

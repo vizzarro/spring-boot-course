@@ -1,13 +1,9 @@
 package it.aesys.infopeople.infopeople.services;
 
 import it.aesys.infopeople.infopeople.dtos.PersonDto;
-import it.aesys.infopeople.infopeople.model.Person;
 import it.aesys.infopeople.infopeople.repository.PersonRepository;
-import jdk.internal.module.IllegalAccessLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -29,17 +25,18 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public PersonDto updatePerson(PersonDto personDto, String taxcode) {
+    public PersonDto updatePersonDto(PersonDto personDto, String taxcode) {
         return personDto;
     }
 
     @Override
-    public PersonDto getPerson(String taxcode) {
-        return null;
+    public PersonDto getPersonDto(String taxcode) {
+      return   this.modelMapper.toPersonDto( repository.getPerson(taxcode));
+
     }
 
     @Override
-    public void deletePerson(String taxcode) {
-
+    public void deletePersonDto(String taxcode) {
+      repository.deletePerson(taxcode);
     }
 }

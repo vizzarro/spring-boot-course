@@ -8,9 +8,9 @@ import java.util.List;
 public interface PersonService {
 
     public PersonDto createPersonDto(PersonDto personDto);
-    public PersonDto updatePerson(PersonDto personDto, String taxcode);
-    public PersonDto getPerson(String taxcode);
-    public void deletePerson(String taxcode);
+    public PersonDto updatePersonDto(PersonDto personDto, String taxcode);
+    public PersonDto getPersonDto(String taxcode);
+    public void deletePersonDto(String taxcode);
 
 
 
