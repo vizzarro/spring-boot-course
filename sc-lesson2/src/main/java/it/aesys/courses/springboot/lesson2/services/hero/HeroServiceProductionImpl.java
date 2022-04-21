@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Profile("produzione")
+@Profile("production")
 public class HeroServiceProductionImpl implements HeroService{
 
     private HeroRepository repository;

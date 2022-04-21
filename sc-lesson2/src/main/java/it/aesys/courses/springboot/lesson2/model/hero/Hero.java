@@ -1,10 +1,12 @@
 package it.aesys.courses.springboot.lesson2.model.hero;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 public class Hero {
 
     private String id;
+    @NotBlank
     private String name;
     private ClassHero type;
     private Short age;

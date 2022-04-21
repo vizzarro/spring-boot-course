@@ -3,10 +3,18 @@ package it.aesys.courses.springboot.lesson2.request;
 import it.aesys.courses.springboot.lesson2.model.hero.ClassHero;
 import it.aesys.courses.springboot.lesson2.model.hero.Hero;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 public class HeroRequest {
 
     private ClassHero classHero;
+
     private Hero hero;
+
+    private HeroRequest() {
+        super();
+    }
 
     public HeroRequest(ClassHero classHero) {
         this.classHero = classHero;

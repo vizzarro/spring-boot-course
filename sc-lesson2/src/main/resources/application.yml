@@ -1,6 +1,11 @@
 spring:
+  messages:
+    basename=messages,config.i18n.messages
   profiles:
     active: devel
+    group:
+      devel[0] : devel-ws
+      devel[1] : devel-db
 
 app:
   lesson: LESSON 1
@@ -22,3 +27,4 @@ print-something:
     value: Ciao Alessandro!
   service2:
     value: Ciao Francesco!
+

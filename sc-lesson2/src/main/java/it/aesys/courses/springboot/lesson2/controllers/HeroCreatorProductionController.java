@@ -21,14 +21,14 @@ public class HeroCreatorProductionController {
     private HeroService heroService;
 
     @PostMapping
-    public ResponseEntity<Hero> createHero( HeroRequest request) {
+    public ResponseEntity<Hero> createHero( @RequestBody HeroRequest request) {
 
         return ResponseEntity.ok(heroService.insert(request.getHero()));
 
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Hero> updateHero(@PathVariable String id,  HeroRequest request) {
+    public ResponseEntity<Hero> updateHero(@PathVariable String id,   @RequestBody HeroRequest request) {
 
         return ResponseEntity.ok(heroService.update(request.getHero(),id));
 

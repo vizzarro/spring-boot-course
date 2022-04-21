@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ public class HeroCreatorController {
     private HeroServiceImpl heroService;
 
     @PostMapping
-    public Hero createhero(@RequestBody Hero hero) {
+    public Hero createhero(@Valid @RequestBody Hero hero) {
 
         return  heroService.insert(hero);
 
