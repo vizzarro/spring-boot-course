@@ -15,12 +15,12 @@ public class HeroRepository {
     public Hero save(Hero hero) {
         hero.setId(UUID.randomUUID().toString());
         hero.setCreationDate(new Date());
-        heroInMemDatabaseMap.put(hero.getId(),hero);
+        heroInMemDatabaseMap.put(hero.getId(), hero);
         return hero;
     }
 
     public Hero update(Hero hero, String id) {
-        if (!id.equals(hero.getId())) throw new  RuntimeException("Id is not valid");
+        if (!id.equals(hero.getId())) throw new RuntimeException("Id is not valid");
         if (heroInMemDatabaseMap.containsKey(id)) {
             Hero oldHero = heroInMemDatabaseMap.get(id);
             oldHero.setUpdatingDate(new Date());
@@ -53,5 +53,8 @@ public class HeroRepository {
         return heroInMemDatabaseMap.get(id);
     }
 
+    public void delete(String id) {
+        heroInMemDatabaseMap.remove(id);
+    }
 
 }

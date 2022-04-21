@@ -40,6 +40,6 @@ public class HeroServiceProductionImpl implements HeroService{
 
     @Override
     public void delete(String id) {
-
+        repository.delete(id);
     }
 }
