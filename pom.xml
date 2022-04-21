@@ -17,6 +17,8 @@
 	<module>sc-lesson1</module>
     <module>sc-lesson2</module>
     <module>sc-lesson3</module>
+	<module>info-people</module>
+
   </modules>
   
 </project>
