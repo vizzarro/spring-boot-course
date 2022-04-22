@@ -4,6 +4,7 @@ import it.aesys.infopeople.infopeople.model.Person;
 import it.aesys.infopeople.infopeople.model.Persons;
 import it.aesys.infopeople.infopeople.repository.PersonFileSystemRepository;
 import it.aesys.infopeople.infopeople.repository.PersonRepository;
+import it.aesys.infopeople.infopeople.repository.exceptions.EmptyFileSystemRepositoryExcepton;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -38,7 +39,12 @@ class InfoPeopleApplicationTests {
 
 		PersonFileSystemRepository pr = new PersonFileSystemRepository();
 
-		Persons perWrapper = pr.unserialize("persons.json", Persons.class);
+		Persons perWrapper = null;
+		try {
+			perWrapper = pr.unserialize("persons.json", Persons.class);
+		} catch (EmptyFileSystemRepositoryExcepton emptyFileSystemRepositoryExcepton) {
+			emptyFileSystemRepositoryExcepton.printStackTrace();
+		}
 
 		perWrapper.getCollection().forEach(p -> System.out.println(p));
 	}

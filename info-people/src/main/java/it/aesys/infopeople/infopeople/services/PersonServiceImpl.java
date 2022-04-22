@@ -36,8 +36,6 @@ public class PersonServiceImpl implements PersonService {
             ex.setPath(e.getPath());
             ex.setStatusCode(e.getStatusCode());
             ex.setErrors(e.getErrors());
-            ex.getErrors().add(new ErrorModel("taxCode", "Service queried database, " +
-                    "but there is not matching in database"));
             throw ex;
         }
     }
@@ -50,8 +48,6 @@ public class PersonServiceImpl implements PersonService {
                 ex.setPath(e.getPath());
                 ex.setStatusCode(e.getStatusCode());
                 ex.setErrors(e.getErrors());
-                ex.getErrors().add(new ErrorModel("taxCode", "Service queried database, " +
-                        "but there is not matching in database"));
                 throw ex;
             }
         }
@@ -65,8 +61,7 @@ public class PersonServiceImpl implements PersonService {
                 ex.setPath(e.getPath());
                 ex.setStatusCode(e.getStatusCode());
                 ex.setErrors(e.getErrors());
-                ex.getErrors().add(new ErrorModel("taxCode", "Service queried database, " +
-                        "but there is not matching in database"));
+
                 throw ex;
             }
         }

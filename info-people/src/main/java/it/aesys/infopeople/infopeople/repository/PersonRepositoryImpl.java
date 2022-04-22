@@ -4,6 +4,7 @@ import it.aesys.infopeople.infopeople.model.Person;
 import it.aesys.infopeople.infopeople.model.Persons;
 import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import it.aesys.infopeople.infopeople.model.errors.ErrorModel;
+import it.aesys.infopeople.infopeople.repository.exceptions.EmptyFileSystemRepositoryExcepton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
@@ -15,13 +16,17 @@ import java.util.*;
 @Profile("devel")
 public class PersonRepositoryImpl implements PersonRepository {
 
-    @Autowired
     private PersonFileSystemRepository fileSystem;
     private List<Person> persons = new ArrayList<>();
 
     @Autowired
-    public PersonRepositoryImpl() {
-        persons.addAll(fileSystem.unserialize("personsRepository", Persons.class).getCollection());
+    public PersonRepositoryImpl(PersonFileSystemRepository fileSystem) {
+        this.fileSystem = fileSystem;
+        try {
+            persons.addAll(this.fileSystem.unserialize("personsRepository.json", Persons.class).getCollection());
+        } catch (EmptyFileSystemRepositoryExcepton emptyFileSystemRepositoryExcepton) {
+           System.out.println("Warning empty file repository");
+        }
     }
 
     @Override
@@ -33,7 +38,7 @@ public class PersonRepositoryImpl implements PersonRepository {
 
     @Override
     public Person updatePerson(Person person, String taxCode) throws  DaoException {
-        if (taxCode.equals(person.getTaxCode())) {
+        if (!taxCode.equals(person.getTaxCode())) {
             DaoException exception = new DaoException();
             exception.setStatusCode(HttpStatus.BAD_REQUEST.value());
             exception.setPath("/people");
@@ -67,10 +72,11 @@ public class PersonRepositoryImpl implements PersonRepository {
         if (delPers != null) {
             persons.remove(delPers);
             updateFileSystem();
+        }else {
+            DaoException de = new DaoException();
+            de.setStatusCode(HttpStatus.NOT_FOUND.value());
+            throw de;
         }
-        DaoException de = new DaoException();
-        de.setStatusCode(HttpStatus.NOT_FOUND.value());
-        throw de;
     }
 
     @Override
@@ -92,6 +98,6 @@ public class PersonRepositoryImpl implements PersonRepository {
     private void updateFileSystem() {
         Persons p = new Persons();
         p.setCollection(persons);
-        fileSystem.serializeCollection(p, "personsRepository");
+        fileSystem.serializeCollection(p, "personsRepository.json");
     }
 }

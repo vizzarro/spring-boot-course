@@ -37,7 +37,7 @@ public class ModelMapper {
         addressDto.setCountry(address.getCity());
         addressDto.setHouseNumber(address.getHouseNumber());
         addressDto.setRegion(address.getRegion());
-        addressDto.setRoad(addressDto.getRoad());
+        addressDto.setRoad(address.getRoad());
         addressDto.setZIPCode(address.getZIPCode());
 
         return addressDto;

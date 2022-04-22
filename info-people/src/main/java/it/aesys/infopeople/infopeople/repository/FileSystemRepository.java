@@ -3,8 +3,11 @@ package it.aesys.infopeople.infopeople.repository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import it.aesys.infopeople.infopeople.model.Persons;
+import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
+import it.aesys.infopeople.infopeople.repository.exceptions.EmptyFileSystemRepositoryExcepton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.thymeleaf.util.StringUtils;
 
 import java.io.*;
 import java.util.Collection;
@@ -59,15 +62,20 @@ public class FileSystemRepository<P> {
 
     }
 
-    public P unserialize(String filename, Class<P> clazz) {
+    public P unserialize(String filename, Class<P> clazz) throws EmptyFileSystemRepositoryExcepton {
         PrintWriter printWriter = null;
         if (basepath==null) basepath = "C:/LAVORO";
         try {
             File file = new File(basepath +"/"+ filename );
+            if (!file.exists()) {
+                file.createNewFile();
+            }
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String currentLine = reader.readLine();
             reader.close();
-
+            if (StringUtils.isEmpty(currentLine)) {
+                throw  new EmptyFileSystemRepositoryExcepton();
+            }
             return  mapper.readValue(currentLine,   clazz);
         } catch (JsonProcessingException e) {
             return null;

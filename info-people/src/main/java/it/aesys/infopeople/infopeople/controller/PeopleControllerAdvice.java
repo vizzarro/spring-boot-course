@@ -6,12 +6,14 @@ import it.aesys.infopeople.infopeople.services.exceptions.ServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
 import java.util.stream.Collectors;
 
-public class ControllerAdvice {
+@ControllerAdvice
+public class PeopleControllerAdvice {
 
     @ExceptionHandler(value = ServiceException.class)
     public ResponseEntity<ApiError> serviceExceptionHandling(ServiceException ex, WebRequest request) {
@@ -34,7 +36,7 @@ public class ControllerAdvice {
 
         error.setMessage("Bad Request");
         error.setPath(ex.getNestedPath());
-        error.getErrors().addAll(ex.getAllErrors().stream().map(obj -> {return new ErrorModel(obj.getObjectName(),obj.getDefaultMessage());}).collect(Collectors.toList()));
+        error.getErrors().addAll(ex.getFieldErrors().stream().map(obj -> {return new ErrorModel(obj.getField(),obj.getDefaultMessage());}).collect(Collectors.toList()));
 
         ResponseEntity<ApiError> errorResponse = ResponseEntity.badRequest().body(error);
         return errorResponse;

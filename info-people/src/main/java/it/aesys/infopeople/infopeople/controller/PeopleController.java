@@ -29,7 +29,7 @@ public class PeopleController {
     }
 
     @DeleteMapping("{taxCode}")
-    public void deletePerson(@Valid @PathVariable String taxCode) throws ServiceException {
+    public void  deletePerson(@Valid @PathVariable String taxCode) throws ServiceException {
         personService.deletePersonDto(taxCode);
     }
 
