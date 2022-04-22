@@ -7,7 +7,6 @@ import javax.validation.Valid;
 public class PersonRequest {
     @Valid
     private PersonDto personDto;
-
     public PersonRequest(){}
 
     public PersonRequest(PersonDto personDto) {
