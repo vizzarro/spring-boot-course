@@ -1,6 +1,5 @@
 package it.aesys.infopeople.infopeople.request;
 
-import it.aesys.infopeople.infopeople.dtos.AddressDto;
 import it.aesys.infopeople.infopeople.dtos.PersonDto;
 
 public class PersonRequest {
@@ -22,14 +21,4 @@ public class PersonRequest {
     public void setPersonDto(PersonDto personDto) {
         this.personDto = personDto;
     }
-/*
-    public AddressDto getAddressDto() {
-        return addressDto;
-    }
-
-    public void setAddressDto(AddressDto addressDto) {
-        this.addressDto = addressDto;
-    }
-
- */
 }
