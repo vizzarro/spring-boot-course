@@ -4,9 +4,11 @@ import it.aesys.infopeople.infopeople.model.Person;
 import it.aesys.infopeople.infopeople.repository.exceptions.BadRequestException;
 import it.aesys.infopeople.infopeople.repository.exceptions.Error;
 import it.aesys.infopeople.infopeople.repository.exceptions.FileNotFoundException;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class PersonRepositoryImpl implements PersonRepository {
 
     List<Person> persons = new ArrayList<>();
