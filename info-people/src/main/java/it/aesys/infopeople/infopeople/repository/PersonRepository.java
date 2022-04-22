@@ -2,7 +2,6 @@ package it.aesys.infopeople.infopeople.repository;
 
 import it.aesys.infopeople.infopeople.model.Person;
 import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
-import it.aesys.infopeople.infopeople.services.exceptions.BadRequestException;
 
 import java.util.List;
 
