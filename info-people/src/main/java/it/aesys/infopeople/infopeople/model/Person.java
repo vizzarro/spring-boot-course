@@ -59,4 +59,15 @@ public class Person {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", birthday=" + birthday +
+                ", taxCode='" + taxCode + '\'' +
+                ", address=" + address +
+                '}';
+    }
 }
