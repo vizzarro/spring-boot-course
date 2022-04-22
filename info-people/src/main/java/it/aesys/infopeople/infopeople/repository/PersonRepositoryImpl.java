@@ -25,6 +25,7 @@ public class PersonRepositoryImpl implements PersonRepository {
             BadRequestException exception = new BadRequestException();
             exception.setPath("/"); //da modificare dal controller
             exception.getErrors().add(new ErrorModel("taxCode", "Tax code not valid"));
+
             throw exception;
         }
         Person oldPerson = null;
