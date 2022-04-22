@@ -1,5 +1,8 @@
 package it.aesys.infopeople.infopeople.request;
 
+import it.aesys.infopeople.infopeople.dtos.AddressDto;
+import it.aesys.infopeople.infopeople.dtos.PersonDto;
+
 public class PersonRequest {
 
     private PersonDto person;
@@ -11,7 +14,7 @@ public class PersonRequest {
         this.person = person;
     }
 
-    public PersonDto getPerson() {
+    public PersonDto getPersonDto() {
         return person;
     }
 

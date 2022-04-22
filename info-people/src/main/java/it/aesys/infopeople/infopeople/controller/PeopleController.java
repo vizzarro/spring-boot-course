@@ -21,19 +21,17 @@ public class PeopleController {
 
     @PostMapping
     public PersonDto createPerson(PersonRequest request){
-        personService.createPersonDto(request.getPersonDto());
-        // DTO return
+       return personService.createPersonDto(request.getPersonDto());
     }
 
     @DeleteMapping("{taxCode}")
     public void deletePerson(@PathVariable String taxCode){
-        personService.deletePersoneDto(taxCode);
+        personService.deletePersonDto(taxCode);
     }
 
     @PutMapping("{taxCode}")
     public PersonDto updatePerson(@PathVariable String taxCode,PersonRequest request){
-        personService.updatePersonDto(taxCode, request.getPersonDto());
-        // DTO return
+       return personService.updatePersonDto(request.getPersonDto(), taxCode);
     }
 
 
