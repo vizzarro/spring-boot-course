@@ -1,5 +1,7 @@
 package it.aesys.infopeople.infopeople.model;
 
+import javax.validation.constraints.Size;
+
 public class Address {
 
     private String road;
@@ -7,11 +9,13 @@ public class Address {
     private String city;
     private String region;
     private String country;
+    @Size(min = 5, max = 5)
     private String ZIPCode;
 
     public Address() {}
 
     public Address(String road, String houseNumber, String city, String region, String country, String ZIPCode) {
+
         this.road = road;
         this.houseNumber = houseNumber;
         this.city = city;
