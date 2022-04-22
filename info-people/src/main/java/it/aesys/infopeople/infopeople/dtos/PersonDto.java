@@ -2,15 +2,24 @@ package it.aesys.infopeople.infopeople.dtos;
 
 import it.aesys.infopeople.infopeople.model.Address;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class PersonDto {
 
 
+    @Pattern(regexp = "^([a-z,A-Z]|\\'|[ÀÈÌÒÙYàèìòù])+$")
     private String name;
+    @Pattern(regexp = "^([a-z,A-Z]|\\'|[ÀÈÌÒÙYàèìòù])+$")
     private String surname;
+    @NotBlank
     private Date birthday;
+    @Pattern(regexp = "^(\\w{6}\\d{2}\\w\\d{2}\\w\\d{3}\\w)$")
     private String taxCode;
+    @Valid
     private AddressDto addressDto;
 
     public PersonDto(String name, String surname, Date birthday, String taxCode, Address address) {
@@ -63,5 +72,7 @@ public class PersonDto {
     public void setAddressDto(AddressDto addressDto) {
         this.addressDto = addressDto;
     }
+
+
 }
 

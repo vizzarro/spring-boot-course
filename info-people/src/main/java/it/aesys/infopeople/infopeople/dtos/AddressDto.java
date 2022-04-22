@@ -1,12 +1,21 @@
 package it.aesys.infopeople.infopeople.dtos;
 
-public class AddressDto {
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+public class AddressDto {
+    @NotBlank
     private String road;
+    @Pattern(regexp = "^([1-9])(\\d*)(\\{1}[A-Z,a-z])?$")
     private String houseNumber;
+    @Pattern(regexp = "^[a-z,A-Z]+$")
     private String city;
+    @Pattern(regexp = "^[a-z,A-Z]+$")
     private String region;
+    @Pattern(regexp = "^[a-z,A-Z]+$")
     private String country;
+    @Pattern(regexp = "^\\d{5}$")
     private String ZIPCode;
 
     public AddressDto() {}
