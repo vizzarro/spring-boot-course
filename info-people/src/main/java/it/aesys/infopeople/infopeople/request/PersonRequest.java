@@ -5,28 +5,31 @@ import it.aesys.infopeople.infopeople.dtos.PersonDto;
 
 public class PersonRequest {
 
-    private PersonDto person;
-    private AddressDto address;
+    private PersonDto personDto;
 
     public PersonRequest(){}
 
-    public PersonRequest(PersonDto person) {
-        this.person = person;
+    public PersonRequest(PersonDto personDto) {
+        this.personDto = personDto;
     }
+
+
 
     public PersonDto getPersonDto() {
-        return person;
+        return personDto;
     }
 
-    public void setPerson(PersonDto person) {
-        this.person = person;
+    public void setPersonDto(PersonDto personDto) {
+        this.personDto = personDto;
+    }
+/*
+    public AddressDto getAddressDto() {
+        return addressDto;
     }
 
-    public AddressDto getAddress() {
-        return address;
+    public void setAddressDto(AddressDto addressDto) {
+        this.addressDto = addressDto;
     }
 
-    public void setAddress(AddressDto address) {
-        this.address = address;
-    }
+ */
 }

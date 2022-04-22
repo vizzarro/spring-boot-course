@@ -20,7 +20,7 @@ public class PeopleController {
     }
 
     @PostMapping
-    public PersonDto createPerson(PersonRequest request){
+    public PersonDto createPerson(@RequestBody PersonRequest request){
        return personService.createPersonDto(request.getPersonDto());
     }
 
@@ -30,7 +30,7 @@ public class PeopleController {
     }
 
     @PutMapping("{taxCode}")
-    public PersonDto updatePerson(@PathVariable String taxCode,PersonRequest request){
+    public PersonDto updatePerson(@PathVariable String taxCode, @RequestBody PersonRequest request){
        return personService.updatePersonDto(request.getPersonDto(), taxCode);
     }
 
