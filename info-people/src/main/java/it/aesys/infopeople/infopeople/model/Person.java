@@ -8,15 +8,10 @@ import java.util.Date;
 
 public class Person {
 
-    @NotBlank
     private String name;
-    @NotBlank
     private String surname;
     private Date birthday;
-    @NotBlank
-    @Size(min = 16, max = 16)
     private String taxCode;
-    @NotNull
     private Address address;
 
     public Person() {}

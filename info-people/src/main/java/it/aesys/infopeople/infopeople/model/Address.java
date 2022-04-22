@@ -9,7 +9,6 @@ public class Address {
     private String city;
     private String region;
     private String country;
-    @Size(min = 5, max = 5)
     private String ZIPCode;
 
     public Address() {}
