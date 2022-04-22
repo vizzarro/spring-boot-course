@@ -1,15 +1,22 @@
 package it.aesys.infopeople.infopeople.services.exceptions;
 
-import java.util.ArrayList;
-import java.util.List;
 import it.aesys.infopeople.infopeople.model.errors.ErrorModel;
 
-public class InvalidZIPCodeException extends Exception{
+import java.util.ArrayList;
+import java.util.List;
+
+public class ServiceException extends Exception{
 
     private List<ErrorModel> errors = new ArrayList<>();
+    private int statusCode;
     private String path;
 
-    public InvalidZIPCodeException() {
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
     public String getPath() {
@@ -20,19 +27,19 @@ public class InvalidZIPCodeException extends Exception{
         this.path = path;
     }
 
-    public InvalidZIPCodeException(String message) {
+    public ServiceException(String message) {
         super(message);
     }
 
-    public InvalidZIPCodeException(String message, Throwable cause) {
+    public ServiceException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public InvalidZIPCodeException(Throwable cause) {
+    public ServiceException(Throwable cause) {
         super(cause);
     }
 
-    public InvalidZIPCodeException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public ServiceException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 
