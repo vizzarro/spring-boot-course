@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface PersonRepository {
     Person addPerson(Person person);
-    Person updatePerson(Person person, String taxCode) throws BadRequestException, DaoException;
+    Person updatePerson(Person person, String taxCode) throws DaoException;
     void deletePerson(String taxCode) throws DaoException;
     Person getPerson(String taxCode) throws DaoException;
     List<Person> getAllPerson();
