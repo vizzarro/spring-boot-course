@@ -3,9 +3,7 @@ package it.aesys.infopeople.infopeople.repository;
 import it.aesys.infopeople.infopeople.model.Person;
 import it.aesys.infopeople.infopeople.model.Persons;
 import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
-import it.aesys.infopeople.infopeople.services.exceptions.BadRequestException;
 import it.aesys.infopeople.infopeople.model.errors.ErrorModel;
-import it.aesys.infopeople.infopeople.services.exceptions.FileNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
@@ -33,10 +31,10 @@ public class PersonRepositoryImpl implements PersonRepository {
     }
 
     @Override
-    public Person updatePerson(Person person, String taxCode) throws BadRequestException, DaoException {
-
+    public Person updatePerson(Person person, String taxCode) throws  DaoException {
         if (taxCode.equals(person.getTaxCode())) {
-            BadRequestException exception = new BadRequestException();
+            DaoException exception = new DaoException();
+            exception.setStatusCode(HttpStatus.BAD_REQUEST.value());
             exception.setPath("/people");
             exception.getErrors().add(new ErrorModel("taxCode", "Tax code not valid"));
             throw exception;

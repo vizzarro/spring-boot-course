@@ -8,6 +8,7 @@ import java.util.List;
 public class DaoException extends Exception{
 
     private int statusCode;
+    private String path;
     private List<ErrorModel> errors =new ArrayList<>();
     public DaoException() {
     }
@@ -42,5 +43,13 @@ public class DaoException extends Exception{
 
     public void setErrors(List<ErrorModel> errors) {
         this.errors = errors;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }
