@@ -1,15 +1,15 @@
 package it.aesys.infopeople.infopeople.model.errors;
 
-public class Error {
+public class ErrorModel {
 
     private String field;
     private String message;
 
-    public Error() {
+    public ErrorModel() {
         super();
     }
 
-    public Error(String field, String message) {
+    public ErrorModel(String field, String message) {
         this.field = field;
         this.message = message;
     }

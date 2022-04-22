@@ -1,14 +1,13 @@
-package it.aesys.infopeople.infopeople.controller.exceptions;
+package it.aesys.infopeople.infopeople.services.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import it.aesys.infopeople.infopeople.model.errors.ErrorModel;
 
-public class BadRequestException extends RuntimeException{
+public class BadRequestException extends Exception {
 
-    private List<Error> errors = new ArrayList<>();
+    private List<ErrorModel> errors = new ArrayList<>();
     private String path;
-
-
 
     public BadRequestException() {
     }
@@ -37,11 +36,12 @@ public class BadRequestException extends RuntimeException{
         super(message, cause, enableSuppression, writableStackTrace);
     }
 
-    public List<Error> getErrors() {
+    public List<ErrorModel> getErrors() {
         return errors;
     }
 
-    public void setErrors(List<Error> errors) {
+    public void setErrors(List<ErrorModel> errors) {
         this.errors = errors;
     }
 }
+

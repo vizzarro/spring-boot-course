@@ -1,12 +1,14 @@
 package it.aesys.infopeople.infopeople.repository;
 
 import it.aesys.infopeople.infopeople.model.Person;
-import it.aesys.infopeople.infopeople.repository.exceptions.BadRequestException;
-import it.aesys.infopeople.infopeople.repository.exceptions.Error;
-import it.aesys.infopeople.infopeople.repository.exceptions.FileNotFoundException;
+import it.aesys.infopeople.infopeople.services.exceptions.BadRequestException;
+import it.aesys.infopeople.infopeople.model.errors.ErrorModel;
+import it.aesys.infopeople.infopeople.services.exceptions.FileNotFoundException;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class PersonRepositoryImpl implements PersonRepository {
 
     List<Person> persons = new ArrayList<>();
@@ -22,7 +24,8 @@ public class PersonRepositoryImpl implements PersonRepository {
         if (taxCode.equals(person.getTaxCode())) {
             BadRequestException exception = new BadRequestException();
             exception.setPath("/"); //da modificare dal controller
-            exception.getErrors().add(new Error("taxCode", "Tax code not valid"));
+            exception.getErrors().add(new ErrorModel("taxCode", "Tax code not valid"));
+
             throw exception;
         }
         Person oldPerson = null;

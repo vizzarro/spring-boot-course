@@ -8,13 +8,13 @@ public class ApiError {
     private Integer statusCode;
     private String message;
     private String path;
-    private List<Error> errors;
+    private List<ErrorModel> errors;
 
     public ApiError() {
         errors = new ArrayList<>();
     }
 
-    public ApiError(Integer statusCode, String message, String path, List<Error> errors) {
+    public ApiError(Integer statusCode, String message, String path, List<ErrorModel> errors) {
         this.statusCode = statusCode;
         this.message = message;
         this.path = path;
@@ -45,11 +45,11 @@ public class ApiError {
         this.path = path;
     }
 
-    public List<Error> getErrors() {
+    public List<ErrorModel> getErrors() {
         return errors;
     }
 
-    public void setErrors(List<Error> errors) {
+    public void setErrors(List<ErrorModel> errors) {
         this.errors = errors;
     }
 }

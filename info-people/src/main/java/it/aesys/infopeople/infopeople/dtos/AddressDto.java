@@ -1,21 +1,17 @@
-package it.aesys.infopeople.infopeople.model;
+package it.aesys.infopeople.infopeople.dtos;
 
-import javax.validation.constraints.Size;
-
-public class Address {
+public class AddressDto {
 
     private String road;
     private String houseNumber;
     private String city;
     private String region;
     private String country;
-    @Size(min = 5, max = 5)
     private String ZIPCode;
 
-    public Address() {}
+    public AddressDto() {}
 
-    public Address(String road, String houseNumber, String city, String region, String country, String ZIPCode) {
-
+    public AddressDto(String road, String houseNumber, String city, String region, String country, String ZIPCode) {
         this.road = road;
         this.houseNumber = houseNumber;
         this.city = city;
