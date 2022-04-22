@@ -41,7 +41,7 @@ public class PersonRepositoryImpl implements PersonRepository {
             oldPerson.setAddress(person.getAddress());
             return oldPerson;
         }
-        throw new FileNotFoundException("Resource with tax code" + taxCode + "not found");
+       throw new FileNotFoundException("Resource with tax code" + taxCode + "not found");
     }
 
     @Override
@@ -55,7 +55,7 @@ public class PersonRepositoryImpl implements PersonRepository {
         if (delPers != null) {
             persons.remove(delPers);
         }
-        throw new FileNotFoundException("Resource with tax code" + taxCode + "not found");
+       throw new FileNotFoundException("Resource with tax code" + taxCode + "not found");
     }
 
     @Override
@@ -65,7 +65,7 @@ public class PersonRepositoryImpl implements PersonRepository {
                 return pers;
             }
         }
-        throw new FileNotFoundException("Resource with tax code" + taxCode + "not found");
+       throw new FileNotFoundException("Resource with tax code" + taxCode + "not found");
     }
 
     @Override

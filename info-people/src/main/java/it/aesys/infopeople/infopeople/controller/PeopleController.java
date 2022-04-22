@@ -6,6 +6,8 @@ import it.aesys.infopeople.infopeople.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value="/people")
 public class PeopleController {
@@ -14,23 +16,23 @@ public class PeopleController {
     private PersonService personService;
 
     @GetMapping("{taxCode}")
-    public PersonDto getPerson(@PathVariable String taxCode){
+    public PersonDto getPerson(@Valid @PathVariable String taxCode){
         return  personService.getPersonDto(taxCode);
         // DTO return
     }
 
     @PostMapping
-    public PersonDto createPerson(@RequestBody PersonRequest request){
+    public PersonDto createPerson(@Valid @RequestBody PersonRequest request){
        return personService.createPersonDto(request.getPersonDto());
     }
 
     @DeleteMapping("{taxCode}")
-    public void deletePerson(@PathVariable String taxCode){
+    public void deletePerson(@Valid @PathVariable String taxCode){
         personService.deletePersonDto(taxCode);
     }
 
     @PutMapping("{taxCode}")
-    public PersonDto updatePerson(@PathVariable String taxCode, @RequestBody PersonRequest request){
+    public PersonDto updatePerson(@Valid @PathVariable String taxCode,@Valid @RequestBody PersonRequest request){
        return personService.updatePersonDto(request.getPersonDto(), taxCode);
     }
 
