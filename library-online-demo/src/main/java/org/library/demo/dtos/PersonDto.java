@@ -61,5 +61,16 @@ public class PersonDto {
     public void setAddressDto(AddressDto addressDto) {
         this.addressDto = addressDto;
     }
+
+    @Override
+    public String toString() {
+        return "PersonDto{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", birthday=" + birthday +
+                ", taxCode='" + taxCode + '\'' +
+                ", addressDto=" + addressDto +
+                '}';
+    }
 }
 

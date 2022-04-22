@@ -1,5 +1,7 @@
 import org.junit.Test;
-import org.library.demo.service.PersonServiceImpl;
+import org.library.demo.service.client.PeopleClientServiceImpl;
+import org.library.demo.service.client.PeopleService;
+import org.springframework.web.client.RestTemplate;
 
 public class ClientTest {
 
@@ -7,9 +9,9 @@ public class ClientTest {
     @Test
     public void test() throws Exception {
 
-        PersonServiceImpl service = new PersonServiceImpl();
+        PeopleService service = new PeopleClientServiceImpl(new RestTemplate());
 
-        System.out.println(service.getPerson("").toString());
+        System.out.println(service.findPeople("CTLGMR96T23G482R").toString());
     }
 
 }
