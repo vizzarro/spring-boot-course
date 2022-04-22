@@ -4,7 +4,9 @@ import it.aesys.infopeople.infopeople.dtos.AddressDto;
 import it.aesys.infopeople.infopeople.dtos.PersonDto;
 import it.aesys.infopeople.infopeople.model.Address;
 import it.aesys.infopeople.infopeople.model.Person;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ModelMapper {
 
     public PersonDto toPersonDto(Person person) {
