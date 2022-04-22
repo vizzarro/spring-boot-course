@@ -10,6 +10,7 @@
         <module name="sc-lesson1" />
         <module name="info-people" />
         <module name="sc-lesson2" />
+        <module name="LibraryDemo" />
         <module name="sc-helloworld" />
       </profile>
     </annotationProcessing>

@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe555a2b-e471-4497-8dfc-ab7c9994aeca" name="Changes" comment="fix model mapper">
+    <list default="true" id="fe555a2b-e471-4497-8dfc-ab7c9994aeca" name="Changes" comment="fix import service">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/dtos/AddressDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/dtos/AddressDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/dtos/PersonDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/dtos/PersonDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/services/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/services/PersonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/services/PersonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/services/PersonServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +51,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager">
