@@ -1,9 +1,11 @@
 package it.aesys.infopeople.infopeople.repository;
 
 import it.aesys.infopeople.infopeople.model.Person;
+import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import it.aesys.infopeople.infopeople.services.exceptions.BadRequestException;
 import it.aesys.infopeople.infopeople.model.errors.ErrorModel;
 import it.aesys.infopeople.infopeople.services.exceptions.FileNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -20,32 +22,31 @@ public class PersonRepositoryImpl implements PersonRepository {
     }
 
     @Override
-    public Person updatePerson(Person person, String taxCode) {
+    public Person updatePerson(Person person, String taxCode) throws BadRequestException, DaoException {
+
         if (taxCode.equals(person.getTaxCode())) {
             BadRequestException exception = new BadRequestException();
-            exception.setPath("/"); //da modificare dal controller
+            exception.setPath("/people");
             exception.getErrors().add(new ErrorModel("taxCode", "Tax code not valid"));
-
             throw exception;
         }
-        Person oldPerson = null;
+
         for (Person pers : persons) {
             if (pers.getTaxCode().equals(taxCode)) {
-                oldPerson = pers;
+                pers.setName(person.getName());
+                pers.setSurname(person.getSurname());
+                pers.setBirthday(person.getBirthday());
+                pers.setAddress(person.getAddress());
+                return pers;
             }
         }
-        if (oldPerson != null) {
-            oldPerson.setName(person.getName());
-            oldPerson.setSurname(person.getSurname());
-            oldPerson.setBirthday(person.getBirthday());
-            oldPerson.setAddress(person.getAddress());
-            return oldPerson;
-        }
-       throw new FileNotFoundException("Resource with tax code" + taxCode + "not found");
+        DaoException de = new DaoException();
+        de.setStatusCode(HttpStatus.NOT_FOUND.value());
+        throw de;
     }
 
     @Override
-    public void deletePerson(String taxCode) {
+    public void deletePerson(String taxCode) throws DaoException{
         Person delPers = null;
         for (Person pers : persons) {
             if (pers.getTaxCode().equals(taxCode)) {
@@ -55,26 +56,24 @@ public class PersonRepositoryImpl implements PersonRepository {
         if (delPers != null) {
             persons.remove(delPers);
         }
-       throw new FileNotFoundException("Resource with tax code" + taxCode + "not found");
+        DaoException de = new DaoException();
+        de.setStatusCode(HttpStatus.NOT_FOUND.value());
+        throw de;
     }
 
     @Override
-    public Person getPerson(String taxCode) {
+    public Person getPerson(String taxCode) throws DaoException{
         for (Person pers : persons) {
             if (pers.getTaxCode().equals(taxCode)) {
                 return pers;
             }
         }
-       throw new FileNotFoundException("Resource with tax code" + taxCode + "not found");
-    }
+        DaoException de = new DaoException();
+        de.setStatusCode(HttpStatus.NOT_FOUND.value());
+        throw de;    }
 
     @Override
     public List<Person> getAllPerson() {
         return persons;
     }
 }
-
-
-
-
-
