@@ -1,6 +1,6 @@
 package org.library.demo.service;
 
-import org.library.demo.models.Borrower;
+import org.library.demo.models.UserLibrary;
 import org.library.demo.models.Reservation;
 import org.library.demo.models.Title;
 import org.library.demo.repository.GenericRepository;
@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 public class ReservationServiceImpl implements ReservationService {
   private GenericRepository<Reservation> repo;
   private GenericRepository<Title> titleRepo;
-  private GenericRepository<Borrower> borrowerRepo;
+  private GenericRepository<UserLibrary> borrowerRepo;
 
   @Autowired
   public ReservationServiceImpl(
       GenericRepository<Reservation> repository,
       GenericRepository<Title> titleRepository,
-      GenericRepository<Borrower> borrowerRepository
+      GenericRepository<UserLibrary> borrowerRepository
   ) {
     this.repo = repository;
     this.titleRepo = titleRepository;
@@ -30,9 +30,9 @@ public class ReservationServiceImpl implements ReservationService {
       throw new Exception("No request");
 
     try {
-      Borrower b = borrowerRepo.getById(newReservation.getBorrowerId());
+      UserLibrary b = borrowerRepo.getById(newReservation.getBorrowerId());
     } catch (Exception e) {
-      throw new Exception("No Borrower found for id " + newReservation.getBorrowerId());
+      throw new Exception("No UserLibrary found for id " + newReservation.getBorrowerId());
     }
 
     Title exists = titleRepo.getById(newReservation.getTitleId());

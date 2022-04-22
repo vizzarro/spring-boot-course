@@ -1,9 +1,9 @@
 package org.library.demo.service;
 
-import org.library.demo.models.Borrower;
+import org.library.demo.models.UserLibrary;
 
 public interface BorrowerService {
-  void addBorrower(Borrower newBorrower) throws Exception;
-  Borrower getBorrower(int id);
+  void addBorrower(UserLibrary newUserLibrary) throws Exception;
+  UserLibrary getBorrower(int id);
 
 }

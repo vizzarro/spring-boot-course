@@ -2,24 +2,24 @@ package org.library.demo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.library.demo.models.Borrower;
+import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BorrowerRepository implements GenericRepository<Borrower> {
-  private List<Borrower> mockedTable;
+public class UserLibraryRepository implements GenericRepository<UserLibrary> {
+  private List<UserLibrary> mockedTable;
 
-  public BorrowerRepository() {
+  public UserLibraryRepository() {
     this.mockedTable = new ArrayList<>();
   }
 
   @Override
-  public Borrower getById(int id) {
+  public UserLibrary getById(int id) {
     return this.mockedTable.get(id - 1);
   }
 
   @Override
-  public void add(Borrower entity) {
+  public void add(UserLibrary entity) {
     this.mockedTable.add(entity);
   }
 
@@ -29,8 +29,8 @@ public class BorrowerRepository implements GenericRepository<Borrower> {
   }
 
   @Override
-  public Borrower update(int id, Borrower updated) {
-    Borrower found = getById(id);
+  public UserLibrary update(int id, UserLibrary updated) {
+    UserLibrary found = getById(id);
 
     if (found != null)
       this.mockedTable.set(id - 1, updated);

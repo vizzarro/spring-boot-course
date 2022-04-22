@@ -1,16 +1,23 @@
 package org.library.demo.models;
 
-public class Borrower {
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserLibrary {
   private String firstName;
   private String lastName;
   private String taxCode;
+  private List<Title> titleMockedDb;
+  private List<Reservation> mockedTable;
 
-  public Borrower() { }
+  public UserLibrary() { }
 
-  public Borrower(String firstName, String lastName, String taxCode) {
+  public UserLibrary(String firstName, String lastName, String taxCode) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.taxCode = taxCode;
+    this.titleMockedDb = new ArrayList<>();
+    this.mockedTable = new ArrayList<>();
   }
 
   public String getFirstName() {
