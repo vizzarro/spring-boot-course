@@ -1,23 +1,34 @@
 package it.aesys.infopeople.infopeople.repository;
 
 import it.aesys.infopeople.infopeople.model.Person;
+import it.aesys.infopeople.infopeople.model.Persons;
 import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import it.aesys.infopeople.infopeople.services.exceptions.BadRequestException;
 import it.aesys.infopeople.infopeople.model.errors.ErrorModel;
 import it.aesys.infopeople.infopeople.services.exceptions.FileNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 @Repository
+@Profile("devel")
 public class PersonRepositoryImpl implements PersonRepository {
 
-    List<Person> persons = new ArrayList<>();
+    @Autowired
+    private PersonFileSystemRepository fileSystem;
+    private List<Person> persons = new ArrayList<>();
+
+    public PersonRepositoryImpl() {
+        persons.addAll(fileSystem.unserialize("personsRepository", Persons.class).getCollection());
+    }
 
     @Override
     public Person addPerson(Person person) {
         persons.add(person);
+        updateFileSystem();
         return person;
     }
 
@@ -37,6 +48,7 @@ public class PersonRepositoryImpl implements PersonRepository {
                 pers.setSurname(person.getSurname());
                 pers.setBirthday(person.getBirthday());
                 pers.setAddress(person.getAddress());
+                updateFileSystem();
                 return pers;
             }
         }
@@ -55,6 +67,7 @@ public class PersonRepositoryImpl implements PersonRepository {
         }
         if (delPers != null) {
             persons.remove(delPers);
+            updateFileSystem();
         }
         DaoException de = new DaoException();
         de.setStatusCode(HttpStatus.NOT_FOUND.value());
@@ -75,5 +88,11 @@ public class PersonRepositoryImpl implements PersonRepository {
     @Override
     public List<Person> getAllPerson() {
         return persons;
+    }
+
+    private void updateFileSystem() {
+        Persons p = new Persons();
+        p.setCollection(persons);
+        fileSystem.serializeCollection(p, "personsRepository");
     }
 }
