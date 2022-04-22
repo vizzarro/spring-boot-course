@@ -2,9 +2,6 @@ package it.aesys.infopeople.infopeople.controller;
 
 import it.aesys.infopeople.infopeople.model.errors.ApiError;
 import it.aesys.infopeople.infopeople.model.errors.ErrorModel;
-import it.aesys.infopeople.infopeople.services.exceptions.BadRequestException;
-import it.aesys.infopeople.infopeople.services.exceptions.ControllerException;
-import it.aesys.infopeople.infopeople.services.exceptions.RepositoryException;
 import it.aesys.infopeople.infopeople.services.exceptions.ServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
