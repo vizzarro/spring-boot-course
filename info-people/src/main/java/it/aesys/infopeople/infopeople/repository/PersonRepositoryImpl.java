@@ -19,6 +19,7 @@ public class PersonRepositoryImpl implements PersonRepository {
     private PersonFileSystemRepository fileSystem;
     private List<Person> persons = new ArrayList<>();
 
+    @Autowired
     public PersonRepositoryImpl() {
         persons.addAll(fileSystem.unserialize("personsRepository", Persons.class).getCollection());
     }
