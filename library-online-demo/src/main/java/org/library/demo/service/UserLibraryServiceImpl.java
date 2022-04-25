@@ -6,15 +6,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 @Service
-public class BorrowerServiceImpl implements BorrowerService {
+public class UserLibraryServiceImpl implements UserLibraryService {
   private GenericRepository<UserLibrary> repo;
 
-  public BorrowerServiceImpl(GenericRepository<UserLibrary> borrowerRepository) {
-    this.repo = borrowerRepository;
+  public UserLibraryServiceImpl(GenericRepository<UserLibrary> userLibraryRepository) {
+    this.repo = userLibraryRepository;
   }
 
   @Override
-  public void addBorrower(UserLibrary newUserLibrary) throws Exception {
+  public void addUserLibrary(UserLibrary newUserLibrary) throws Exception {
     if (!StringUtils.hasLength(newUserLibrary.getFirstName()))
       throw new Exception("New UserLibrary must have a valid name!");
 
@@ -28,7 +28,7 @@ public class BorrowerServiceImpl implements BorrowerService {
   }
 
   @Override
-  public UserLibrary getBorrower(int id) {
+  public UserLibrary getUserLibrary(int id) {
     return repo.getById(id);
   }
 }
