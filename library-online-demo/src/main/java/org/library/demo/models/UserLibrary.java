@@ -7,17 +7,27 @@ public class UserLibrary {
   private String firstName;
   private String lastName;
   private String taxCode;
+  private Integer id;
   private List<Title> titleMockedDb;
   private List<Reservation> mockedTable;
 
   public UserLibrary() { }
 
-  public UserLibrary(String firstName, String lastName, String taxCode) {
+  public UserLibrary(String firstName, String lastName, String taxCode, Integer id) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.taxCode = taxCode;
+    this.id = id;
     this.titleMockedDb = new ArrayList<>();
     this.mockedTable = new ArrayList<>();
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getFirstName() {

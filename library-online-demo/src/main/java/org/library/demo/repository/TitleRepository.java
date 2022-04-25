@@ -4,26 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 import org.library.demo.models.Book;
 import org.library.demo.models.Magazine;
+import org.library.demo.models.Storage;
 import org.library.demo.models.Title;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class TitleRepository implements GenericRepository<Title> {
   private List<Title> titleMockedDb;
+  @Autowired
+  private Storage storage;
+
 
   public TitleRepository() {
     this.titleMockedDb = new ArrayList<>() {{
-      add(new Book("Lord of the Ring: The Fellowship of the Ring"));
-      add(new Book("Lord of the Ring: The Two Towers"));
-      add(new Book("Lord of the Ring: The Return of the King"));
-      add(new Book("The Hobbit: An Unexpected Journey"));
-      add(new Book("The Hobbit: The Desolation of Smaug"));
-      add(new Book("The Hobbit: The Battle of Five Armies"));
-      add(new Book("The Silmarillion"));
-      add(new Magazine("Focus"));
-      add(new Magazine("Wired"));
-      add(new Magazine("Cosmopolitan"));
-      add(new Magazine("Time"));
+      add(new Book("Lord of the Ring: The Fellowship of the Ring", 0, 0));
+      add(new Book("Lord of the Ring: The Two Towers", 1, 0));
+      add(new Book("Lord of the Ring: The Return of the King", 2, 0));
+      add(new Book("The Hobbit: An Unexpected Journey", 3, 1));
+      add(new Book("The Hobbit: The Desolation of Smaug", 4, 1));
+      add(new Book("The Hobbit: The Battle of Five Armies", 5, 0));
+      add(new Book("The Silmarillion", 6, 0));
+      add(new Magazine("Focus", 7, 1));
+      add(new Magazine("Wired", 8, 0));
+      add(new Magazine("Cosmopolitan", 9, 0));
+      add(new Magazine("Time", 10, 1));
     }};
   }
 
@@ -34,6 +39,7 @@ public class TitleRepository implements GenericRepository<Title> {
 
   @Override
   public void add(Title entity) {
+    storage.addStorageProperty(this.titleMockedDb.size(), entity.getUserLibraryId());
     this.titleMockedDb.add(entity);
   }
 

@@ -1,15 +1,14 @@
 package org.library.demo.models;
 
 public class StorageProperty {
-
+    private int userLibraryId;
     private int titleId;
+
 
     public StorageProperty(int titleId, int userLibraryId) {
         this.titleId = titleId;
         this.userLibraryId = userLibraryId;
     }
-
-    private int userLibraryId;
 
     public int getTitleId() {
         return titleId;
