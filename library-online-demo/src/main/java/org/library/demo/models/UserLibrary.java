@@ -7,7 +7,6 @@ public class UserLibrary {
   private String firstName;
   private String lastName;
   private String taxCode;
-  private Integer id;
   private List<Title> titleMockedDb;
   private List<Reservation> mockedTable;
 
@@ -17,17 +16,8 @@ public class UserLibrary {
     this.firstName = firstName;
     this.lastName = lastName;
     this.taxCode = taxCode;
-    this.id = id;
     this.titleMockedDb = new ArrayList<>();
     this.mockedTable = new ArrayList<>();
-  }
-
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
   }
 
   public String getFirstName() {

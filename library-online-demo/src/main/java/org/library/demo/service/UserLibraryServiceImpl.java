@@ -1,15 +1,16 @@
 package org.library.demo.service;
 
 import org.library.demo.models.UserLibrary;
-import org.library.demo.repository.GenericRepository;
+import org.library.demo.repository.UserLibraryRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class UserLibraryServiceImpl implements UserLibraryService {
-  private GenericRepository<UserLibrary> repo;
+  private UserLibraryRepository repo;
 
-  public UserLibraryServiceImpl(GenericRepository<UserLibrary> userLibraryRepository) {
+  public UserLibraryServiceImpl(UserLibraryRepository userLibraryRepository) {
     this.repo = userLibraryRepository;
   }
 
@@ -28,7 +29,7 @@ public class UserLibraryServiceImpl implements UserLibraryService {
   }
 
   @Override
-  public UserLibrary getUserLibrary(int id) {
-    return repo.getById(id);
+  public UserLibrary getUserLibrary(String taxCode) {
+    return repo.getByTaxCode(taxCode);
   }
 }

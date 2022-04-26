@@ -1,8 +1,11 @@
 package org.library.demo.config;
 
+import org.library.demo.models.Storage;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -28,5 +31,12 @@ public class MvcConfig  implements WebMvcConfigurer {
 
     return resolver;
   }
+
+
+    @Bean("storage")
+    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+    public Storage getStorage() {
+      return new Storage();
+    }
 
 }

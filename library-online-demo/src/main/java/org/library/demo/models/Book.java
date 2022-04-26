@@ -1,7 +1,13 @@
 package org.library.demo.models;
 
+import org.library.demo.config.MvcConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
+
+@Component
 public class Book implements Title {
   private String name;
   private int lendingTime = 30;
@@ -15,7 +21,10 @@ public class Book implements Title {
   public Book(String name,Integer id, Integer userLibraryId) {
     this.name = name;
     this.id = id;
-    storage.addStorageProperty(id, userLibraryId);
+     // da capire perchè non funziona
+    //storage.addStorageProperty(id, userLibraryId);
+
+    Storage.getIstance().addStorageProperty(id, userLibraryId);
   }
 
   public Integer getId() {
@@ -50,5 +59,11 @@ public class Book implements Title {
   }
 
 
+  public Storage getStorage() {
+    return storage;
+  }
 
+  public void setStorage(Storage storage) {
+    this.storage = storage;
+  }
 }

@@ -1,7 +1,9 @@
 package org.library.demo.models;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Magazine implements Title {
   private String name;
   private int lendingTime = 10;
@@ -15,7 +17,10 @@ public class Magazine implements Title {
   public Magazine(String name,Integer id, Integer userLibraryId) {
     this.name = name;
     this.id = id;
-    storage.addStorageProperty(id, userLibraryId);
+    // da capire perchè non funziona
+    //storage.addStorageProperty(id, userLibraryId);
+
+    Storage.getIstance().addStorageProperty(id, userLibraryId);
   }
 
   public void setName(String name) {

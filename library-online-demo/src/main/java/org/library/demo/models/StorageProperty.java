@@ -4,6 +4,10 @@ public class StorageProperty {
     private int userLibraryId;
     private int titleId;
 
+    public StorageProperty() {
+
+    }
+
 
     public StorageProperty(int titleId, int userLibraryId) {
         this.titleId = titleId;
