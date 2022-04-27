@@ -19,10 +19,7 @@ public class Magazine implements Title {
   public Magazine(String name,Integer id, Integer userLibraryId) {
     this.name = name;
     this.id = id;
-    // da capire perchè non funziona
-    //storage.addStorageProperty(id, userLibraryId);
-
-    Storage.getIstance().addStorageProperty(id, userLibraryId);
+    this.userLibraryId = userLibraryId;
   }
 
   public Magazine(String name, String title_id) {

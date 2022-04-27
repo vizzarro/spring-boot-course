@@ -27,10 +27,7 @@ public class Book implements Title {
     public Book(String name, Integer id, Integer userLibraryId) {
         this.name = name;
         this.id = id;
-        // da capire perchè non funziona
-        //storage.addStorageProperty(id, userLibraryId);
-
-        Storage.getIstance().addStorageProperty(id, userLibraryId);
+        this.userLibraryId = userLibraryId;
     }
 
     public Book(String name, String titleId) {

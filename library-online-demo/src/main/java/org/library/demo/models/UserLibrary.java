@@ -7,8 +7,6 @@ public class UserLibrary {
   private String firstName;
   private String lastName;
   private String taxCode;
-  private List<Title> titleMockedDb;
-  private List<Reservation> mockedTable;
 
   public UserLibrary(String tax_code, String first_name, String last_name) {
     this.taxCode = tax_code;
@@ -16,13 +14,6 @@ public class UserLibrary {
     this.lastName = last_name;
   }
 
-  public UserLibrary(String firstName, String lastName, String taxCode, Integer id) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.taxCode = taxCode;
-    this.titleMockedDb = new ArrayList<>();
-    this.mockedTable = new ArrayList<>();
-  }
 
   public String getFirstName() {
     return firstName;

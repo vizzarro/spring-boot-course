@@ -8,7 +8,6 @@ public class Reservation {
   @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
   private Date creationDate;
   private String titleId;
-  private int borrowerId;
   private String taxCode;
 
   public Reservation(String title_id, String tax_code, java.sql.Date creation_date) {
@@ -17,10 +16,6 @@ public class Reservation {
     this.creationDate = creation_date;
   }
 
-  public Reservation(Date creationDate, int titleId) {
-    this.creationDate = creationDate;
-    this.titleId = getTitleId();
-  }
 
   public Date getCreationDate() {
     return creationDate;
@@ -37,14 +32,6 @@ public class Reservation {
 
   public void setTitleId(String titleId) {
     this.titleId = titleId;
-  }
-
-  public int getBorrowerId() {
-    return borrowerId;
-  }
-
-  public void setBorrowerId(int borrowerId) {
-    this.borrowerId = borrowerId;
   }
 
   public String getTaxCode() {
