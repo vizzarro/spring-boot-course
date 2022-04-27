@@ -1,18 +1,13 @@
-package org.library.demo.models;
+package org.library.demo.dtos;
 
-public class Book implements Title {
+public class TitleDto {
     private String name;
-    private static int lendingTime = 30;
     private String titleId;
+    private String type;
 
-    public Book() {
+    public TitleDto() {
     }
 
-    public Book(String name) {
-        this.name = name;
-    }
-
-    @Override
     public String getName() {
         return name;
     }
@@ -21,7 +16,6 @@ public class Book implements Title {
         this.name = name;
     }
 
-    @Override
     public String getTitleId() {
         return titleId;
     }
@@ -30,4 +24,11 @@ public class Book implements Title {
         this.titleId = titleId;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

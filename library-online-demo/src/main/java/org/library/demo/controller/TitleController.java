@@ -1,12 +1,14 @@
 package org.library.demo.controller;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
+import org.library.demo.dtos.MappingDto;
+import org.library.demo.dtos.TitleDto;
 import org.library.demo.models.Book;
 import org.library.demo.models.Magazine;
 import org.library.demo.models.Title;
 import org.library.demo.service.TitleService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,47 +23,42 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "/title")
 public class TitleController {
 
-  private final TitleService service;
+    private final TitleService service;
 
-  @Autowired
-  public TitleController(TitleService titleService) {
-    this.service = titleService;
-  }
+    @Autowired
+    public TitleController(TitleService titleService) {
+        this.service = titleService;
+    }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-  public ResponseEntity<Title> getTitle(@PathVariable int id) throws SQLException {
-    Title response = service.getTitle(id);
-    return ResponseEntity.ok().body(response);
-  }
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public ResponseEntity<Title> getTitle(@PathVariable String id) throws SQLException {
+        Title response = service.getTitle(id);
+        return ResponseEntity.ok().body(response);
+    }
 
-  @RequestMapping(method = RequestMethod.POST, value = "/book")
-  public ResponseEntity<Void> addBook(@RequestBody Book newBook) throws SQLException {
-    service.addTitle(newBook);
-    return ResponseEntity.noContent().build();
-  }
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> addTitle(@RequestBody TitleDto titleDto) throws SQLException {
 
-  @RequestMapping(method = RequestMethod.POST, value = "/magazine")
-  public ResponseEntity<Void> addMagazine(@RequestBody Magazine newMagazine) throws SQLException {
-    service.addTitle(newMagazine);
-    return ResponseEntity.noContent().build();
-  }
+        Title newTitle = MappingDto.refactor(titleDto);
 
-  @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-  public ResponseEntity<Void> deleteTitle(@PathVariable int id) throws SQLException {
-    service.deleteTitle(id);
-    return ResponseEntity.noContent().build();
-  }
+        service.addTitle(newTitle);
+        return ResponseEntity.noContent().build();
+    }
 
-  @RequestMapping(method = RequestMethod.PUT, value = "/book/{id}")
-  public ResponseEntity<Title> updateBook(@PathVariable int id, @RequestBody Book newBook) throws SQLException {
-    Title response = service.updateTitle(id, newBook);
-    return ResponseEntity.ok(response);
-  }
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public ResponseEntity<Void> deleteTitle(@PathVariable String id) throws SQLException {
+        service.deleteTitle(id);
+        return ResponseEntity.noContent().build();
+    }
 
-  @RequestMapping(method = RequestMethod.PUT, value = "/magazine/{id}")
-  public ResponseEntity<Title> updateMagazine(@PathVariable int id, @RequestBody Magazine newMagazine) throws SQLException {
-    Title response = service.updateTitle(id, newMagazine);
-    return ResponseEntity.ok(response);
-  }
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity<Title> updateTitle(@RequestBody TitleDto titleDto) throws SQLException {
+
+        Title newTitle = MappingDto.refactor(titleDto);
+
+        Title response = service.updateTitle(newTitle);
+        return ResponseEntity.ok(response);
+    }
+
 
 }

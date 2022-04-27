@@ -16,42 +16,41 @@ import java.util.Date;
 @RestController
 @RequestMapping(value = "/reservation")
 public class ReservationController {
-  private ReservationService service;
+    private ReservationService service;
 
-  @Autowired
-  public ReservationController(ReservationService reservationService) {
-    this.service = reservationService;
-  }
+    @Autowired
+    public ReservationController(ReservationService reservationService) {
+        this.service = reservationService;
+    }
 
-  @RequestMapping(method = RequestMethod.POST)
-  public ResponseEntity<Void> addReservation(@RequestBody Reservation reservation)
-      throws Exception {
-    service.addReservation(reservation);
-    return ResponseEntity.noContent().build();
-  }
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> addReservation(@RequestBody Reservation reservation) throws Exception {
+        service.addReservation(reservation);
+        return ResponseEntity.noContent().build();
+    }
 
-  @RequestMapping(method = RequestMethod.DELETE, value = "/{titleId}/{taxCode}/{creationDate}")
-  public ResponseEntity<Void> deleteReservation(@PathVariable int titleId, @PathVariable String taxCode, @PathVariable Date creationDate) throws SQLException {
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{titleId}/{taxCode}/{creationDate}")
+    public ResponseEntity<Void> deleteReservation(@PathVariable String titleId, @PathVariable String taxCode, @PathVariable Date creationDate) throws SQLException {
 
-    Reservation id = new Reservation();
-    id.setCreationDate(creationDate);
-    id.setTaxCode(taxCode);
-    id.setTitleId(titleId);
+        Reservation id = new Reservation();
+        id.setCreationDate(creationDate);
+        id.setTaxCode(taxCode);
+        id.setTitleId(titleId);
 
-    service.deleteReservation(id);
-    return ResponseEntity.noContent().build();
-  }
+        service.deleteReservation(id);
+        return ResponseEntity.noContent().build();
+    }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/{titleId}/{taxCode}/{creationDate}")
-  public ResponseEntity<Reservation> getReservation(@PathVariable int titleId, @PathVariable String taxCode, @PathVariable Date creationDate) throws SQLException {
+    @RequestMapping(method = RequestMethod.GET, value = "/{titleId}/{taxCode}/{creationDate}")
+    public ResponseEntity<Reservation> getReservation(@PathVariable String titleId, @PathVariable String taxCode, @PathVariable Date creationDate) throws SQLException {
 
-    Reservation id = new Reservation();
-    id.setCreationDate(creationDate);
-    id.setTaxCode(taxCode);
-    id.setTitleId(titleId);
+        Reservation id = new Reservation();
+        id.setCreationDate(creationDate);
+        id.setTaxCode(taxCode);
+        id.setTitleId(titleId);
 
-    Reservation response = service.getReservation(id);
-    return ResponseEntity.ok(response);
-  }
+        Reservation response = service.getReservation(id);
+        return ResponseEntity.ok(response);
+    }
 
 }

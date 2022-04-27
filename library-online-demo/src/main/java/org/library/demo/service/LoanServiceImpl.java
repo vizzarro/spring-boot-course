@@ -11,49 +11,49 @@ import java.sql.SQLException;
 
 @Service
 public class LoanServiceImpl implements LoanService {
-  private LoanDao loanDao;
-  private TitleDao titleDao;
-  private UserLibraryDao ulDao;
+    private LoanDao loanDao;
+    private TitleDao titleDao;
+    private UserLibraryDao ulDao;
 
-  @Autowired
-  public LoanServiceImpl(
-          LoanDao loanDao,
-          TitleDao titleDao,
-          UserLibraryDao ulDao
-  ) {
-    this.loanDao = loanDao;
-    this.titleDao = titleDao;
-    this.ulDao = ulDao;
-  }
-
-  @Override
-  public Loan addLoan(Loan newLoan) throws Exception {
-    if (newLoan == null)
-      throw new Exception("No request");
-
-    try {
-      UserLibrary u = ulDao.get(newLoan.getUserLibraryId());
-    } catch (Exception e) {
-      throw new Exception("No Borrower found for id " + newLoan.getUserLibraryId());
+    @Autowired
+    public LoanServiceImpl(
+            LoanDao loanDao,
+            TitleDao titleDao,
+            UserLibraryDao ulDao
+    ) {
+        this.loanDao = loanDao;
+        this.titleDao = titleDao;
+        this.ulDao = ulDao;
     }
 
-    Title exists = titleDao.get(newLoan.getTitleId());
-    if (exists == null)
-      throw new Exception("No Title found for id " + newLoan.getTitleId());
+    @Override
+    public Loan addLoan(Loan newLoan) throws Exception {
+        if (newLoan == null)
+            throw new Exception("No request");
+
+        try {
+            UserLibrary u = ulDao.get(newLoan.getUserLibraryId());
+        } catch (Exception e) {
+            throw new Exception("No Borrower found for id " + newLoan.getUserLibraryId());
+        }
+
+        Title exists = titleDao.get(newLoan.getTitleId());
+        if (exists == null)
+            throw new Exception("No Title found for id " + newLoan.getTitleId());
 
 
-    loanDao.create(newLoan);
-    return newLoan;
-  }
+        loanDao.create(newLoan);
+        return newLoan;
+    }
 
-  @Override
-  public Loan getLoan(Loan id) throws SQLException {
-    return loanDao.get(id);
-  }
+    @Override
+    public Loan getLoan(Loan id) throws SQLException {
+        return loanDao.get(id);
+    }
 
-  @Override
-  public Loan deleteLoan(Loan id) throws SQLException {
-    this.loanDao.delete(id);
-    return null;
-  }
+    @Override
+    public Loan deleteLoan(Loan id) throws SQLException {
+        this.loanDao.delete(id);
+        return null;
+    }
 }

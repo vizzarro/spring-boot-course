@@ -2,14 +2,12 @@ package org.library.demo.models;
 
 public interface Title {
 
-  int getTitleId();
+    String getTitleId();
 
-  void setTitleId(int id);
+    void setTitleId(String id);
 
-  String getName();
+    String getName();
 
-  void setName(String s);
-
-  int getLendingTime();
+    void setName(String s);
 
 }

@@ -4,12 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.library.demo.models.Book;
-import org.library.demo.models.Magazine;
-import org.library.demo.models.Title;
 import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Repository;
 
@@ -19,9 +14,10 @@ public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> impleme
     @Override
     public UserLibrary get(String taxCode) throws SQLException {
         Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("SELECT * FROM USER_LIBRARY WHEN TAX_CODE=" +
+        PreparedStatement statement = conn.prepareStatement("SELECT * FROM USER_LIBRARY WHERE TAX_CODE=" +
                 taxCode);
         ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
 
         UserLibrary user = new UserLibrary();
         user.setTaxCode(resultSet.getString("tax_code"));
@@ -46,8 +42,8 @@ public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> impleme
     @Override
     public UserLibrary update(UserLibrary user) throws SQLException {
         Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("UPDATE USER_LIBRARY FIRST_NAME = ?," +
-                "LAST_NAME = ? WHEN TAX_CODE = ?");
+        PreparedStatement statement = conn.prepareStatement("UPDATE USER_LIBRARY SET FIRST_NAME = ?," +
+                "LAST_NAME = ? WHERE TAX_CODE = ?");
         statement.setString(1, user.getFirstName());
         statement.setString(2, user.getLastName());
         statement.setString(3, user.getTaxCode());
@@ -59,7 +55,8 @@ public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> impleme
     @Override
     public void delete(String id) throws SQLException {
         Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("DELETE USER_LIBRARY WHEN TAX_CODE =" + id);
+        PreparedStatement statement = conn.prepareStatement("DELETE FROM USER_LIBRARY WHERE TAX_CODE = ?");
+        statement.setString(1, id);
 
         statement.executeQuery();
     }

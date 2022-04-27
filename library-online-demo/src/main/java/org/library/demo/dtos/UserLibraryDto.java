@@ -1,40 +1,42 @@
 package org.library.demo.dtos;
 
-import org.library.demo.models.Reservation;
-import org.library.demo.models.Title;
-import java.util.List;
-
 public class UserLibraryDto {
 
-    private PersonDto personDto;
-    private List<Reservation> reservations;
-    private List<Title> titles;
+    private String firstName;
+    private String lastName;
+    private String taxCode;
 
     public UserLibraryDto() {
     }
 
-    public PersonDto getPersonDto() {
-        return personDto;
+    public UserLibraryDto(String firstName, String lastName, String taxCode) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.taxCode = taxCode;
     }
 
-    public void setPersonDto(PersonDto personDto) {
-        this.personDto = personDto;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public List<Reservation> getReservations() {
-        return reservations;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
+    public String getLastName() {
+        return lastName;
     }
 
-    public List<Title> getTitles() {
-        return titles;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setTitles(List<Title> titles) {
-        this.titles = titles;
+    public String getTaxCode() {
+        return taxCode;
+    }
+
+    public void setTaxCode(String taxCode) {
+        this.taxCode = taxCode;
     }
 
 }

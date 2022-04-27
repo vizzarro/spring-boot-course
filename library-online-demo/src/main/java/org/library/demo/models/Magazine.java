@@ -1,37 +1,33 @@
 package org.library.demo.models;
 
 public class Magazine implements Title {
-  private String name;
-  private int lendingTime = 10;
-  private int titleId;
+    private String name;
+    private static int lendingTime = 10;
+    private String titleId;
 
-  public Magazine() { }
+    public Magazine() {
+    }
 
-  public Magazine(String name) {
-    this.name = name;
-  }
+    public Magazine(String name) {
+        this.name = name;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  @Override
-  public String getName() {
-    return name;
-  }
+    @Override
+    public String getName() {
+        return name;
+    }
 
-  @Override
-  public int getLendingTime() {
-    return lendingTime;
-  }
+    @Override
+    public String getTitleId() {
+        return titleId;
+    }
 
-  @Override
-  public int getTitleId() {
-    return titleId;
-  }
-
-  public void setTitleId(int titleId) {
-    this.titleId = titleId;
-  }
+    public void setTitleId(String titleId) {
+        this.titleId = titleId;
+    }
 
 }

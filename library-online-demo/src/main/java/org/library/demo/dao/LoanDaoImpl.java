@@ -11,13 +11,14 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
     @Override
     public Loan get(Loan loan) throws SQLException {
         Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("SELECT * FROM LOANS WHEN TITLE_ID=?, TAX_CODE=?");
-        statement.setInt(1, loan.getTitleId());
+        PreparedStatement statement = conn.prepareStatement("SELECT * FROM LOANS WHERE TITLE_ID=?, TAX_CODE=?");
+        statement.setString(1, loan.getTitleId());
         statement.setString(2, loan.getUserLibraryId());
         ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
 
         loan = new Loan();
-        loan.setTitleId(Integer.parseInt(resultSet.getString("title_id")));
+        loan.setTitleId(resultSet.getString("title_id"));
         loan.setUserLibraryId(resultSet.getString("tax_code"));
         loan.setCreationDate(resultSet.getDate("creation_date"));
 
@@ -40,9 +41,9 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
     @Override
     public Loan update(Loan l) throws SQLException {
         Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("UPDATE LOANS CREATION_DATE = ? WHEN TITLE_ID = ?, TAX_CODE=?");
+        PreparedStatement statement = conn.prepareStatement("UPDATE LOANS SET CREATION_DATE = ? WHERE TITLE_ID = ?, TAX_CODE=?");
         statement.setDate(1, (Date) l.getCreationDate());
-        statement.setString(2, String.valueOf(l.getTitleId()));
+        statement.setString(2, l.getTitleId());
         statement.setString(3, l.getUserLibraryId());
         statement.executeQuery();
 
@@ -52,8 +53,8 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
     @Override
     public void delete(Loan l) throws SQLException {
         Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("DELETE LOANS WHEN TITLE_ID = ?, TAX_CODE = ?");
-        statement.setString(1, String.valueOf(l.getTitleId()));
+        PreparedStatement statement = conn.prepareStatement("DELETE FROM LOANS WHERE TITLE_ID = ?, TAX_CODE = ?");
+        statement.setString(1, l.getTitleId());
         statement.setString(2, l.getUserLibraryId());
 
         statement.executeQuery();

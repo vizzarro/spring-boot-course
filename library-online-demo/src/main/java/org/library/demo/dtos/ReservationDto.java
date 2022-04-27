@@ -1,18 +1,17 @@
-package org.library.demo.models;
+package org.library.demo.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import java.util.Date;
 
-public class Reservation {
+public class ReservationDto {
 
-    @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date creationDate;
-    private String titleId;
+    private int titleId;
     private String taxCode;
 
-    public Reservation() {
+    public ReservationDto() {
         this.creationDate = new Date();
     }
 
@@ -21,14 +20,15 @@ public class Reservation {
     }
 
     public void setCreationDate(Date creationDate) {
-        if (creationDate != null) this.creationDate = creationDate;
+        if (creationDate != null)
+            this.creationDate = creationDate;
     }
 
-    public String getTitleId() {
+    public int getTitleId() {
         return titleId;
     }
 
-    public void setTitleId(String titleId) {
+    public void setTitleId(int titleId) {
         this.titleId = titleId;
     }
 

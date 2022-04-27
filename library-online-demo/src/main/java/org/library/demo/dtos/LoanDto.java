@@ -1,22 +1,21 @@
-package org.library.demo.models;
+package org.library.demo.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import java.util.Date;
 
-public class Loan {
+public class LoanDto {
 
-    @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date creationDate;
-    private String titleId;
+    private int titleId;
     private String userLibraryId;
 
-    public Loan() {
+    public LoanDto() {
         this.creationDate = new Date();
     }
 
-    public Loan(Date creationDate, String titleId, String userLibraryId) {
+    public LoanDto(Date creationDate, int titleId, String userLibraryId) {
         this.creationDate = creationDate;
         this.titleId = titleId;
         this.userLibraryId = userLibraryId;
@@ -30,11 +29,11 @@ public class Loan {
         if (creationDate != null) this.creationDate = creationDate;
     }
 
-    public String getTitleId() {
+    public int getTitleId() {
         return titleId;
     }
 
-    public void setTitleId(String titleId) {
+    public void setTitleId(int titleId) {
         this.titleId = titleId;
     }
 
