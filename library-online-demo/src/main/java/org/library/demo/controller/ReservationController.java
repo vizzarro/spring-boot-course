@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping(value = "/reservation")
 public class ReservationController {
@@ -27,14 +29,26 @@ public class ReservationController {
     return ResponseEntity.noContent().build();
   }
 
-  @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-  public ResponseEntity<Void> deleteReservation(@PathVariable int id) {
+  @RequestMapping(method = RequestMethod.DELETE, value = "/{titleId}/{taxCode}/{creationDate}")
+  public ResponseEntity<Void> deleteReservation(@PathVariable int titleId, @PathVariable String taxCode, @PathVariable Date creationDate) {
+
+    Reservation id = new Reservation();
+    id.setCreationDate(creationDate);
+    id.setTaxCode(taxCode);
+    id.setTitleId(titleId);
+
     service.deleteReservation(id);
     return ResponseEntity.noContent().build();
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-  public ResponseEntity<Reservation> getReservation(@PathVariable int id) {
+  @RequestMapping(method = RequestMethod.GET, value = "/{titleId}/{taxCode}/{creationDate}")
+  public ResponseEntity<Reservation> getReservation(@PathVariable int titleId, @PathVariable String taxCode, @PathVariable Date creationDate) {
+
+    Reservation id = new Reservation();
+    id.setCreationDate(creationDate);
+    id.setTaxCode(taxCode);
+    id.setTitleId(titleId);
+
     Reservation response = service.getReservation(id);
     return ResponseEntity.ok(response);
   }

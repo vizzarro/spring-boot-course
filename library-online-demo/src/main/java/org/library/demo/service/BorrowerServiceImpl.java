@@ -1,16 +1,16 @@
 package org.library.demo.service;
 
+import org.library.demo.dao.UserLibraryDaoImpl;
 import org.library.demo.models.UserLibrary;
-import org.library.demo.repository.GenericRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 @Service
 public class BorrowerServiceImpl implements BorrowerService {
-  private GenericRepository<UserLibrary> repo;
+  private UserLibraryDaoImpl dao;
 
-  public BorrowerServiceImpl(GenericRepository<UserLibrary> borrowerRepository) {
-    this.repo = borrowerRepository;
+  public BorrowerServiceImpl(UserLibraryDaoImpl dao) {
+    this.dao = dao;
   }
 
   @Override
@@ -24,11 +24,11 @@ public class BorrowerServiceImpl implements BorrowerService {
     if (!StringUtils.hasLength(newUserLibrary.getTaxCode()))
       throw new Exception("New UserLibrary must have a valid tax code!");
 
-    repo.add(newUserLibrary);
+    dao.create(newUserLibrary);
   }
 
   @Override
-  public UserLibrary getBorrower(int id) {
-    return repo.getById(id);
+  public UserLibrary getBorrower(String id) {
+    return dao.get(id);
   }
 }

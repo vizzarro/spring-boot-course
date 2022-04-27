@@ -9,15 +9,16 @@ public class Loan {
   @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
   private Date creationDate;
   private int titleId;
-  private int userLibraryId;
+  private String userLibraryId;
 
   public Loan() {
     this.creationDate = new Date();
   }
 
-  public Loan(Date creationDate, int titleId) {
+  public Loan(Date creationDate, int titleId, String userLibraryId) {
     this.creationDate = creationDate;
     this.titleId = titleId;
+    this.userLibraryId = userLibraryId;
   }
 
   public Date getCreationDate() {
@@ -37,11 +38,11 @@ public class Loan {
     this.titleId = titleId;
   }
 
-  public int getUserLibraryId() {
+  public String getUserLibraryId() {
     return userLibraryId;
   }
 
-  public void setUserLibraryId(int userLibraryId) {
+  public void setUserLibraryId(String userLibraryId) {
     this.userLibraryId = userLibraryId;
   }
 }
