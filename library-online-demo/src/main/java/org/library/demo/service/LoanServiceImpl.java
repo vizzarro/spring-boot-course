@@ -1,8 +1,6 @@
 package org.library.demo.service;
 
-import org.library.demo.dao.LoanDaoImpl;
-import org.library.demo.dao.TitleDaoImpl;
-import org.library.demo.dao.UserLibraryDaoImpl;
+import org.library.demo.dao.*;
 import org.library.demo.models.Loan;
 import org.library.demo.models.Title;
 import org.library.demo.models.UserLibrary;
@@ -11,15 +9,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LoanServiceImpl implements LoanService {
-  private LoanDaoImpl loanDao;
-  private TitleDaoImpl titleDao;
-  private UserLibraryDaoImpl ulDao;
+  private LoanDao loanDao;
+  private TitleDao titleDao;
+  private UserLibraryDao ulDao;
 
   @Autowired
   public LoanServiceImpl(
-          LoanDaoImpl loanDao,
-          TitleDaoImpl titleDao,
-          UserLibraryDaoImpl ulDao
+          LoanDao loanDao,
+          TitleDao titleDao,
+          UserLibraryDao ulDao
   ) {
     this.loanDao = loanDao;
     this.titleDao = titleDao;

@@ -1,5 +1,6 @@
 package org.library.demo.service;
 
+import org.library.demo.dao.UserLibraryDao;
 import org.library.demo.dao.UserLibraryDaoImpl;
 import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Service;
@@ -7,9 +8,9 @@ import org.springframework.util.StringUtils;
 
 @Service
 public class BorrowerServiceImpl implements BorrowerService {
-  private UserLibraryDaoImpl dao;
+  private UserLibraryDao dao;
 
-  public BorrowerServiceImpl(UserLibraryDaoImpl dao) {
+  public BorrowerServiceImpl(UserLibraryDao dao) {
     this.dao = dao;
   }
 

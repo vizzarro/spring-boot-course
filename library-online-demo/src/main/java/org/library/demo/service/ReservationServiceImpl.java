@@ -1,8 +1,6 @@
 package org.library.demo.service;
 
-import org.library.demo.dao.ReservationDaoImpl;
-import org.library.demo.dao.TitleDaoImpl;
-import org.library.demo.dao.UserLibraryDaoImpl;
+import org.library.demo.dao.*;
 import org.library.demo.models.UserLibrary;
 import org.library.demo.models.Reservation;
 import org.library.demo.models.Title;
@@ -11,15 +9,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
-  private ReservationDaoImpl reservationDao;
-  private TitleDaoImpl titleDao;
-  private UserLibraryDaoImpl userLibraryDao;
+  private ReservationDao reservationDao;
+  private TitleDao titleDao;
+  private UserLibraryDao userLibraryDao;
 
   @Autowired
   public ReservationServiceImpl(
-          ReservationDaoImpl reservationDao,
-          TitleDaoImpl titleDao,
-          UserLibraryDaoImpl userLibraryDao
+          ReservationDao reservationDao,
+          TitleDao titleDao,
+          UserLibraryDao userLibraryDao
   ) {
     this.reservationDao = reservationDao;
     this.titleDao = titleDao;

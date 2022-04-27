@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> {
+public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
 
   @Override
   public Loan get(Loan id) {

@@ -6,7 +6,7 @@ import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> {
+public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> implements UserLibraryDao {
 
   @Override
   public UserLibrary get(String id) {

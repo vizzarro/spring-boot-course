@@ -8,7 +8,7 @@ import org.library.demo.models.Title;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TitleDaoImpl extends BaseDaoImpl<Title, Integer> {
+public class TitleDaoImpl extends BaseDaoImpl<Title, Integer> implements TitleDao {
 
   @Override
   public Title get(Integer id) {
