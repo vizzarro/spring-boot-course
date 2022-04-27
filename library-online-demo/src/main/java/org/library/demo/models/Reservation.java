@@ -2,21 +2,17 @@ package org.library.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-import java.util.Date;
+import org.springframework.stereotype.Component;
 
+import java.util.Date;
+@Component
 public class Reservation {
   @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
   private Date creationDate;
-  private int titleId;
-  private int borrowerId;
+  private String titleId;
+  private String taxCode;
 
   public Reservation() {
-    this.creationDate = new Date();
-  }
-
-  public Reservation(Date creationDate, int titleId) {
-    this.creationDate = creationDate;
-    this.titleId = titleId;
   }
 
   public Date getCreationDate() {
@@ -24,23 +20,22 @@ public class Reservation {
   }
 
   public void setCreationDate(Date creationDate) {
-    if (creationDate != null)
-      this.creationDate = creationDate;
+    this.creationDate = creationDate;
   }
 
-  public int getTitleId() {
+  public String getTitleId() {
     return titleId;
   }
 
-  public void setTitleId(int titleId) {
+  public void setTitleId(String titleId) {
     this.titleId = titleId;
   }
 
-  public int getBorrowerId() {
-    return borrowerId;
+  public String getTaxCode() {
+    return taxCode;
   }
 
-  public void setBorrowerId(int borrowerId) {
-    this.borrowerId = borrowerId;
+  public void setTaxCode(String taxCode) {
+    this.taxCode = taxCode;
   }
 }

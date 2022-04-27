@@ -1,40 +1,36 @@
 package org.library.demo.dtos;
 
-import org.library.demo.models.Reservation;
-import org.library.demo.models.Title;
-import java.util.List;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserLibraryDto {
 
-    private PersonDto personDto;
-    private List<Reservation> reservations;
-    private List<Title> titles;
+    private String firstName;
+    private String lastName;
+    private String id;
 
-    public UserLibraryDto() {
+    public String getFirstName() {
+        return firstName;
     }
 
-    public PersonDto getPersonDto() {
-        return personDto;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setPersonDto(PersonDto personDto) {
-        this.personDto = personDto;
+    public String getLastName() {
+        return lastName;
     }
 
-    public List<Reservation> getReservations() {
-        return reservations;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
+
+    public String getId() {
+        return this.id;
     }
 
-    public List<Title> getTitles() {
-        return titles;
+    public void setId(String id) {
+        this.id = id;
     }
-
-    public void setTitles(List<Title> titles) {
-        this.titles = titles;
-    }
-
 }

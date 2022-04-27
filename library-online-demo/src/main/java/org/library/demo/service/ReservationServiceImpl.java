@@ -1,54 +1,39 @@
 package org.library.demo.service;
 
-import org.library.demo.models.UserLibrary;
+import org.library.demo.dao.ReservationDao;
+import org.library.demo.dtos.ReservationDto;
 import org.library.demo.models.Reservation;
-import org.library.demo.models.Title;
-import org.library.demo.repository.GenericRepository;
+import org.library.demo.service.mapper.ReservationModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
+
 @Service
-public class ReservationServiceImpl implements ReservationService {
-  private GenericRepository<Reservation> repo;
-  private GenericRepository<Title> titleRepo;
-  private GenericRepository<UserLibrary> borrowerRepo;
+public class ReservationServiceImpl implements GenericService<ReservationDto, String> {
+    @Autowired
+    private ReservationDao reservationDao;
+    @Autowired
+    private ReservationModelMapper modelMapper;
 
-  @Autowired
-  public ReservationServiceImpl(
-      GenericRepository<Reservation> repository,
-      GenericRepository<Title> titleRepository,
-      GenericRepository<UserLibrary> borrowerRepository
-  ) {
-    this.repo = repository;
-    this.titleRepo = titleRepository;
-    this.borrowerRepo = borrowerRepository;
-  }
-
-  @Override
-  public void addReservation(Reservation newReservation) throws Exception {
-    if (newReservation == null)
-      throw new Exception("No request");
-
-    try {
-      UserLibrary b = borrowerRepo.getById(newReservation.getBorrowerId());
-    } catch (Exception e) {
-      throw new Exception("No UserLibrary found for id " + newReservation.getBorrowerId());
+    @Override
+    public ReservationDto add(ReservationDto dtoObject) throws SQLException, ClassNotFoundException {
+        return modelMapper.toDtoObject(reservationDao.add(modelMapper.toModelObject(dtoObject, Reservation.class)), ReservationDto.class);
     }
 
-    Title exists = titleRepo.getById(newReservation.getTitleId());
-    if (exists == null)
-      throw new Exception("No Title found for id " + newReservation.getTitleId());
+    @Override
+    public ReservationDto get(String id) throws SQLException, ClassNotFoundException {
+        return modelMapper.toDtoObject(reservationDao.get(id), ReservationDto.class);
+    }
 
-    repo.add(newReservation);
-  }
+    @Override
+    public ReservationDto update(String id, ReservationDto dtoObject) throws SQLException, ClassNotFoundException {
+        return modelMapper.toDtoObject(reservationDao.update(id, modelMapper.toModelObject(dtoObject, Reservation.class)), ReservationDto.class);
 
-  @Override
-  public Reservation getReservation(int id) {
-    return repo.getById(id);
-  }
+    }
 
-  @Override
-  public void deleteReservation(int id) {
-    this.repo.delete(id);
-  }
+    @Override
+    public ReservationDto delete(String id) throws SQLException, ClassNotFoundException {
+        return modelMapper.toDtoObject(reservationDao.delete(id), ReservationDto.class);
+    }
 }

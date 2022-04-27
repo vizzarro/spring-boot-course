@@ -9,10 +9,10 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class PeopleClientServiceImpl implements PeopleService {
 
-    @Autowired
     private RestTemplate restClient;
-
+    @Autowired
     public PeopleClientServiceImpl() {
+        this.restClient = new RestTemplate();
     }
 
     public PeopleClientServiceImpl(RestTemplate restClient) {

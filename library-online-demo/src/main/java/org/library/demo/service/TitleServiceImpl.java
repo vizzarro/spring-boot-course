@@ -1,40 +1,40 @@
 package org.library.demo.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import org.library.demo.models.Book;
-import org.library.demo.models.Magazine;
+import org.library.demo.dao.TitleDao;
+import org.library.demo.dtos.TitleDto;
 import org.library.demo.models.Title;
-import org.library.demo.repository.GenericRepository;
+import org.library.demo.service.mapper.TitleModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
+
 @Service
-public class TitleServiceImpl implements TitleService {
+public class TitleServiceImpl implements GenericService<TitleDto, String> {
 
-  private GenericRepository<Title> repo;
+    @Autowired
+    private TitleDao titleDao;
+    @Autowired
+    private TitleModelMapper modelMapper;
 
-  public TitleServiceImpl(GenericRepository<Title> repository) {
-    this.repo = repository;
-  }
+    @Override
+    public TitleDto add(TitleDto dtoObject) throws SQLException, ClassNotFoundException {
+        return modelMapper.toDtoObject(titleDao.add(modelMapper.toModelObject(dtoObject, Title.class)), TitleDto.class);
+    }
 
-  @Override
-  public Title getTitle(int id) {
-    return repo.getById(id);
-  }
+    @Override
+    public TitleDto get(String id) throws SQLException, ClassNotFoundException {
+        return modelMapper.toDtoObject(titleDao.get(id), TitleDto.class);
+    }
 
-  @Override
-  public void addTitle(Title newTitle) {
-    repo.add(newTitle);
-  }
+    @Override
+    public TitleDto update(String id, TitleDto dtoObject) throws SQLException, ClassNotFoundException {
+        return modelMapper.toDtoObject(titleDao.update(id, modelMapper.toModelObject(dtoObject, Title.class)), TitleDto.class);
 
-  @Override
-  public void deleteTitle(int id) {
-    repo.delete(id);
-  }
+    }
 
-  @Override
-  public Title updateTitle(int id, Title updated) {
-    return repo.update(id, updated);
-  }
-
+    @Override
+    public TitleDto delete(String id) throws SQLException, ClassNotFoundException {
+        return modelMapper.toDtoObject(titleDao.delete(id), TitleDto.class);
+    }
 }

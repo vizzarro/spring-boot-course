@@ -1,66 +1,43 @@
 package org.library.demo.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import org.library.demo.models.Book;
-import org.library.demo.models.Magazine;
-import org.library.demo.models.Title;
-import org.library.demo.service.TitleService;
+import org.library.demo.dtos.TitleDto;
+import org.library.demo.request.GenericRequest;
+import org.library.demo.service.TitleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@ResponseBody
+import java.sql.SQLException;
+
+@RestController
 @RequestMapping(value = "/title")
 public class TitleController {
 
-  private final TitleService service;
+    @Autowired
+    private TitleServiceImpl titleService;
 
-  @Autowired
-  public TitleController(TitleService titleService) {
-    this.service = titleService;
-  }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-  public ResponseEntity<Title> getTitle(@PathVariable int id) {
-    Title response = service.getTitle(id);
-    return ResponseEntity.ok().body(response);
-  }
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<TitleDto> addTitle(@RequestBody GenericRequest<TitleDto> request) throws SQLException, ClassNotFoundException {
+        TitleDto response = titleService.add(request.getRequestData());
+        return ResponseEntity.ok().body(response);
+    }
 
-  @RequestMapping(method = RequestMethod.POST, value = "/book")
-  public ResponseEntity<Void> addBook(@RequestBody Book newBook) {
-    service.addTitle(newBook);
-    return ResponseEntity.noContent().build();
-  }
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public ResponseEntity<TitleDto> deleteTitle(@PathVariable String id) throws SQLException, ClassNotFoundException {
+        TitleDto response = titleService.delete(id);
+        return ResponseEntity.ok().body(response);
+    }
 
-  @RequestMapping(method = RequestMethod.POST, value = "/magazine")
-  public ResponseEntity<Void> addMagazine(@RequestBody Magazine newMagazine) {
-    service.addTitle(newMagazine);
-    return ResponseEntity.noContent().build();
-  }
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public ResponseEntity<TitleDto> getTitle(@PathVariable String id) throws SQLException, ClassNotFoundException {
+        TitleDto response = titleService.get(id);
+        return ResponseEntity.ok().body(response);
+    }
 
-  @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-  public ResponseEntity<Void> deleteTitle(@PathVariable int id) {
-    service.deleteTitle(id);
-    return ResponseEntity.noContent().build();
-  }
-
-  @RequestMapping(method = RequestMethod.PUT, value = "/book/{id}")
-  public ResponseEntity<Title> updateBook(@PathVariable int id, @RequestBody Book newBook) {
-    Title response = service.updateTitle(id, newBook);
-    return ResponseEntity.ok(response);
-  }
-
-  @RequestMapping(method = RequestMethod.PUT, value = "/magazine/{id}")
-  public ResponseEntity<Title> updateMagazine(@PathVariable int id, @RequestBody Magazine newMagazine) {
-    Title response = service.updateTitle(id, newMagazine);
-    return ResponseEntity.ok(response);
-  }
-
+    @RequestMapping(method= RequestMethod.PUT, value="/{id}")
+    public ResponseEntity<TitleDto> updateTitle(@RequestBody GenericRequest<TitleDto> request, @PathVariable String id) throws SQLException, ClassNotFoundException {
+        TitleDto response = titleService.update(id, request.getRequestData());
+        return ResponseEntity.ok().body(response);
+    }
 }

@@ -1,15 +1,16 @@
-package org.library.demo.models;
+package org.library.demo.dtos;
 
+import org.library.demo.models.TypeTitle;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Title {
+public class TitleDto {
 
     private String titleId;
     private String name;
     private TypeTitle type;
 
-    public Title() {
+    public TitleDto() {
     }
 
     public String getTitleId() {

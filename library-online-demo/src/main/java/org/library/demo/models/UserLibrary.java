@@ -1,24 +1,16 @@
 package org.library.demo.models;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class UserLibrary {
+
   private String firstName;
   private String lastName;
-  private String taxCode;
-  private List<Title> titleMockedDb;
-  private List<Reservation> mockedTable;
-
-  public UserLibrary() { }
-
-  public UserLibrary(String firstName, String lastName, String taxCode) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.taxCode = taxCode;
-    this.titleMockedDb = new ArrayList<>();
-    this.mockedTable = new ArrayList<>();
-  }
+  private String id;
 
   public String getFirstName() {
     return firstName;
@@ -36,11 +28,12 @@ public class UserLibrary {
     this.lastName = lastName;
   }
 
-  public String getTaxCode() {
-    return taxCode;
+
+  public String getId() {
+    return this.id;
   }
 
-  public void setTaxCode(String taxCode) {
-    this.taxCode = taxCode;
+  public void setId(String id) {
+    this.id = id;
   }
 }
