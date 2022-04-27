@@ -1,5 +1,6 @@
 package org.library.demo.controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.library.demo.models.Book;
@@ -28,37 +29,37 @@ public class TitleController {
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-  public ResponseEntity<Title> getTitle(@PathVariable int id) {
+  public ResponseEntity<Title> getTitle(@PathVariable int id) throws SQLException {
     Title response = service.getTitle(id);
     return ResponseEntity.ok().body(response);
   }
 
   @RequestMapping(method = RequestMethod.POST, value = "/book")
-  public ResponseEntity<Void> addBook(@RequestBody Book newBook) {
+  public ResponseEntity<Void> addBook(@RequestBody Book newBook) throws SQLException {
     service.addTitle(newBook);
     return ResponseEntity.noContent().build();
   }
 
   @RequestMapping(method = RequestMethod.POST, value = "/magazine")
-  public ResponseEntity<Void> addMagazine(@RequestBody Magazine newMagazine) {
+  public ResponseEntity<Void> addMagazine(@RequestBody Magazine newMagazine) throws SQLException {
     service.addTitle(newMagazine);
     return ResponseEntity.noContent().build();
   }
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-  public ResponseEntity<Void> deleteTitle(@PathVariable int id) {
+  public ResponseEntity<Void> deleteTitle(@PathVariable int id) throws SQLException {
     service.deleteTitle(id);
     return ResponseEntity.noContent().build();
   }
 
   @RequestMapping(method = RequestMethod.PUT, value = "/book/{id}")
-  public ResponseEntity<Title> updateBook(@PathVariable int id, @RequestBody Book newBook) {
+  public ResponseEntity<Title> updateBook(@PathVariable int id, @RequestBody Book newBook) throws SQLException {
     Title response = service.updateTitle(id, newBook);
     return ResponseEntity.ok(response);
   }
 
   @RequestMapping(method = RequestMethod.PUT, value = "/magazine/{id}")
-  public ResponseEntity<Title> updateMagazine(@PathVariable int id, @RequestBody Magazine newMagazine) {
+  public ResponseEntity<Title> updateMagazine(@PathVariable int id, @RequestBody Magazine newMagazine) throws SQLException {
     Title response = service.updateTitle(id, newMagazine);
     return ResponseEntity.ok(response);
   }

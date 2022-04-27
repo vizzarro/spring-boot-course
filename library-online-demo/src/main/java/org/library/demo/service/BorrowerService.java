@@ -2,8 +2,10 @@ package org.library.demo.service;
 
 import org.library.demo.models.UserLibrary;
 
+import java.sql.SQLException;
+
 public interface BorrowerService {
   void addBorrower(UserLibrary newUserLibrary) throws Exception;
-  UserLibrary getBorrower(String id);
+  UserLibrary getBorrower(String id) throws SQLException;
 
 }

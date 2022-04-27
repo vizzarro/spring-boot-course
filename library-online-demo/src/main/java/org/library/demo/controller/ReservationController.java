@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
 import java.util.Date;
 
 @RestController
@@ -30,7 +31,7 @@ public class ReservationController {
   }
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/{titleId}/{taxCode}/{creationDate}")
-  public ResponseEntity<Void> deleteReservation(@PathVariable int titleId, @PathVariable String taxCode, @PathVariable Date creationDate) {
+  public ResponseEntity<Void> deleteReservation(@PathVariable int titleId, @PathVariable String taxCode, @PathVariable Date creationDate) throws SQLException {
 
     Reservation id = new Reservation();
     id.setCreationDate(creationDate);
@@ -42,7 +43,7 @@ public class ReservationController {
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/{titleId}/{taxCode}/{creationDate}")
-  public ResponseEntity<Reservation> getReservation(@PathVariable int titleId, @PathVariable String taxCode, @PathVariable Date creationDate) {
+  public ResponseEntity<Reservation> getReservation(@PathVariable int titleId, @PathVariable String taxCode, @PathVariable Date creationDate) throws SQLException {
 
     Reservation id = new Reservation();
     id.setCreationDate(creationDate);

@@ -6,6 +6,8 @@ import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.sql.SQLException;
+
 @Service
 public class BorrowerServiceImpl implements BorrowerService {
   private UserLibraryDao dao;
@@ -29,7 +31,7 @@ public class BorrowerServiceImpl implements BorrowerService {
   }
 
   @Override
-  public UserLibrary getBorrower(String id) {
+  public UserLibrary getBorrower(String id) throws SQLException {
     return dao.get(id);
   }
 }

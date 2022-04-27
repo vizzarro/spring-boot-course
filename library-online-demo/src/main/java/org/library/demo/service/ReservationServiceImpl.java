@@ -7,6 +7,8 @@ import org.library.demo.models.Title;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
+
 @Service
 public class ReservationServiceImpl implements ReservationService {
   private ReservationDao reservationDao;
@@ -43,12 +45,12 @@ public class ReservationServiceImpl implements ReservationService {
   }
 
   @Override
-  public Reservation getReservation(Reservation id) {
+  public Reservation getReservation(Reservation id) throws SQLException {
     return reservationDao.get(id);
   }
 
   @Override
-  public void deleteReservation(Reservation id) {
+  public void deleteReservation(Reservation id) throws SQLException {
     this.reservationDao.delete(id);
   }
 }

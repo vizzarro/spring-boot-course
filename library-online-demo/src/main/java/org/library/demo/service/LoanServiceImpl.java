@@ -7,6 +7,8 @@ import org.library.demo.models.UserLibrary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
+
 @Service
 public class LoanServiceImpl implements LoanService {
   private LoanDao loanDao;
@@ -45,12 +47,12 @@ public class LoanServiceImpl implements LoanService {
   }
 
   @Override
-  public Loan getLoan(Loan id) {
+  public Loan getLoan(Loan id) throws SQLException {
     return loanDao.get(id);
   }
 
   @Override
-  public Loan deleteLoan(Loan id) {
+  public Loan deleteLoan(Loan id) throws SQLException {
     this.loanDao.delete(id);
     return null;
   }

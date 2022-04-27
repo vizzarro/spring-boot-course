@@ -27,7 +27,7 @@ public abstract class BaseDaoImpl<T, K> implements BaseDao<T, K> {
 
     @Override
     public void disconnect() {
-        if (connection!=null) {
+        if (connection != null) {
             try {
                 connection.close();
             } catch (SQLException e) {/*Do Nothing*/}
