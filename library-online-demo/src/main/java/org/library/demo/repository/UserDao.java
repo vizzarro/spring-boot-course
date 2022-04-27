@@ -20,8 +20,9 @@ public class UserDao extends BaseDaoImpl<UserLibrary, String> {
         PreparedStatement   ps = conn.prepareStatement(query);
         ps.setString(1, id);
         ResultSet rs = ps.executeQuery();
+        UserLibrary userLibrary = null;
         if (rs.next()) {
-            UserLibrary userLibrary = new UserLibrary(
+             userLibrary = new UserLibrary(
                     rs.getString("tax_code"),
                     rs.getString("first_name"),
                     rs.getString("last_name")
@@ -31,7 +32,7 @@ public class UserDao extends BaseDaoImpl<UserLibrary, String> {
         ps.close();
         this.closeConnection(conn);
 
-        return null;
+        return userLibrary;
     }
 
     @Override

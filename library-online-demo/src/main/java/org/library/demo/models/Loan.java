@@ -13,7 +13,9 @@ public class Loan {
   private String taxCode;
 
   public Loan(String title_id, String tax_code, java.sql.Date creation_date) {
-    this.creationDate = new Date();
+    this.titleId = title_id;
+    this.taxCode = tax_code;
+    this.creationDate = creation_date;
   }
 
   public Loan(Date creationDate, String titleId) {

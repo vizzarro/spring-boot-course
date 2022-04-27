@@ -12,7 +12,9 @@ public class Reservation {
   private String taxCode;
 
   public Reservation(String title_id, String tax_code, java.sql.Date creation_date) {
-    this.creationDate = new Date();
+    this.titleId = title_id;
+    this.taxCode = tax_code;
+    this.creationDate = creation_date;
   }
 
   public Reservation(Date creationDate, int titleId) {

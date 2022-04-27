@@ -26,7 +26,7 @@ public class Magazine implements Title {
   }
 
   public Magazine(String name, String title_id) {
-    this.name =name;
+    this.name = name;
     this.titleId = title_id;
   }
 

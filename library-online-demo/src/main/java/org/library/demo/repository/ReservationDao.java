@@ -21,10 +21,10 @@ public class ReservationDao extends BaseDaoImpl<Reservation, String> {
         String query = "SELECT * FROM reservation WHERE tax_code = ?";
         PreparedStatement ps = conn.prepareStatement(query);
         ps.setString(1, id);
-
         ResultSet rs = ps.executeQuery();
+        Reservation reservation = null;
         while ( rs.next() ) {
-            Reservation reservation = new Reservation (
+             reservation = new Reservation (
                     rs.getString("title_id"),
                     rs.getString("Tax_code"),
                     rs.getDate("creation_date")
@@ -34,7 +34,7 @@ public class ReservationDao extends BaseDaoImpl<Reservation, String> {
         ps.close();
         this.closeConnection(conn);
 
-        return null;
+        return reservation;
     }
 
     @Override

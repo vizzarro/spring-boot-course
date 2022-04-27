@@ -21,8 +21,9 @@ public class LoanDao extends BaseDaoImpl<Loan, String> {
         PreparedStatement ps = conn.prepareStatement(query);
         ps.setString(1, id);
         ResultSet rs = ps.executeQuery();
+        Loan loan = null;
         while ( rs.next() ) {
-            Loan loan = new Loan(
+             loan = new Loan(
                     rs.getString("title_id"),
                     rs.getString("tax_code"),
                     rs.getDate("creation_date")
@@ -32,7 +33,7 @@ public class LoanDao extends BaseDaoImpl<Loan, String> {
         ps.close();
         this.closeConnection(conn);
 
-        return null;
+        return loan;
     }
 
     @Override
