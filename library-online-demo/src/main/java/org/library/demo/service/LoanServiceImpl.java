@@ -1,57 +1,39 @@
 package org.library.demo.service;
 
+import org.library.demo.dao.LoanDao;
+import org.library.demo.dtos.LoanDto;
 import org.library.demo.models.Loan;
-import org.library.demo.models.Title;
-import org.library.demo.models.UserLibrary;
-import org.library.demo.repository.GenericRepository;
+import org.library.demo.service.mapper.LoanModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
+
 @Service
-public class LoanServiceImpl implements LoanService {
-  private GenericRepository<Loan> repo;
-  private GenericRepository<Title> titleRepo;
-  private GenericRepository<UserLibrary> userRepo;
+public class LoanServiceImpl implements GenericService<LoanDto, LoanDto>{
+    @Autowired
+    private LoanDao loanDao;
+    @Autowired
+    private LoanModelMapper modelMapper;
 
-  @Autowired
-  public LoanServiceImpl(
-      GenericRepository<Loan> repository,
-      GenericRepository<Title> titleRepository,
-      GenericRepository<UserLibrary> userLibraryRepository
-  ) {
-    this.repo = repository;
-    this.titleRepo = titleRepository;
-    this.userRepo = userLibraryRepository;
-  }
-
-  @Override
-  public Loan addLoan(Loan newLoan) throws Exception {
-    if (newLoan == null)
-      throw new Exception("No request");
-
-    try {
-      UserLibrary u = userRepo.getById(newLoan.getUserLibraryId());
-    } catch (Exception e) {
-      throw new Exception("No Borrower found for id " + newLoan.getUserLibraryId());
+    @Override
+    public LoanDto add(LoanDto dtoObject) throws SQLException, ClassNotFoundException {
+        return modelMapper.toDtoObject(loanDao.add(modelMapper.toModelObject(dtoObject, Loan.class)), LoanDto.class);
     }
 
-    Title exists = titleRepo.getById(newLoan.getTitleId());
-    if (exists == null)
-      throw new Exception("No Title found for id " + newLoan.getTitleId());
+    @Override
+    public LoanDto get(LoanDto id) throws SQLException, ClassNotFoundException {
+        return modelMapper.toDtoObject(loanDao.get(modelMapper.toModelObject(id, Loan.class)), LoanDto.class);
+    }
 
+    @Override
+    public LoanDto update(LoanDto id, LoanDto dtoObject) throws SQLException, ClassNotFoundException {
+        return modelMapper.toDtoObject(loanDao.update(modelMapper.toModelObject(id, Loan.class), modelMapper.toModelObject(dtoObject, Loan.class)), LoanDto.class);
 
-    repo.add(newLoan);
-    return newLoan;
-  }
+    }
 
-  @Override
-  public Loan getLoan(int id) {
-    return repo.getById(id);
-  }
-
-  @Override
-  public Loan deleteLoan(int id) {
-    this.repo.delete(id);
-    return null;
-  }
+    @Override
+    public LoanDto delete(LoanDto id) throws SQLException, ClassNotFoundException {
+        return modelMapper.toDtoObject(loanDao.delete(modelMapper.toModelObject(id, Loan.class)), LoanDto.class);
+    }
 }
