@@ -10,7 +10,7 @@ public class UserLibrary {
   private List<Title> titleMockedDb;
   private List<Reservation> mockedTable;
 
-  public UserLibrary() { }
+  public UserLibrary(String tax_code, String first_name, String last_name) { }
 
   public UserLibrary(String firstName, String lastName, String taxCode, Integer id) {
     this.firstName = firstName;

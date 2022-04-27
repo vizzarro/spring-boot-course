@@ -1,16 +1,15 @@
 package org.library.demo.service;
 
 import org.library.demo.models.UserLibrary;
-import org.library.demo.repository.UserLibraryRepository;
+import org.library.demo.repository.connection.BaseDao;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 public class UserLibraryServiceImpl implements UserLibraryService {
-  private UserLibraryRepository repo;
+  private BaseDao<UserLibrary, String> repo;
 
-  public UserLibraryServiceImpl(UserLibraryRepository userLibraryRepository) {
+  public UserLibraryServiceImpl(BaseDao<UserLibrary, String> userLibraryRepository) {
     this.repo = userLibraryRepository;
   }
 

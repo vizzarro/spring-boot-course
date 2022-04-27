@@ -1,11 +1,15 @@
 package org.library.demo.repository.connection;
 
+import org.springframework.stereotype.Repository;
+
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public abstract class BaseDaoImpl<T> implements BaseDao {
+@Repository
+public abstract class BaseDaoImpl<T,K> implements BaseDao<T,K> {
     private Connection conn = null;
 
     @Override

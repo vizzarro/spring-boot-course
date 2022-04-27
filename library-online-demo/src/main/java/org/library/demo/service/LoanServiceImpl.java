@@ -1,28 +1,36 @@
 package org.library.demo.service;
 
 import org.library.demo.models.Loan;
+import org.library.demo.models.Reservation;
 import org.library.demo.models.Title;
 import org.library.demo.models.UserLibrary;
-import org.library.demo.repository.GenericRepository;
+import org.library.demo.repository.connection.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
+
 @Service
 public class LoanServiceImpl implements LoanService {
-  private GenericRepository<Loan> repo;
-  private GenericRepository<Title> titleRepo;
-  private GenericRepository<UserLibrary> userRepo;
+  private BaseDao<Loan> repo;
+  private BaseDao<Title> titleRepo;
+  private BaseDao<UserLibrary> userRepo;
+  private BaseDao<Reservation> resRepo;
 
   @Autowired
   public LoanServiceImpl(
-      GenericRepository<Loan> repository,
-      GenericRepository<Title> titleRepository,
-      GenericRepository<UserLibrary> userLibraryRepository
+      BaseDao<Loan> repository,
+      BaseDao<Title> titleRepository,
+      BaseDao<UserLibrary> userLibraryRepository,
+      BaseDao<Reservation> reservationRepository
   ) {
     this.repo = repository;
     this.titleRepo = titleRepository;
     this.userRepo = userLibraryRepository;
+    this.resRepo = reservationRepository;
   }
+
+  public LoanServiceImpl() { }
 
   @Override
   public Loan addLoan(Loan newLoan) throws Exception {
@@ -45,12 +53,12 @@ public class LoanServiceImpl implements LoanService {
   }
 
   @Override
-  public Loan getLoan(int id) {
+  public Loan getLoan(int id) throws SQLException {
     return repo.getById(id);
   }
 
   @Override
-  public Loan deleteLoan(int id) {
+  public Loan deleteLoan(int id) throws SQLException {
     this.repo.delete(id);
     return null;
   }

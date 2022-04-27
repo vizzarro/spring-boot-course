@@ -1,27 +1,33 @@
 package org.library.demo.service;
 
+import org.library.demo.models.Loan;
 import org.library.demo.models.UserLibrary;
 import org.library.demo.models.Reservation;
 import org.library.demo.models.Title;
-import org.library.demo.repository.GenericRepository;
+import org.library.demo.repository.connection.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
+
 @Service
 public class ReservationServiceImpl implements ReservationService {
-  private GenericRepository<Reservation> repo;
-  private GenericRepository<Title> titleRepo;
-  private GenericRepository<UserLibrary> borrowerRepo;
+  private BaseDao<Reservation> repo;
+  private BaseDao<Title> titleRepo;
+  private BaseDao<UserLibrary> borrowerRepo;
+  private BaseDao<Loan> loanRepo;
 
   @Autowired
   public ReservationServiceImpl(
-      GenericRepository<Reservation> repository,
-      GenericRepository<Title> titleRepository,
-      GenericRepository<UserLibrary> borrowerRepository
+      BaseDao<Reservation> repository,
+      BaseDao<Title> titleRepository,
+      BaseDao<UserLibrary> borrowerRepository,
+      BaseDao<Loan> loanRepository
   ) {
     this.repo = repository;
     this.titleRepo = titleRepository;
     this.borrowerRepo = borrowerRepository;
+    this.loanRepo = loanRepository;
   }
 
   @Override
@@ -43,12 +49,12 @@ public class ReservationServiceImpl implements ReservationService {
   }
 
   @Override
-  public Reservation getReservation(int id) {
+  public Reservation getReservation(int id) throws SQLException {
     return repo.getById(id);
   }
 
   @Override
-  public void deleteReservation(int id) {
+  public void deleteReservation(int id) throws SQLException {
     this.repo.delete(id);
   }
 }

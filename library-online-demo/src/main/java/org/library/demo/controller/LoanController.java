@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
+
 @RestController
 @RequestMapping(value = "/loan")
 public class LoanController {
@@ -25,7 +27,7 @@ public class LoanController {
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-  public ResponseEntity<Loan> getLoan(@PathVariable int id) {
+  public ResponseEntity<Loan> getLoan(@PathVariable int id) throws SQLException {
     Loan response = this.service.getLoan(id);
     return ResponseEntity.ok(response);
   }

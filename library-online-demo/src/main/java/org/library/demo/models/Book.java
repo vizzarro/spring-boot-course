@@ -18,16 +18,33 @@ public class Book implements Title {
     private Integer userLibraryId;
 
 
+
+    private String type = "BOOK";
+
     public Book() {
     }
 
     public Book(String name, Integer id, Integer userLibraryId) {
         this.name = name;
-        //this.id = id;
+        this.id = id;
         // da capire perchè non funziona
         //storage.addStorageProperty(id, userLibraryId);
 
         Storage.getIstance().addStorageProperty(id, userLibraryId);
+    }
+
+    public Book(String name, String titleId) {
+        this.name = name;
+        this.titleId = titleId;
+    }
+
+
+    public Storage getStorage() {
+        return storage;
+    }
+
+    public void setStorage(Storage storage) {
+        this.storage = storage;
     }
 
     public Integer getId() {
@@ -46,21 +63,7 @@ public class Book implements Title {
         this.userLibraryId = userLibraryId;
     }
 
-    public Book(String name, String titleId) {
-        this.name = name;
-        this.titleId = titleId;
-
-  /*public Storage getStorage() {
-    return storage;
-  }
-
-  public void setStorage(Storage storage) {
-    this.storage = storage;
-  }*/
-
-    }
-
-
+    @Override
     public String getTitleId() {
         return titleId;
     }
@@ -85,5 +88,10 @@ public class Book implements Title {
 
     public void setLendingTime(int lendingTime) {
         this.lendingTime = lendingTime;
+    }
+
+    @Override
+    public String getType() {
+        return type;
     }
 }

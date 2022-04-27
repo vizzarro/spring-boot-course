@@ -1,32 +1,80 @@
 package org.library.demo.repository;
 
-import org.library.demo.models.Loan;
-import org.library.demo.models.UserLibrary;
+import org.library.demo.models.*;
 import org.library.demo.repository.connection.BaseDao;
 import org.library.demo.repository.connection.BaseDaoImpl;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
-public class LoanDao extends BaseDaoImpl {
+@Repository
+public class LoanDao extends BaseDaoImpl<Loan, Loan> {
+    Connection conn = null;
 
     public LoanDao() { }
 
-    public Loan get(String titleId) throws ClassNotFoundException, SQLException {
-        String query = "SELECT * FROM loans WHERE title_id=?";
-        Connection conn = getConnection();
-        PreparedStatement stat = getConnection().prepareStatement(query);
-        stat.setString(1, titleId);
-        ResultSet res = stat.executeQuery();
-        Loan loan = null;
-        while (res.next()) {
-            titleId = res.getString("title_id");
-            String taxCode = res.getString("tax_code");
-            Date creationDate = res.getDate("creation_date");
-            loan = new Loan();
-            loan.setTitleId(titleId);
-            loan.setTaxCode(taxCode);
-            loan.setCreationDate(creationDate); }
-        conn.close();
-        return loan;
+    @Override
+    public Loan getById(Loan id) throws SQLException {
+        conn = this.getConnection();
+        String query = "SELECT * FROM loans WHERE title_id = ? and tax_code = ? and creation_date = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, id.getTitleId());
+        ps.setString(2, id.getTaxCode());
+        ps.setDate(3, (Date) id.getCreationDate());
+        ResultSet rs = ps.executeQuery();
+        while ( rs.next() ) {
+            Loan loan = new Loan(
+                    rs.getString("title_id"),
+                    rs.getString("Tax_code"),
+                    rs.getDate("creation_date")
+            );
+        }
+        rs.close();
+        ps.close();
+        this.closeConnection(conn);
+
+        return null;
+    }
+
+    @Override
+    public void add(Loan entity) throws SQLException {
+            conn = this.getConnection();
+            String query = "INSERT INTO loans(title_id, tax_code, creation_date)\n" +
+                    "VALUES ('" + entity.getTitleId() + "','" + entity.getTaxCode() + "''" + entity.getCreationDate();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            rs.close();
+            ps.close();
+            this.closeConnection(conn);
+    }
+
+    @Override
+    public void delete(Loan id) throws SQLException {
+        conn = this.getConnection();
+        String query = "DELETE FROM title WHERE title_id = ? and tax_code = ? and creation_date = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ResultSet rs = ps.executeQuery();
+        rs.close();
+        ps.close();
+        this.closeConnection(conn);
+    }
+
+    @Override
+    public Loan update(Loan id, Loan updated) throws SQLException {
+        conn = this.getConnection();
+        String query = "UPDATE loans SET title_id = ?, tax_code = ?, creation_date = ? WHERE title_id = ? and tax_code = ? and creation_date = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, updated.getTitleId());
+        ps.setString(2, updated.getTaxCode());
+        ps.setDate(3, (Date) updated.getCreationDate());
+        ps.setString(4, id.getTitleId());
+        ps.setString(5, id.getTaxCode());
+        ps.setDate(6, (Date) id.getCreationDate());
+        ResultSet rs = ps.executeQuery();
+        rs.close();
+        ps.close();
+        this.closeConnection(conn);
+        return null;
     }
 }

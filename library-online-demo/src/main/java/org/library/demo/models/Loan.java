@@ -12,15 +12,15 @@ public class Loan {
   private int userLibraryId;
   private String taxCode;
 
-  public Loan() {
+  public Loan(String title_id, String tax_code, java.sql.Date creation_date) {
     this.creationDate = new Date();
   }
 
   public Loan(Date creationDate, String titleId) {
     this.creationDate = creationDate;
     this.titleId = titleId;
-
   }
+
 
   public Date getCreationDate() {
     return creationDate;

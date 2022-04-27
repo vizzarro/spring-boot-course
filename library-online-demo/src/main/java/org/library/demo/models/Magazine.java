@@ -12,6 +12,7 @@ public class Magazine implements Title {
   @Autowired
   private Storage storage;
   private Integer userLibraryId;
+  private String type = "MAGAZINE";
 
   public Magazine() { }
 
@@ -41,8 +42,14 @@ public class Magazine implements Title {
     this.id = id;
   }
 
+  @Override
   public String getTitleId() {
     return titleId;
+  }
+
+  @Override
+  public String getType() {
+    return type;
   }
 
   public void setTitleId(String titleId) {

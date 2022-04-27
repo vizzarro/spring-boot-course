@@ -11,7 +11,7 @@ public class Reservation {
   private int borrowerId;
   private String taxCode;
 
-  public Reservation() {
+  public Reservation(String title_id, String tax_code, java.sql.Date creation_date) {
     this.creationDate = new Date();
   }
 
