@@ -8,7 +8,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Repository
 public class ReservationDao extends GenericDaoImpl<Reservation,Reservation> {
 
@@ -30,7 +29,7 @@ public class ReservationDao extends GenericDaoImpl<Reservation,Reservation> {
             }
             return reservations;
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("DB Error");
         } finally {
                 this.deleteConnection(conn);
         }
@@ -52,7 +51,7 @@ public class ReservationDao extends GenericDaoImpl<Reservation,Reservation> {
             rs.close();
             ps.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("DB Error");
         } finally {
                 this.deleteConnection(conn);
         }
@@ -74,7 +73,7 @@ public class ReservationDao extends GenericDaoImpl<Reservation,Reservation> {
             ps.close();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("DB Error");
         } finally {
             this.deleteConnection(conn);
         }
@@ -93,7 +92,7 @@ public class ReservationDao extends GenericDaoImpl<Reservation,Reservation> {
             rs.close();
             ps.close();
         } catch (SQLException e) {
-            DaoException ex= new DaoException();
+            System.out.println("DB Error");
         } finally {
                 this.deleteConnection(conn);
         }

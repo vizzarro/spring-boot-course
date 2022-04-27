@@ -33,7 +33,7 @@ public class LoanDao extends GenericDaoImpl<Loan,Loan> {
             rs.close();
             ps.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("DB Error");
         } finally {
                 this.deleteConnection(conn);
 
@@ -57,7 +57,7 @@ public class LoanDao extends GenericDaoImpl<Loan,Loan> {
             ps.close();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("DB Error");
         } finally {
 
                 this.deleteConnection(conn);
@@ -81,7 +81,7 @@ public class LoanDao extends GenericDaoImpl<Loan,Loan> {
             rs.close();
             ps.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("DB Error");
         } finally {
                 this.deleteConnection(conn);
         }

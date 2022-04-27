@@ -1,5 +1,6 @@
 package org.library.demo.repository.dao;
 
+import org.library.demo.models.Reservation;
 import org.library.demo.models.UserLibrary;
 import org.library.demo.repository.GenericDaoImpl;
 import org.library.demo.repository.exception.DaoException;
@@ -63,8 +64,7 @@ public class UserLibraryDao extends GenericDaoImpl<UserLibrary, String> {
             ps.setString(1, String.valueOf(id));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-
-
+                user = new UserLibrary(rs.getString("first_name"), rs.getString("last_name"), rs.getString("tax_code"));
             }
             rs.close();
             ps.close();
@@ -73,7 +73,6 @@ public class UserLibraryDao extends GenericDaoImpl<UserLibrary, String> {
         } finally {
 
             this.deleteConnection(conn);
-
         }
         return user;
     }
