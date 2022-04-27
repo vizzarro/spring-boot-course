@@ -14,16 +14,18 @@ public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> impleme
     @Override
     public UserLibrary get(String taxCode) throws SQLException {
         Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("SELECT * FROM USER_LIBRARY WHERE TAX_CODE=" +
-                taxCode);
+        PreparedStatement statement = conn.prepareStatement("SELECT * FROM USER_LIBRARY WHERE TAX_CODE=?");
+        statement.setString(1, taxCode.toUpperCase());
         ResultSet resultSet = statement.executeQuery();
-        resultSet.next();
 
-        UserLibrary user = new UserLibrary();
-        user.setTaxCode(resultSet.getString("tax_code"));
-        user.setFirstName(resultSet.getString("first_name"));
-        user.setLastName(resultSet.getString("last_name"));
+        UserLibrary user = null;
+        if(resultSet.next()) {
 
+            user = new UserLibrary();
+            user.setTaxCode(resultSet.getString("tax_code"));
+            user.setFirstName(resultSet.getString("first_name"));
+            user.setLastName(resultSet.getString("last_name"));
+        }
         return user;
     }
 
@@ -34,7 +36,7 @@ public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> impleme
         statement.setString(1, user.getTaxCode());
         statement.setString(2, user.getFirstName());
         statement.setString(3, user.getLastName());
-        statement.executeQuery();
+        statement.executeUpdate();
 
         return user.getTaxCode();
     }
@@ -47,17 +49,17 @@ public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> impleme
         statement.setString(1, user.getFirstName());
         statement.setString(2, user.getLastName());
         statement.setString(3, user.getTaxCode());
-        statement.executeQuery();
+        statement.executeUpdate();
 
         return user;
     }
 
     @Override
-    public void delete(String id) throws SQLException {
+    public void delete(String taxCode) throws SQLException {
         Connection conn = super.connect();
         PreparedStatement statement = conn.prepareStatement("DELETE FROM USER_LIBRARY WHERE TAX_CODE = ?");
-        statement.setString(1, id);
+        statement.setString(1, taxCode.toUpperCase());
 
-        statement.executeQuery();
+        statement.executeUpdate();
     }
 }

@@ -1,5 +1,7 @@
 package org.library.demo.dtos;
 
+import org.library.demo.models.UserLibrary;
+
 public class UserLibraryDto {
 
     private String firstName;

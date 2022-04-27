@@ -19,15 +19,16 @@ public class TitleDaoImpl extends BaseDaoImpl<Title, String> implements TitleDao
         PreparedStatement statement = conn.prepareStatement("SELECT * FROM TITLE WHERE TITLE_ID=?");
         statement.setString(1, id);
         ResultSet resultSet = statement.executeQuery();
-        resultSet.next();
 
-        Title title;
-        if (resultSet.getString("type").equals("BOOK"))
-            title = new Book();
-        else title = new Magazine();
+        Title title = null;
+        if (resultSet.next()){
+            if (resultSet.getString("type").equals("BOOK"))
+                title = new Book();
+            else title = new Magazine();
 
-        title.setName(resultSet.getString("name"));
-        title.setTitleId(id);
+            title.setName(resultSet.getString("name"));
+            title.setTitleId(id);
+        }
 
         return title;
     }

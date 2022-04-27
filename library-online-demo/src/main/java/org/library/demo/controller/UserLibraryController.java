@@ -1,9 +1,7 @@
 package org.library.demo.controller;
 
 import org.library.demo.dtos.MapperDto;
-import org.library.demo.dtos.TitleDto;
 import org.library.demo.dtos.UserLibraryDto;
-import org.library.demo.models.Title;
 import org.library.demo.models.UserLibrary;
 import org.library.demo.service.UserLibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
