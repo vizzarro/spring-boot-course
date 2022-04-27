@@ -3,7 +3,7 @@ package org.library.demo.dtos;
 import org.library.demo.models.*;
 import org.springframework.beans.BeanUtils;
 
-public class MappingDto {
+public class MapperDto {
 
     public static Title refactor (TitleDto titleDto){
         Title newTitle;

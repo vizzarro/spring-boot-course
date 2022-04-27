@@ -2,13 +2,10 @@ package org.library.demo.controller;
 
 import java.sql.SQLException;
 
-import org.library.demo.dtos.MappingDto;
+import org.library.demo.dtos.MapperDto;
 import org.library.demo.dtos.TitleDto;
-import org.library.demo.models.Book;
-import org.library.demo.models.Magazine;
 import org.library.demo.models.Title;
 import org.library.demo.service.TitleService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -39,9 +36,9 @@ public class TitleController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> addTitle(@RequestBody TitleDto titleDto) throws SQLException {
 
-        Title newTitle = MappingDto.refactor(titleDto);
+        Title title = MapperDto.refactor(titleDto);
 
-        service.addTitle(newTitle);
+        service.addTitle(title);
         return ResponseEntity.noContent().build();
     }
 
@@ -54,9 +51,9 @@ public class TitleController {
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<Title> updateTitle(@RequestBody TitleDto titleDto) throws SQLException {
 
-        Title newTitle = MappingDto.refactor(titleDto);
+        Title title = MapperDto.refactor(titleDto);
 
-        Title response = service.updateTitle(newTitle);
+        Title response = service.updateTitle(title);
         return ResponseEntity.ok(response);
     }
 

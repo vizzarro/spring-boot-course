@@ -36,4 +36,14 @@ public class UserLibraryServiceImpl implements UserLibraryService {
     public UserLibrary getUserLibrary(String id) throws SQLException {
         return dao.get(id);
     }
+
+    @Override
+    public void deleteUserLibrary(String id) throws SQLException {
+        dao.delete(id);
+    }
+
+    @Override
+    public UserLibrary updateUserLibrary(UserLibrary updated) throws SQLException {
+        return dao.update(updated);
+    }
 }

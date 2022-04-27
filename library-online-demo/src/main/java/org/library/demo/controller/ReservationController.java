@@ -1,5 +1,7 @@
 package org.library.demo.controller;
 
+import org.library.demo.dtos.MapperDto;
+import org.library.demo.dtos.ReservationDto;
 import org.library.demo.models.Reservation;
 import org.library.demo.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +26,20 @@ public class ReservationController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> addReservation(@RequestBody Reservation reservation) throws Exception {
+    public ResponseEntity<Void> addReservation(@RequestBody ReservationDto reservationDto) throws Exception {
+        Reservation reservation = MapperDto.refactor(reservationDto);
         service.addReservation(reservation);
         return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{titleId}/{taxCode}/{creationDate}")
-    public ResponseEntity<Void> deleteReservation(@PathVariable String titleId, @PathVariable String taxCode, @PathVariable Date creationDate) throws SQLException {
+    public ResponseEntity<Void> deleteReservation(@PathVariable String titleId,
+                                                  @PathVariable String taxCode,
+                                                  @PathVariable Date creationDate) throws SQLException {
 
         Reservation id = new Reservation();
         id.setCreationDate(creationDate);
-        id.setTaxCode(taxCode);
+        id.setUserLibraryId(taxCode);
         id.setTitleId(titleId);
 
         service.deleteReservation(id);
@@ -42,11 +47,13 @@ public class ReservationController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{titleId}/{taxCode}/{creationDate}")
-    public ResponseEntity<Reservation> getReservation(@PathVariable String titleId, @PathVariable String taxCode, @PathVariable Date creationDate) throws SQLException {
+    public ResponseEntity<Reservation> getReservation(@PathVariable String titleId,
+                                                      @PathVariable String taxCode,
+                                                      @PathVariable Date creationDate) throws SQLException {
 
         Reservation id = new Reservation();
         id.setCreationDate(creationDate);
-        id.setTaxCode(taxCode);
+        id.setUserLibraryId(taxCode);
         id.setTitleId(titleId);
 
         Reservation response = service.getReservation(id);

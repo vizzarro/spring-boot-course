@@ -9,4 +9,8 @@ public interface UserLibraryService {
 
     UserLibrary getUserLibrary(String id) throws SQLException;
 
+    void deleteUserLibrary (String id) throws SQLException;
+
+    UserLibrary updateUserLibrary(UserLibrary updated) throws SQLException;
+
 }
