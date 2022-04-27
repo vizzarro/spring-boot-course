@@ -8,14 +8,14 @@ public class LoanDto {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date creationDate;
-    private int titleId;
+    private String titleId;
     private String taxCode;
 
     public LoanDto() {
         this.creationDate = new Date();
     }
 
-    public LoanDto(Date creationDate, int titleId, String taxCode) {
+    public LoanDto(Date creationDate, String titleId, String taxCode) {
         this.creationDate = creationDate;
         this.titleId = titleId;
         this.taxCode = taxCode;
@@ -29,11 +29,11 @@ public class LoanDto {
         if (creationDate != null) this.creationDate = creationDate;
     }
 
-    public int getTitleId() {
+    public String getTitleId() {
         return titleId;
     }
 
-    public void setTitleId(int titleId) {
+    public void setTitleId(String titleId) {
         this.titleId = titleId;
     }
 
