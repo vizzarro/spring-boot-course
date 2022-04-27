@@ -1,0 +1,9 @@
+database-setting:
+  db: "postgresql"
+  host: "localhost"
+  port: "5432"
+  schema: "AcademyJava"
+  driver: "org.postgresql.Driver"
+  credentials:
+    username:
+    password:
