@@ -5,6 +5,7 @@ import org.library.demo.dtos.MapperDto;
 import org.library.demo.models.Loan;
 import org.library.demo.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,11 +32,11 @@ public class LoanController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/{titleId}/{taxCode}/{creationDate}")
     public ResponseEntity<Void> deleteLoan(@PathVariable String titleId,
                                            @PathVariable String taxCode,
-                                           @PathVariable Date creationDate) throws SQLException {
+                                           @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date creationDate) throws SQLException {
 
         Loan id = new Loan();
         id.setCreationDate(creationDate);
-        id.setUserLibraryId(taxCode);
+        id.setTaxCode(taxCode);
         id.setTitleId(titleId);
 
         service.deleteLoan(id);
@@ -45,11 +46,11 @@ public class LoanController {
     @RequestMapping(method = RequestMethod.GET, value = "/{titleId}/{taxCode}/{creationDate}")
     public ResponseEntity<Loan> getLoan(@PathVariable String titleId,
                                         @PathVariable String taxCode,
-                                        @PathVariable Date creationDate) throws SQLException {
+                                        @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date creationDate) throws SQLException {
 
         Loan id = new Loan();
         id.setCreationDate(creationDate);
-        id.setUserLibraryId(taxCode);
+        id.setTaxCode(taxCode);
         id.setTitleId(titleId);
 
         Loan response = service.getLoan(id);

@@ -5,6 +5,7 @@ import org.library.demo.dtos.ReservationDto;
 import org.library.demo.models.Reservation;
 import org.library.demo.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,7 +36,7 @@ public class ReservationController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/{titleId}/{taxCode}/{creationDate}")
     public ResponseEntity<Void> deleteReservation(@PathVariable String titleId,
                                                   @PathVariable String taxCode,
-                                                  @PathVariable Date creationDate) throws SQLException {
+                                                  @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date creationDate) throws SQLException {
 
         Reservation id = new Reservation();
         id.setCreationDate(creationDate);
@@ -49,7 +50,7 @@ public class ReservationController {
     @RequestMapping(method = RequestMethod.GET, value = "/{titleId}/{taxCode}/{creationDate}")
     public ResponseEntity<Reservation> getReservation(@PathVariable String titleId,
                                                       @PathVariable String taxCode,
-                                                      @PathVariable Date creationDate) throws SQLException {
+                                                      @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date creationDate) throws SQLException {
 
         Reservation id = new Reservation();
         id.setCreationDate(creationDate);

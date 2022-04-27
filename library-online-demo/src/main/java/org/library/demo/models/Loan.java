@@ -10,16 +10,16 @@ public class Loan {
     @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
     private Date creationDate;
     private String titleId;
-    private String userLibraryId;
+    private String taxCode;
 
     public Loan() {
         this.creationDate = new Date();
     }
 
-    public Loan(Date creationDate, String titleId, String userLibraryId) {
+    public Loan(Date creationDate, String titleId, String taxCode) {
         this.creationDate = creationDate;
         this.titleId = titleId;
-        this.userLibraryId = userLibraryId;
+        this.taxCode = taxCode;
     }
 
     public Date getCreationDate() {
@@ -38,11 +38,11 @@ public class Loan {
         this.titleId = titleId;
     }
 
-    public String getUserLibraryId() {
-        return userLibraryId;
+    public String getTaxCode() {
+        return taxCode;
     }
 
-    public void setUserLibraryId(String userLibraryId) {
-        this.userLibraryId = userLibraryId;
+    public void setTaxCode(String taxCode) {
+        this.taxCode = taxCode;
     }
 }

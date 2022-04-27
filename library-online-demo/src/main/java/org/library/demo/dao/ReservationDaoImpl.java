@@ -11,7 +11,7 @@ public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Reservation> im
     @Override
     public Reservation get(Reservation r) throws SQLException {
         Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("SELECT * FROM RESERVATION WHERE TITLE_ID=?, TAX_CODE=?");
+        PreparedStatement statement = conn.prepareStatement("SELECT * FROM RESERVATION WHERE TITLE_ID=? AND TAX_CODE=?");
         statement.setString(1, r.getTitleId());
         statement.setString(2, r.getTaxCode());
         ResultSet resultSet = statement.executeQuery();
@@ -42,7 +42,7 @@ public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Reservation> im
     @Override
     public Reservation update(Reservation r) throws SQLException {
         Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("UPDATE RESERVATION SET CREATION_DATE = ? WHERE TITLE_ID = ?, TAX_CODE=?");
+        PreparedStatement statement = conn.prepareStatement("UPDATE RESERVATION SET CREATION_DATE = ? WHERE TITLE_ID = ? AND TAX_CODE=?");
         statement.setDate(1, (Date) r.getCreationDate());
         statement.setString(2, r.getTitleId());
         statement.setString(3, r.getTaxCode());
@@ -54,7 +54,7 @@ public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Reservation> im
     @Override
     public void delete(Reservation r) throws SQLException {
         Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("DELETE FROM RESERVATION WHERE TITLE_ID = ?, TAX_CODE = ?");
+        PreparedStatement statement = conn.prepareStatement("DELETE FROM RESERVATION WHERE TITLE_ID = ? AND TAX_CODE = ?");
         statement.setString(1, r.getTitleId());
         statement.setString(2, r.getTaxCode());
 
