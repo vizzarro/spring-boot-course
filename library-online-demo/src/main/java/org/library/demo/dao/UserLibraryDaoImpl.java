@@ -19,7 +19,7 @@ public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> impleme
   }
 
   @Override
-  public UserLibrary update(UserLibrary obj) {
+  public UserLibrary update(UserLibrary obj, String id) {
     return null;
   }
 

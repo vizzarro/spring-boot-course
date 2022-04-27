@@ -19,7 +19,7 @@ public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Reservation> im
   }
 
   @Override
-  public Reservation update(Reservation obj) {
+  public Reservation update(Reservation obj, Reservation id) {
     return null;
   }
 

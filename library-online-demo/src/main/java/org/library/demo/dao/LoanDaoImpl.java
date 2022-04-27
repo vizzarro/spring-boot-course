@@ -20,7 +20,7 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
   }
 
   @Override
-  public Loan update(Loan obj) {
+  public Loan update(Loan obj, Loan id) {
   return null;
   }
 

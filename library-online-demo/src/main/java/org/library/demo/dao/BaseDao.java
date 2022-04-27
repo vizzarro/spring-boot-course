@@ -8,7 +8,7 @@ public interface BaseDao<T,K> {
 
     K create(T obj);
 
-    T update(T obj);
+    T update(T obj, K id);
 
     void delete(K obj);
 

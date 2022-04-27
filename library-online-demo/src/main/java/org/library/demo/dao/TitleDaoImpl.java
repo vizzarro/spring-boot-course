@@ -21,7 +21,7 @@ public class TitleDaoImpl extends BaseDaoImpl<Title, Integer> implements TitleDa
   }
 
   @Override
-  public Title update(Title obj) {
+  public Title update(Title obj, Integer id) {
     return null;
   }
 
