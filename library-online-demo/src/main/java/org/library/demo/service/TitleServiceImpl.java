@@ -31,7 +31,7 @@ public class TitleServiceImpl implements TitleService {
 
   @Override
   public Title updateTitle(int id, Title updated) {
-    return titleDao.update(updated);
+    return titleDao.update(updated, id);
   }
 
 }
