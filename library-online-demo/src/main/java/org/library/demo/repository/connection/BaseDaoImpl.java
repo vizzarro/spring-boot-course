@@ -11,8 +11,8 @@ public abstract class BaseDaoImpl<T> implements BaseDao {
     @Override
     public Connection getConnection() {
         Properties propr = new Properties();
-        propr.setProperty("user", "postgres");
-        propr.setProperty("password", "postgres");
+        propr.setProperty("user", "user");
+        propr.setProperty("password", "29081990");
         String url = "jdbc:postgresql://localhost:5432/AcademyJava";
 
         try {
@@ -25,7 +25,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao {
     }
 
     @Override
-    public void closeConnection() {
+    public void closeConnection(Connection conn) {
 
         try {
             if (conn != null) {

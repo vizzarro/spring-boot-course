@@ -16,6 +16,7 @@ public class TitleRepository implements GenericRepository<Title> {
   private Storage storage;
 
 
+
   public TitleRepository() {
     this.titleMockedDb = new ArrayList<>() {{
       add(new Book("Lord of the Ring: The Fellowship of the Ring", 0, 0));

@@ -8,16 +8,18 @@ import java.util.Date;
 public class Loan {
   @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
   private Date creationDate;
-  private int titleId;
+  private String titleId;
   private int userLibraryId;
+  private String taxCode;
 
   public Loan() {
     this.creationDate = new Date();
   }
 
-  public Loan(Date creationDate, int titleId) {
+  public Loan(Date creationDate, String titleId) {
     this.creationDate = creationDate;
     this.titleId = titleId;
+
   }
 
   public Date getCreationDate() {
@@ -29,11 +31,11 @@ public class Loan {
       this.creationDate = creationDate;
   }
 
-  public int getTitleId() {
+  public String getTitleId() {
     return titleId;
   }
 
-  public void setTitleId(int titleId) {
+  public void setTitleId(String titleId) {
     this.titleId = titleId;
   }
 
@@ -43,5 +45,13 @@ public class Loan {
 
   public void setUserLibraryId(int userLibraryId) {
     this.userLibraryId = userLibraryId;
+  }
+
+  public String getTaxCode() {
+    return taxCode;
+  }
+
+  public void setTaxCode(String taxCode) {
+    this.taxCode = taxCode;
   }
 }

@@ -35,7 +35,7 @@ public class LoanServiceImpl implements LoanService {
       throw new Exception("No Borrower found for id " + newLoan.getUserLibraryId());
     }
 
-    Title exists = titleRepo.getById(newLoan.getTitleId());
+    Title exists = titleRepo.getById(Integer.parseInt(newLoan.getTitleId()));
     if (exists == null)
       throw new Exception("No Title found for id " + newLoan.getTitleId());
 

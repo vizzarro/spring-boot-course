@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Magazine implements Title {
   private String name;
+  private String titleId;
   private int lendingTime = 10;
   private  Integer id;
   @Autowired
@@ -23,6 +24,11 @@ public class Magazine implements Title {
     Storage.getIstance().addStorageProperty(id, userLibraryId);
   }
 
+  public Magazine(String name, String title_id) {
+    this.name =name;
+    this.titleId = title_id;
+  }
+
   public void setName(String name) {
     this.name = name;
   }
@@ -35,14 +41,14 @@ public class Magazine implements Title {
     this.id = id;
   }
 
-  @Override
-  public Integer getUserLibraryId() {
-    return userLibraryId;
+  public String getTitleId() {
+    return titleId;
   }
 
-  public void setUserLibraryId(Integer userLibraryId) {
-    this.userLibraryId = userLibraryId;
+  public void setTitleId(String titleId) {
+    this.titleId = titleId;
   }
+
 
   @Override
   public String getName() {
@@ -52,5 +58,10 @@ public class Magazine implements Title {
   @Override
   public int getLendingTime() {
     return lendingTime;
+  }
+
+  @Override
+  public Integer getUserLibraryId() {
+    return userLibraryId;
   }
 }

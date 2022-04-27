@@ -35,7 +35,7 @@ public class ReservationServiceImpl implements ReservationService {
       throw new Exception("No UserLibrary found for id " + newReservation.getBorrowerId());
     }
 
-    Title exists = titleRepo.getById(newReservation.getTitleId());
+    Title exists = titleRepo.getById(Integer.parseInt(newReservation.getTitleId()));
     if (exists == null)
       throw new Exception("No Title found for id " + newReservation.getTitleId());
 

@@ -7,8 +7,9 @@ import java.util.Date;
 public class Reservation {
   @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
   private Date creationDate;
-  private int titleId;
+  private String titleId;
   private int borrowerId;
+  private String taxCode;
 
   public Reservation() {
     this.creationDate = new Date();
@@ -16,7 +17,7 @@ public class Reservation {
 
   public Reservation(Date creationDate, int titleId) {
     this.creationDate = creationDate;
-    this.titleId = titleId;
+    this.titleId = getTitleId();
   }
 
   public Date getCreationDate() {
@@ -28,11 +29,11 @@ public class Reservation {
       this.creationDate = creationDate;
   }
 
-  public int getTitleId() {
+  public String getTitleId() {
     return titleId;
   }
 
-  public void setTitleId(int titleId) {
+  public void setTitleId(String titleId) {
     this.titleId = titleId;
   }
 
@@ -42,5 +43,13 @@ public class Reservation {
 
   public void setBorrowerId(int borrowerId) {
     this.borrowerId = borrowerId;
+  }
+
+  public String getTaxCode() {
+    return taxCode;
+  }
+
+  public void setTaxCode(String taxCode) {
+    this.taxCode = taxCode;
   }
 }

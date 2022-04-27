@@ -4,5 +4,4 @@ public interface Title {
   String getName();
   int getLendingTime();
   Integer getUserLibraryId();
-
 }

@@ -5,5 +5,5 @@ import java.sql.SQLException;
 
 public interface BaseDao <T> {
     Connection getConnection();
-    void closeConnection() throws SQLException;
+    void closeConnection(Connection conn) throws SQLException;
 }

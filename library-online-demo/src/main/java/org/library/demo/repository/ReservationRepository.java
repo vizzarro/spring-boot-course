@@ -1,13 +1,19 @@
 package org.library.demo.repository;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.library.demo.models.Loan;
 import org.library.demo.models.Reservation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class ReservationRepository implements GenericRepository<Reservation> {
   private List<Reservation> mockedTable;
+  @Autowired
+  private ReservationDao reservationDao;
 
   public ReservationRepository() {
     this.mockedTable = new ArrayList<>();
@@ -37,4 +43,16 @@ public class ReservationRepository implements GenericRepository<Reservation> {
 
     return getById(id);
   }
+
+  public Reservation getByTitleId(String titleId) {
+    try {
+      return this.reservationDao.get(titleId);
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 }
+
