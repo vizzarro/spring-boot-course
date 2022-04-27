@@ -3,25 +3,26 @@ package org.library.demo.service;
 import org.library.demo.models.UserLibrary;
 import org.library.demo.models.Reservation;
 import org.library.demo.models.Title;
-import org.library.demo.repository.GenericRepository;
+import org.library.demo.dao.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class ReservationServiceImpl implements ReservationService {
-  private GenericRepository<Reservation> repo;
-  private GenericRepository<Title> titleRepo;
-  private GenericRepository<UserLibrary> borrowerRepo;
+  private BaseDao<Reservation, Date> reservationDao;
+  private BaseDao<Title, String> titleDao;
+  private BaseDao<UserLibrary, String> userLibraryDao;
 
   @Autowired
   public ReservationServiceImpl(
-      GenericRepository<Reservation> repository,
-      GenericRepository<Title> titleRepository,
-      GenericRepository<UserLibrary> borrowerRepository
+          BaseDao<Reservation, Date> reservationDao,
+          BaseDao<Title, String> titleDao,
+          BaseDao<UserLibrary, String> userLibraryDao
   ) {
-    this.repo = repository;
-    this.titleRepo = titleRepository;
-    this.borrowerRepo = borrowerRepository;
+    this.reservationDao = reservationDao;
+    this.titleDao = titleDao;
   }
 
   @Override
@@ -30,25 +31,30 @@ public class ReservationServiceImpl implements ReservationService {
       throw new Exception("No request");
 
     try {
-      UserLibrary b = borrowerRepo.getById(newReservation.getBorrowerId());
-    } catch (Exception e) {
-      throw new Exception("No UserLibrary found for id " + newReservation.getBorrowerId());
+      UserLibrary b = userLibraryDao.getById(newReservation.getTaxCode());} catch (Exception e) {
+      throw new Exception("No UserLibrary found for id " + newReservation.getTaxCode());
     }
 
-    Title exists = titleRepo.getById(newReservation.getTitleId());
+
+    Title exists = titleDao.getById(newReservation.getTitleId());
     if (exists == null)
       throw new Exception("No Title found for id " + newReservation.getTitleId());
 
-    repo.add(newReservation);
+    reservationDao.add(newReservation);
   }
 
   @Override
-  public Reservation getReservation(int id) {
-    return repo.getById(id);
+  public Reservation getReservation(Date id) {
+    return reservationDao.getById(id);
   }
 
   @Override
-  public void deleteReservation(int id) {
-    this.repo.delete(id);
+  public void deleteReservation(Date id) {
+    this.reservationDao.delete(id);
+  }
+
+  @Override
+  public Reservation updateReservation(Date id, Reservation updated) {
+    return this.reservationDao.update(id, updated);
   }
 }

@@ -5,9 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe555a2b-e471-4497-8dfc-ab7c9994aeca" name="Changes" comment="fix import service">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/LoanController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/UserLibraryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/BaseDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/LoanDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/ReservationDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/TitleDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/UserLibraryDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/CalcController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/TitleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/TitleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Magazine.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Magazine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/PriceModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Title.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Title.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/repository/GenericRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/BaseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/repository/LoanRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/repository/ReservationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/repository/TitleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/repository/UserLibraryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/BorrowerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/UserLibraryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/BorrowerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/UserLibraryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/ReservationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/ReservationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/ReservationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/TitleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/TitleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/TitleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/TitleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/client/PeopleClientServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/client/PeopleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/test/java/ClientTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-lessons-exercise.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +57,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/jdbc" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -50,13 +90,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Smart Tomcat.Unnamed">
     <configuration name="InfoPeopleApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.aesys.infopeople.infopeople.InfoPeopleApplication" />
       <module name="info-people" />
@@ -70,8 +110,52 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="org.library.demo.service in LibraryDemo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LibraryDemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.library.demo.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.library.demo.service" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="com.poratu.idea.plugins.tomcat" factoryName="SMART_TOMCAT_FACTORY" nameIsGenerated="true">
+      <option name="adminPort" value="8005" />
+      <option name="contextPath" value="/LibraryDemo" />
+      <option name="docBase" value="$PROJECT_DIR$/library-online-demo/src/main/webapp" />
+      <option name="envOptions">
+        <map />
+      </option>
+      <option name="passParentEnvironmentVariables" value="true" />
+      <option name="port" value="8080" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/9.0.62" />
+          <option name="number" value="0" />
+          <option name="path" value="C:\apache-tomcat-9.0.62" />
+          <option name="version" value="9.0.62.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.InfoPeopleApplication" />
+      <item itemvalue="JUnit.org.library.demo.service in LibraryDemo" />
+      <item itemvalue="Smart Tomcat.Unnamed" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.org.library.demo.service in LibraryDemo" />
         <item itemvalue="Application.InfoPeopleApplication" />
       </list>
     </recent_temporary>
@@ -153,5 +237,31 @@
     <MESSAGE value="update PersonService class" />
     <MESSAGE value="fix model mapper" />
     <option name="LAST_COMMIT_MESSAGE" value="fix model mapper" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/TitleDao.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/TitleDao.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Book.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/TitleServiceImpl.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

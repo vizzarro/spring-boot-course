@@ -3,9 +3,9 @@ package org.library.demo.service;
 import org.library.demo.models.Title;
 
 public interface TitleService {
-  Title getTitle(int id);
+  Title getTitle(String id);
   void addTitle(Title newTitle);
-  void deleteTitle(int id);
-  Title updateTitle(int id, Title updated);
+  void deleteTitle(String id);
+  Title updateTitle(String id, Title updated);
 
 }

@@ -10,32 +10,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping(value = "/reservation")
 public class ReservationController {
-  private ReservationService service;
+  private ReservationService reservationService;
 
   @Autowired
   public ReservationController(ReservationService reservationService) {
-    this.service = reservationService;
+    this.reservationService = reservationService;
   }
 
   @RequestMapping(method = RequestMethod.POST)
   public ResponseEntity<Void> addReservation(@RequestBody Reservation reservation)
       throws Exception {
-    service.addReservation(reservation);
+    reservationService.addReservation(reservation);
     return ResponseEntity.noContent().build();
   }
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-  public ResponseEntity<Void> deleteReservation(@PathVariable int id) {
-    service.deleteReservation(id);
+  public ResponseEntity<Void> deleteReservation(@PathVariable Date date) {
+    reservationService.deleteReservation(date);
     return ResponseEntity.noContent().build();
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-  public ResponseEntity<Reservation> getReservation(@PathVariable int id) {
-    Reservation response = service.getReservation(id);
+  public ResponseEntity<Reservation> getReservation(@PathVariable Date date) {
+    Reservation response = reservationService.getReservation(date);
+    return ResponseEntity.ok(response);
+  }
+
+  @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+  public ResponseEntity<Reservation> updateReservation(@PathVariable Date date, @RequestBody Reservation newReservation) {
+    Reservation response = reservationService.updateReservation(date, newReservation);
     return ResponseEntity.ok(response);
   }
 

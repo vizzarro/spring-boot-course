@@ -3,55 +3,59 @@ package org.library.demo.service;
 import org.library.demo.models.Loan;
 import org.library.demo.models.Title;
 import org.library.demo.models.UserLibrary;
-import org.library.demo.repository.GenericRepository;
+import org.library.demo.dao.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class LoanServiceImpl implements LoanService {
-  private GenericRepository<Loan> repo;
-  private GenericRepository<Title> titleRepo;
-  private GenericRepository<UserLibrary> userRepo;
+  private BaseDao<Loan, Date> loanDao;
+  private BaseDao<Title, String> titleDao;
+  private BaseDao<UserLibrary, String> userLibraryDao;
 
   @Autowired
   public LoanServiceImpl(
-      GenericRepository<Loan> repository,
-      GenericRepository<Title> titleRepository,
-      GenericRepository<UserLibrary> userLibraryRepository
+      BaseDao<Loan, Date> loanDao,
+      BaseDao<Title, String> titleDao,
+      BaseDao<UserLibrary, String> userLibraryDao
   ) {
-    this.repo = repository;
-    this.titleRepo = titleRepository;
-    this.userRepo = userLibraryRepository;
+    this.loanDao = loanDao;
+    this.titleDao = titleDao;
+    this.userLibraryDao = userLibraryDao;
   }
 
   @Override
-  public Loan addLoan(Loan newLoan) throws Exception {
+  public void addLoan(Loan newLoan) throws Exception {
     if (newLoan == null)
       throw new Exception("No request");
 
     try {
-      UserLibrary u = userRepo.getById(newLoan.getUserLibraryId());
+      UserLibrary u = userLibraryDao.getById(newLoan.getTaxCode());
     } catch (Exception e) {
-      throw new Exception("No Borrower found for id " + newLoan.getUserLibraryId());
+      throw new Exception("No Borrower found for id " + newLoan.getTaxCode());
     }
 
-    Title exists = titleRepo.getById(newLoan.getTitleId());
+    Title exists = titleDao.getById(newLoan.getTitleId());
     if (exists == null)
       throw new Exception("No Title found for id " + newLoan.getTitleId());
 
-
-    repo.add(newLoan);
-    return newLoan;
+    loanDao.add(newLoan);
   }
 
   @Override
-  public Loan getLoan(int id) {
-    return repo.getById(id);
+  public Loan getLoan(Date id) {
+    return loanDao.getById(id);
   }
 
   @Override
-  public Loan deleteLoan(int id) {
-    this.repo.delete(id);
-    return null;
+  public void deleteLoan(Date id) {
+    this.loanDao.delete(id);
+  }
+
+  @Override
+  public Loan updateLoan(Date id, Loan updated) {
+    return this.loanDao.update(id, updated);
   }
 }
