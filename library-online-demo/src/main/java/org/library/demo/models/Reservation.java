@@ -5,19 +5,25 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import java.util.Date;
 
 public class Reservation {
-  @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
+//  @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
   private Date creationDate;
-  private int titleId;
-  private int borrowerId;
+  private String titleId;
+  private String userTaxCode;
 
   public Reservation() {
-    this.creationDate = new Date();
   }
 
-  public Reservation(Date creationDate, int titleId) {
-    this.creationDate = creationDate;
-    this.titleId = titleId;
+  public Reservation(String title_id, String tax_code, java.sql.Date creation_date) {
+    this.creationDate = creation_date;
+    this.titleId = title_id;
+    this.userTaxCode = tax_code;
   }
+
+  public Reservation(String title_id, String tax_code) {
+    this.titleId = title_id;
+    this.userTaxCode = tax_code;
+  }
+
 
   public Date getCreationDate() {
     return creationDate;
@@ -28,19 +34,19 @@ public class Reservation {
       this.creationDate = creationDate;
   }
 
-  public int getTitleId() {
+  public String getTitleId() {
     return titleId;
   }
 
-  public void setTitleId(int titleId) {
+  public void setTitleId(String titleId) {
     this.titleId = titleId;
   }
 
-  public int getBorrowerId() {
-    return borrowerId;
+  public String getUserTaxCode() {
+    return userTaxCode;
   }
 
-  public void setBorrowerId(int borrowerId) {
-    this.borrowerId = borrowerId;
+  public void setUserTaxCode(String userTaxCode) {
+    this.userTaxCode = userTaxCode;
   }
 }

@@ -1,15 +1,18 @@
 package org.library.demo.service;
 
 import org.library.demo.models.UserLibrary;
-import org.library.demo.repository.GenericRepository;
+import org.library.demo.repository.GenericDao;
+import org.library.demo.repository.exception.DaoException;
+import org.library.demo.service.exceptions.ServiceException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import java.sql.SQLException;
 
 @Service
-public class BorrowerServiceImpl implements BorrowerService {
-  private GenericRepository<UserLibrary> repo;
+public class UserLibraryServiceImpl implements UserLibraryService {
+  private GenericDao<UserLibrary,String> repo;
 
-  public BorrowerServiceImpl(GenericRepository<UserLibrary> borrowerRepository) {
+  public UserLibraryServiceImpl(GenericDao<UserLibrary,String> borrowerRepository) {
     this.repo = borrowerRepository;
   }
 
@@ -28,7 +31,12 @@ public class BorrowerServiceImpl implements BorrowerService {
   }
 
   @Override
-  public UserLibrary getBorrower(int id) {
+  public UserLibrary getBorrower(String id) {
     return repo.getById(id);
+  }
+
+  @Override
+  public void deleteUser(String id) throws ClassNotFoundException, SQLException, DaoException, ServiceException {
+    this.repo.delete(id);
   }
 }

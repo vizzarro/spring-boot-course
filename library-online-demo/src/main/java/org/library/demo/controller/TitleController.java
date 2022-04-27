@@ -1,11 +1,11 @@
 package org.library.demo.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 import org.library.demo.models.Book;
 import org.library.demo.models.Magazine;
 import org.library.demo.models.Title;
 import org.library.demo.service.TitleService;
+import org.library.demo.service.exceptions.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -28,37 +28,37 @@ public class TitleController {
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-  public ResponseEntity<Title> getTitle(@PathVariable int id) {
+  public ResponseEntity<Title> getTitle(@PathVariable String id) {
     Title response = service.getTitle(id);
     return ResponseEntity.ok().body(response);
   }
 
   @RequestMapping(method = RequestMethod.POST, value = "/book")
-  public ResponseEntity<Void> addBook(@RequestBody Book newBook) {
+  public ResponseEntity<Void> addBook(@RequestBody Book newBook) throws ClassNotFoundException, SQLException {
     service.addTitle(newBook);
     return ResponseEntity.noContent().build();
   }
 
   @RequestMapping(method = RequestMethod.POST, value = "/magazine")
-  public ResponseEntity<Void> addMagazine(@RequestBody Magazine newMagazine) {
+  public ResponseEntity<Void> addMagazine(@RequestBody Magazine newMagazine) throws ClassNotFoundException, SQLException {
     service.addTitle(newMagazine);
     return ResponseEntity.noContent().build();
   }
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-  public ResponseEntity<Void> deleteTitle(@PathVariable int id) {
+  public ResponseEntity<Void> deleteTitle(@PathVariable String id) throws ClassNotFoundException, SQLException, ServiceException, ServiceException {
     service.deleteTitle(id);
     return ResponseEntity.noContent().build();
   }
 
   @RequestMapping(method = RequestMethod.PUT, value = "/book/{id}")
-  public ResponseEntity<Title> updateBook(@PathVariable int id, @RequestBody Book newBook) {
+  public ResponseEntity<Title> updateBook(@PathVariable String id, @RequestBody Book newBook) {
     Title response = service.updateTitle(id, newBook);
     return ResponseEntity.ok(response);
   }
 
   @RequestMapping(method = RequestMethod.PUT, value = "/magazine/{id}")
-  public ResponseEntity<Title> updateMagazine(@PathVariable int id, @RequestBody Magazine newMagazine) {
+  public ResponseEntity<Title> updateMagazine(@PathVariable String id, @RequestBody Magazine newMagazine) {
     Title response = service.updateTitle(id, newMagazine);
     return ResponseEntity.ok(response);
   }

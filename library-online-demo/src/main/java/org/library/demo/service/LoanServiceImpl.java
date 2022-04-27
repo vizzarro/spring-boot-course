@@ -3,21 +3,24 @@ package org.library.demo.service;
 import org.library.demo.models.Loan;
 import org.library.demo.models.Title;
 import org.library.demo.models.UserLibrary;
-import org.library.demo.repository.GenericRepository;
+import org.library.demo.repository.GenericDao;
+import org.library.demo.repository.exception.DaoException;
+import org.library.demo.service.exceptions.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.sql.SQLException;
 
 @Service
 public class LoanServiceImpl implements LoanService {
-  private GenericRepository<Loan> repo;
-  private GenericRepository<Title> titleRepo;
-  private GenericRepository<UserLibrary> userRepo;
+  private GenericDao<Loan,Loan> repo;
+  private GenericDao<Title,String> titleRepo;
+  private GenericDao<UserLibrary,String> userRepo;
 
   @Autowired
   public LoanServiceImpl(
-      GenericRepository<Loan> repository,
-      GenericRepository<Title> titleRepository,
-      GenericRepository<UserLibrary> userLibraryRepository
+      GenericDao<Loan,Loan> repository,
+      GenericDao<Title,String> titleRepository,
+      GenericDao<UserLibrary,String> userLibraryRepository
   ) {
     this.repo = repository;
     this.titleRepo = titleRepository;
@@ -30,9 +33,9 @@ public class LoanServiceImpl implements LoanService {
       throw new Exception("No request");
 
     try {
-      UserLibrary u = userRepo.getById(newLoan.getUserLibraryId());
+      UserLibrary u = userRepo.getById(newLoan.getUserTaxCode());
     } catch (Exception e) {
-      throw new Exception("No Borrower found for id " + newLoan.getUserLibraryId());
+      throw new Exception("No Borrower found for id " + newLoan.getUserTaxCode());
     }
 
     Title exists = titleRepo.getById(newLoan.getTitleId());
@@ -45,13 +48,16 @@ public class LoanServiceImpl implements LoanService {
   }
 
   @Override
-  public Loan getLoan(int id) {
+  public Loan getLoan(Loan id) {
     return repo.getById(id);
   }
 
   @Override
-  public Loan deleteLoan(int id) {
-    this.repo.delete(id);
-    return null;
+  public void deleteLoan(Loan id) throws SQLException, ClassNotFoundException {
+   try {
+     this.repo.delete(id);
+   } catch (DaoException e) {
+     e.printStackTrace();
+   }
   }
 }

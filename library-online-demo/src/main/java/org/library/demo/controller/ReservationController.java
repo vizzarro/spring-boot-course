@@ -2,17 +2,20 @@ package org.library.demo.controller;
 
 import org.library.demo.models.Reservation;
 import org.library.demo.service.ReservationService;
+import org.library.demo.service.exceptions.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
+
 @RestController
 @RequestMapping(value = "/reservation")
 public class ReservationController {
+
   private ReservationService service;
 
   @Autowired
@@ -27,14 +30,14 @@ public class ReservationController {
     return ResponseEntity.noContent().build();
   }
 
-  @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-  public ResponseEntity<Void> deleteReservation(@PathVariable int id) {
+  @RequestMapping(method = RequestMethod.DELETE)
+  public ResponseEntity<Void> deleteReservation(@RequestBody Reservation id) throws ClassNotFoundException, SQLException, ServiceException, ServiceException {
     service.deleteReservation(id);
     return ResponseEntity.noContent().build();
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-  public ResponseEntity<Reservation> getReservation(@PathVariable int id) {
+  @RequestMapping(method = RequestMethod.GET)
+  public ResponseEntity<Reservation> getReservation(@RequestBody Reservation id) {
     Reservation response = service.getReservation(id);
     return ResponseEntity.ok(response);
   }
