@@ -1,21 +1,17 @@
 package org.library.demo.repository;
 
-import org.library.demo.models.Book;
-import org.library.demo.models.Loan;
-import org.library.demo.models.Magazine;
-import org.library.demo.models.Title;
-import org.library.demo.repository.connection.BaseDao;
+import org.library.demo.models.*;
 import org.library.demo.repository.connection.BaseDaoImpl;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Repository
 public class TitleDao extends BaseDaoImpl<Title, String> {
     Connection conn = null;
-    public TitleDao() { }
+
+    public TitleDao() {
+    }
 
     @Override
     public Title getById(String id) {
@@ -28,7 +24,7 @@ public class TitleDao extends BaseDaoImpl<Title, String> {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 if (rs.getString("type").equals("BOOK")) {
-                    title=(new Book(rs.getString("name"), rs.getString("title_id")));
+                    title = (new Book(rs.getString("name"), rs.getString("title_id")));
                 } else if (rs.getString("type").equals("MAGAZINE")) {
                     title = (new Magazine(rs.getString("name"), rs.getString("title_id")));
                 }

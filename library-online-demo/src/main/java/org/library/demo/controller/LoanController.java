@@ -27,7 +27,7 @@ public class LoanController {
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-  public ResponseEntity<Loan> getLoan(@PathVariable int id) throws SQLException {
+  public ResponseEntity<Loan> getLoan(@PathVariable String id) throws SQLException {
     Loan response = this.service.getLoan(id);
     return ResponseEntity.ok(response);
   }

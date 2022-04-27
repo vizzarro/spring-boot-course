@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public interface LoanService {
   Loan addLoan(Loan newLoan) throws Exception;
-  Loan getLoan(int id) throws SQLException;
-  Loan deleteLoan(int id) throws SQLException;
+  Loan getLoan(String id) throws SQLException;
+  Loan deleteLoan(String id) throws SQLException;
 
 }

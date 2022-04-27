@@ -10,5 +10,5 @@ public interface BaseDao <T,K> {
     void add(T entity) throws SQLException;
     void delete(K id) throws SQLException;
     T update(K id, T updated) throws SQLException;
-    T getByTaxCode(K taxCode);
+
 }

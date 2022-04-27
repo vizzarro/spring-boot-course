@@ -12,17 +12,17 @@ import java.sql.SQLException;
 
 @Service
 public class LoanServiceImpl implements LoanService {
-  private BaseDao<Loan> repo;
-  private BaseDao<Title> titleRepo;
-  private BaseDao<UserLibrary> userRepo;
-  private BaseDao<Reservation> resRepo;
+  private BaseDao<Loan, String> repo;
+  private BaseDao<Title, String> titleRepo;
+  private BaseDao<UserLibrary, String> userRepo;
+  private BaseDao<Reservation, String> resRepo;
 
   @Autowired
   public LoanServiceImpl(
-      BaseDao<Loan> repository,
-      BaseDao<Title> titleRepository,
-      BaseDao<UserLibrary> userLibraryRepository,
-      BaseDao<Reservation> reservationRepository
+      BaseDao<Loan, String> repository,
+      BaseDao<Title, String> titleRepository,
+      BaseDao<UserLibrary, String> userLibraryRepository,
+      BaseDao<Reservation, String> reservationRepository
   ) {
     this.repo = repository;
     this.titleRepo = titleRepository;
@@ -36,29 +36,17 @@ public class LoanServiceImpl implements LoanService {
   public Loan addLoan(Loan newLoan) throws Exception {
     if (newLoan == null)
       throw new Exception("No request");
-
-    try {
-      UserLibrary u = userRepo.getById(newLoan.getUserLibraryId());
-    } catch (Exception e) {
-      throw new Exception("No Borrower found for id " + newLoan.getUserLibraryId());
-    }
-
-    Title exists = titleRepo.getById(Integer.parseInt(newLoan.getTitleId()));
-    if (exists == null)
-      throw new Exception("No Title found for id " + newLoan.getTitleId());
-
-
-    repo.add(newLoan);
+    this.repo.add(newLoan);
     return newLoan;
   }
 
   @Override
-  public Loan getLoan(int id) throws SQLException {
+  public Loan getLoan(String id) throws SQLException {
     return repo.getById(id);
   }
 
   @Override
-  public Loan deleteLoan(int id) throws SQLException {
+  public Loan deleteLoan(String id) throws SQLException {
     this.repo.delete(id);
     return null;
   }

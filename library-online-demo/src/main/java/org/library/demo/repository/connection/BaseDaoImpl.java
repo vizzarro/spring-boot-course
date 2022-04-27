@@ -1,5 +1,9 @@
 package org.library.demo.repository.connection;
 
+import org.library.demo.models.Title;
+import org.library.demo.models.UserLibrary;
+import org.library.demo.repository.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.swing.*;
@@ -8,12 +12,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-@Repository
+@Repository("baseDao")
 public abstract class BaseDaoImpl<T,K> implements BaseDao<T,K> {
-    private Connection conn = null;
+
 
     @Override
     public Connection getConnection() {
+        Connection conn = null;
         Properties propr = new Properties();
         propr.setProperty("user", "user");
         propr.setProperty("password", "29081990");
@@ -38,6 +43,7 @@ public abstract class BaseDaoImpl<T,K> implements BaseDao<T,K> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        conn = null;
     }
+
+
 }

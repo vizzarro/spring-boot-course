@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.SQLException;
+
 @Controller
 @ResponseBody
 @RequestMapping(value = "/user")
@@ -24,8 +26,9 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{taxCode}")
-    public ResponseEntity<UserLibrary> getTitle(@PathVariable String taxCode) {
+    public ResponseEntity<UserLibrary> getTitle(@PathVariable String taxCode) throws SQLException {
         UserLibrary response = service.getUserLibrary(taxCode);
         return ResponseEntity.ok().body(response);
     }
 }
+

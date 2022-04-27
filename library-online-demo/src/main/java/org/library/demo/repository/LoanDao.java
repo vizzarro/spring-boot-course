@@ -9,24 +9,22 @@ import org.springframework.stereotype.Repository;
 import java.sql.*;
 
 @Repository
-public class LoanDao extends BaseDaoImpl<Loan, Loan> {
+public class LoanDao extends BaseDaoImpl<Loan, String> {
     Connection conn = null;
 
     public LoanDao() { }
 
     @Override
-    public Loan getById(Loan id) throws SQLException {
+    public Loan getById(String id) throws SQLException {
         conn = this.getConnection();
-        String query = "SELECT * FROM loans WHERE title_id = ? and tax_code = ? and creation_date = ?";
+        String query = "SELECT * FROM loans WHERE tax_code = ?";
         PreparedStatement ps = conn.prepareStatement(query);
-        ps.setString(1, id.getTitleId());
-        ps.setString(2, id.getTaxCode());
-        ps.setDate(3, (Date) id.getCreationDate());
+        ps.setString(1, id);
         ResultSet rs = ps.executeQuery();
         while ( rs.next() ) {
             Loan loan = new Loan(
                     rs.getString("title_id"),
-                    rs.getString("Tax_code"),
+                    rs.getString("tax_code"),
                     rs.getDate("creation_date")
             );
         }
@@ -50,10 +48,11 @@ public class LoanDao extends BaseDaoImpl<Loan, Loan> {
     }
 
     @Override
-    public void delete(Loan id) throws SQLException {
+    public void delete(String id) throws SQLException {
         conn = this.getConnection();
-        String query = "DELETE FROM title WHERE title_id = ? and tax_code = ? and creation_date = ?";
+        String query = "DELETE FROM title WHERE tax_code = ?";
         PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, id);
         ResultSet rs = ps.executeQuery();
         rs.close();
         ps.close();
@@ -61,20 +60,19 @@ public class LoanDao extends BaseDaoImpl<Loan, Loan> {
     }
 
     @Override
-    public Loan update(Loan id, Loan updated) throws SQLException {
+    public Loan update(String id, Loan updated) throws SQLException {
         conn = this.getConnection();
-        String query = "UPDATE loans SET title_id = ?, tax_code = ?, creation_date = ? WHERE title_id = ? and tax_code = ? and creation_date = ?";
+        String query = "UPDATE loans SET title_id = ?, tax_code = ?, creation_date = ? WHERE tax_code = ?";
         PreparedStatement ps = conn.prepareStatement(query);
         ps.setString(1, updated.getTitleId());
         ps.setString(2, updated.getTaxCode());
         ps.setDate(3, (Date) updated.getCreationDate());
-        ps.setString(4, id.getTitleId());
-        ps.setString(5, id.getTaxCode());
-        ps.setDate(6, (Date) id.getCreationDate());
+        ps.setString(4, id);
         ResultSet rs = ps.executeQuery();
         rs.close();
         ps.close();
         this.closeConnection(conn);
         return null;
     }
+
 }

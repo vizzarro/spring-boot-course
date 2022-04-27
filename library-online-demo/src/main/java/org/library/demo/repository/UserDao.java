@@ -1,11 +1,7 @@
 package org.library.demo.repository;
 
-import org.library.demo.models.Loan;
 import org.library.demo.models.UserLibrary;
-import org.library.demo.repository.connection.BaseDao;
 import org.library.demo.repository.connection.BaseDaoImpl;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -21,7 +17,7 @@ public class UserDao extends BaseDaoImpl<UserLibrary, String> {
     public UserLibrary getById(String id) throws SQLException {
         conn = this.getConnection();
         String query = "SELECT * FROM user_library WHERE tax_code = ?";
-        PreparedStatement ps = conn.prepareStatement(query);
+        PreparedStatement   ps = conn.prepareStatement(query);
         ps.setString(1, id);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {

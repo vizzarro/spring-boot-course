@@ -4,19 +4,20 @@ import java.sql.SQLException;
 
 import org.library.demo.models.Title;
 import org.library.demo.repository.connection.BaseDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TitleServiceImpl implements TitleService {
 
-  private BaseDao<Title> repo;
-
-  public TitleServiceImpl(BaseDao<Title> repository) {
+  private BaseDao<Title, String> repo;
+  @Autowired
+  public TitleServiceImpl(BaseDao<Title, String> repository) {
     this.repo = repository;
   }
 
   @Override
-  public Title getTitle(int id) throws SQLException {
+  public Title getTitle(String id) throws SQLException {
     return repo.getById(id);
   }
 
@@ -26,12 +27,12 @@ public class TitleServiceImpl implements TitleService {
   }
 
   @Override
-  public void deleteTitle(int id) throws SQLException {
+  public void deleteTitle(String id) throws SQLException {
     repo.delete(id);
   }
 
   @Override
-  public Title updateTitle(int id, Title updated) throws SQLException {
+  public Title updateTitle(String id, Title updated) throws SQLException {
     return repo.update(id, updated);
   }
 

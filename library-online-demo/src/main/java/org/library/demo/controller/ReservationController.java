@@ -30,13 +30,13 @@ public class ReservationController {
   }
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-  public ResponseEntity<Void> deleteReservation(@PathVariable int id) throws SQLException {
+  public ResponseEntity<Void> deleteReservation(@PathVariable String id) throws SQLException {
     service.deleteReservation(id);
     return ResponseEntity.noContent().build();
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-  public ResponseEntity<Reservation> getReservation(@PathVariable int id) throws SQLException {
+  public ResponseEntity<Reservation> getReservation(@PathVariable String id) throws SQLException {
     Reservation response = service.getReservation(id);
     return ResponseEntity.ok(response);
   }

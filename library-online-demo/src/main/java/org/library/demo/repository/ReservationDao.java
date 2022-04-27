@@ -9,20 +9,19 @@ import org.springframework.stereotype.Repository;
 import java.sql.*;
 
 @Repository
-public class ReservationDao extends BaseDaoImpl<Reservation, Reservation> {
+public class ReservationDao extends BaseDaoImpl<Reservation, String> {
     Connection conn = null;
     public ReservationDao() { }
 
     @Override
-    public Reservation getById(Reservation id) throws SQLException {
+    public Reservation getById(String id) throws SQLException {
         Loan loan = null;
 
         conn = this.getConnection();
-        String query = "SELECT * FROM reservation WHERE title_id = ? and tax_code = ? and creation_date = ?";
+        String query = "SELECT * FROM reservation WHERE tax_code = ?";
         PreparedStatement ps = conn.prepareStatement(query);
-        ps.setString(1, id.getTitleId());
-        ps.setString(2, id.getTaxCode());
-        ps.setDate(3, (Date) id.getCreationDate());
+        ps.setString(1, id);
+
         ResultSet rs = ps.executeQuery();
         while ( rs.next() ) {
             Reservation reservation = new Reservation (
@@ -51,10 +50,11 @@ public class ReservationDao extends BaseDaoImpl<Reservation, Reservation> {
     }
 
     @Override
-    public void delete(Reservation id) throws SQLException {
+    public void delete(String id) throws SQLException {
         conn = this.getConnection();
-        String query = "DELETE FROM title WHERE title_id = ? and tax_code = ? and creation_date = ?";
+        String query = "DELETE FROM title WHERE tax_code = ? ";
         PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, id);
         ResultSet rs = ps.executeQuery();
         rs.close();
         ps.close();
@@ -62,21 +62,20 @@ public class ReservationDao extends BaseDaoImpl<Reservation, Reservation> {
     }
 
     @Override
-    public Reservation update(Reservation id, Reservation updated) throws SQLException {
+    public Reservation update(String id, Reservation updated) throws SQLException {
         conn = this.getConnection();
-        String query = "UPDATE reservation SET title_id = ?, tax_code = ?, creation_date = ? WHERE title_id = ? and tax_code = ? and creation_date = ?";
+        String query = "UPDATE reservation SET title_id = ?, tax_code = ?, creation_date = ? WHERE tax_code = ? ";
         PreparedStatement ps = conn.prepareStatement(query);
         ps.setString(1, updated.getTitleId());
         ps.setString(2, updated.getTaxCode());
         ps.setDate(3, (Date) updated.getCreationDate());
-        ps.setString(4, id.getTitleId());
-        ps.setString(5, id.getTaxCode());
-        ps.setDate(6, (Date) id.getCreationDate());
+        ps.setString(4, id);
         ResultSet rs = ps.executeQuery();
         rs.close();
         ps.close();
         this.closeConnection(conn);
         return null;
     }
+
 }
 

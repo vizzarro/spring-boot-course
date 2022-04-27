@@ -2,13 +2,19 @@ package org.library.demo.service;
 
 import org.library.demo.models.UserLibrary;
 import org.library.demo.repository.connection.BaseDao;
+import org.library.demo.repository.connection.BaseDaoImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.sql.SQLException;
+
 @Service
 public class UserLibraryServiceImpl implements UserLibraryService {
-  private BaseDao<UserLibrary, String> repo;
 
+
+  private BaseDao<UserLibrary, String> repo;
+  @Autowired
   public UserLibraryServiceImpl(BaseDao<UserLibrary, String> userLibraryRepository) {
     this.repo = userLibraryRepository;
   }
@@ -28,7 +34,7 @@ public class UserLibraryServiceImpl implements UserLibraryService {
   }
 
   @Override
-  public UserLibrary getUserLibrary(String taxCode) {
-    return repo.getByTaxCode(taxCode);
+  public UserLibrary getUserLibrary(String taxCode) throws SQLException {
+    return repo.getById(taxCode);
   }
 }

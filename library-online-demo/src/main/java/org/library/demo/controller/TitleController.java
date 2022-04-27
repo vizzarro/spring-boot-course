@@ -29,7 +29,7 @@ public class TitleController {
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-  public ResponseEntity<Title> getTitle(@PathVariable int id) throws SQLException {
+  public ResponseEntity<Title> getTitle(@PathVariable String id) throws SQLException {
     Title response = service.getTitle(id);
     return ResponseEntity.ok().body(response);
   }
@@ -47,19 +47,19 @@ public class TitleController {
   }
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-  public ResponseEntity<Void> deleteTitle(@PathVariable int id) throws SQLException {
+  public ResponseEntity<Void> deleteTitle(@PathVariable String id) throws SQLException {
     service.deleteTitle(id);
     return ResponseEntity.noContent().build();
   }
 
   @RequestMapping(method = RequestMethod.PUT, value = "/book/{title_id}")
-  public ResponseEntity<Title> updateBook(@PathVariable int id, @RequestBody Book newBook) throws SQLException {
+  public ResponseEntity<Title> updateBook(@PathVariable String id, @RequestBody Book newBook) throws SQLException {
     Title response = service.updateTitle(id, newBook);
     return ResponseEntity.ok(response);
   }
 
   @RequestMapping(method = RequestMethod.PUT, value = "/magazine/{title_id}")
-  public ResponseEntity<Title> updateMagazine(@PathVariable int id, @RequestBody Magazine newMagazine) throws SQLException {
+  public ResponseEntity<Title> updateMagazine(@PathVariable String id, @RequestBody Magazine newMagazine) throws SQLException {
     Title response = service.updateTitle(id, newMagazine);
     return ResponseEntity.ok(response);
   }
