@@ -8,7 +8,7 @@ public class ReservationDto {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date creationDate;
-    private int titleId;
+    private String titleId;
     private String taxCode;
 
     public ReservationDto() {
@@ -24,11 +24,11 @@ public class ReservationDto {
             this.creationDate = creationDate;
     }
 
-    public int getTitleId() {
+    public String getTitleId() {
         return titleId;
     }
 
-    public void setTitleId(int titleId) {
+    public void setTitleId(String titleId) {
         this.titleId = titleId;
     }
 

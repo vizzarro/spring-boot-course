@@ -15,13 +15,14 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
         statement.setString(1, loan.getTitleId());
         statement.setString(2, loan.getUserLibraryId());
         ResultSet resultSet = statement.executeQuery();
-        resultSet.next();
 
-        loan = new Loan();
-        loan.setTitleId(resultSet.getString("title_id"));
-        loan.setUserLibraryId(resultSet.getString("tax_code"));
-        loan.setCreationDate(resultSet.getDate("creation_date"));
-
+        loan = null;
+        if(resultSet.next()) {
+            loan = new Loan();
+            loan.setTitleId(resultSet.getString("title_id"));
+            loan.setUserLibraryId(resultSet.getString("tax_code"));
+            loan.setCreationDate(resultSet.getDate("creation_date"));
+        }
         return loan;
     }
 
@@ -31,9 +32,9 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
         PreparedStatement statement = conn.prepareStatement("INSERT INTO LOANS VALUES (?,?,?)");
         statement.setString(1, String.valueOf(l.getTitleId()));
         statement.setString(2, l.getUserLibraryId());
-        statement.setDate(3, (Date) l.getCreationDate());
+        statement.setDate(3, new java.sql.Date(l.getCreationDate().getTime()));
 
-        statement.executeQuery();
+        statement.executeUpdate();
 
         return l;
     }
@@ -45,7 +46,7 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
         statement.setDate(1, (Date) l.getCreationDate());
         statement.setString(2, l.getTitleId());
         statement.setString(3, l.getUserLibraryId());
-        statement.executeQuery();
+        statement.executeUpdate();
 
         return l;
     }
@@ -57,7 +58,7 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
         statement.setString(1, l.getTitleId());
         statement.setString(2, l.getUserLibraryId());
 
-        statement.executeQuery();
+        statement.executeUpdate();
     }
 }
 

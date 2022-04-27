@@ -10,7 +10,7 @@ public class Reservation {
     @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
     private Date creationDate;
     private String titleId;
-    private String userLibraryId;
+    private String taxCode;
 
     public Reservation() {
         this.creationDate = new Date();
@@ -32,11 +32,11 @@ public class Reservation {
         this.titleId = titleId;
     }
 
-    public String getUserLibraryId() {
-        return userLibraryId;
+    public String getTaxCode() {
+        return taxCode;
     }
 
-    public void setUserLibraryId(String userLibraryId) {
-        this.userLibraryId = userLibraryId;
+    public void setTaxCode(String taxCode) {
+        this.taxCode = taxCode;
     }
 }

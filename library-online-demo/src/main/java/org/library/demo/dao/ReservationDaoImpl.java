@@ -13,15 +13,16 @@ public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Reservation> im
         Connection conn = super.connect();
         PreparedStatement statement = conn.prepareStatement("SELECT * FROM RESERVATION WHERE TITLE_ID=?, TAX_CODE=?");
         statement.setString(1, r.getTitleId());
-        statement.setString(2, r.getUserLibraryId());
+        statement.setString(2, r.getTaxCode());
         ResultSet resultSet = statement.executeQuery();
-        resultSet.next();
 
-        r = new Reservation();
-        r.setTitleId(resultSet.getString("title_id"));
-        r.setUserLibraryId(resultSet.getString("tax_code"));
-        r.setCreationDate(resultSet.getDate("creation_date"));
-
+        r = null;
+        if(resultSet.next()) {
+            r = new Reservation();
+            r.setTitleId(resultSet.getString("title_id"));
+            r.setTaxCode(resultSet.getString("tax_code"));
+            r.setCreationDate(resultSet.getDate("creation_date"));
+        }
         return r;
     }
 
@@ -30,10 +31,10 @@ public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Reservation> im
         Connection conn = super.connect();
         PreparedStatement statement = conn.prepareStatement("INSERT INTO RESERVATION VALUES (?,?,?)");
         statement.setString(1, r.getTitleId());
-        statement.setString(2, r.getUserLibraryId());
-        statement.setDate(3, (Date) r.getCreationDate());
+        statement.setString(2, r.getTaxCode());
+        statement.setDate(3, new java.sql.Date(r.getCreationDate().getTime()) );
 
-        statement.executeQuery();
+        statement.executeUpdate();
 
         return r;
     }
@@ -44,8 +45,8 @@ public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Reservation> im
         PreparedStatement statement = conn.prepareStatement("UPDATE RESERVATION SET CREATION_DATE = ? WHERE TITLE_ID = ?, TAX_CODE=?");
         statement.setDate(1, (Date) r.getCreationDate());
         statement.setString(2, r.getTitleId());
-        statement.setString(3, r.getUserLibraryId());
-        statement.executeQuery();
+        statement.setString(3, r.getTaxCode());
+        statement.executeUpdate();
 
         return r;
     }
@@ -55,8 +56,8 @@ public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Reservation> im
         Connection conn = super.connect();
         PreparedStatement statement = conn.prepareStatement("DELETE FROM RESERVATION WHERE TITLE_ID = ?, TAX_CODE = ?");
         statement.setString(1, r.getTitleId());
-        statement.setString(2, r.getUserLibraryId());
+        statement.setString(2, r.getTaxCode());
 
-        statement.executeQuery();
+        statement.executeUpdate();
     }
 }

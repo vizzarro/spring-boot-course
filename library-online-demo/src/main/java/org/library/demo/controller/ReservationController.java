@@ -39,7 +39,7 @@ public class ReservationController {
 
         Reservation id = new Reservation();
         id.setCreationDate(creationDate);
-        id.setUserLibraryId(taxCode);
+        id.setTaxCode(taxCode);
         id.setTitleId(titleId);
 
         service.deleteReservation(id);
@@ -53,7 +53,7 @@ public class ReservationController {
 
         Reservation id = new Reservation();
         id.setCreationDate(creationDate);
-        id.setUserLibraryId(taxCode);
+        id.setTaxCode(taxCode);
         id.setTitleId(titleId);
 
         Reservation response = service.getReservation(id);

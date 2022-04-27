@@ -32,9 +32,9 @@ public class ReservationServiceImpl implements ReservationService {
             throw new Exception("No request");
 
         try {
-            UserLibrary b = userLibraryDao.get(newReservation.getUserLibraryId());
+            UserLibrary b = userLibraryDao.get(newReservation.getTaxCode());
         } catch (Exception e) {
-            throw new Exception("No UserLibrary found for id " + newReservation.getUserLibraryId());
+            throw new Exception("No UserLibrary found for id " + newReservation.getTaxCode());
         }
 
         Title exists = titleDao.get(newReservation.getTitleId());
