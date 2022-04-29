@@ -1,8 +1,11 @@
 package it.aesys.course.library.demo.springboot.models;
 
-import org.springframework.stereotype.Component;
 
-@Component
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user_library")
 public class UserLibrary {
 
   private String firstName;
