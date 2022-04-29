@@ -1,5 +1,6 @@
 package org.library.demo.dao;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 public interface GenericDao<T, D> {
@@ -8,4 +9,5 @@ public interface GenericDao<T, D> {
     T delete(D id) throws SQLException, ClassNotFoundException;
     T update(D id, T entity) throws SQLException, ClassNotFoundException;
     T get(D id) throws SQLException, ClassNotFoundException;
+     Connection getConnection() throws ClassNotFoundException, SQLException;
 }

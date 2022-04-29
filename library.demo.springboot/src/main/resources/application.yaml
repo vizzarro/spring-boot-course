@@ -6,4 +6,4 @@ database-setting:
   driver: "org.postgresql.Driver"
   credentials:
     username: "postgres"
-    password: "naomi92"
+    password: "andrea"

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+
+
 @Component
 public class Loan {
   @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
