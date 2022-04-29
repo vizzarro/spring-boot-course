@@ -40,8 +40,8 @@ public class ReservationController {
 
         Reservation id = new Reservation();
         id.setCreationDate(creationDate);
-        id.setTaxCode(taxCode);
-        id.setTitleId(titleId);
+        id.getReservationId().setTaxCode(taxCode); //id.setTaxCode(taxCode);
+        id.getReservationId().setTitleId(titleId); //id.setTitleId(titleId);
 
         service.deleteReservation(id);
         return ResponseEntity.noContent().build();
@@ -54,8 +54,8 @@ public class ReservationController {
 
         Reservation id = new Reservation();
         id.setCreationDate(creationDate);
-        id.setTaxCode(taxCode);
-        id.setTitleId(titleId);
+        id.getReservationId().setTaxCode(taxCode); //id.setTaxCode(taxCode);
+        id.getReservationId().setTitleId(titleId); //id.setTitleId(titleId);
 
         Reservation response = service.getReservation(id);
         return ResponseEntity.ok(response);

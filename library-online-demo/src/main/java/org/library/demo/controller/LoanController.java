@@ -36,8 +36,8 @@ public class LoanController {
 
         Loan id = new Loan();
         id.setCreationDate(creationDate);
-        id.setTaxCode(taxCode);
-        id.setTitleId(titleId);
+        id.getLoanid().setTaxCode(taxCode); //id.setTaxCode(taxCode);
+        id.getLoanid().setTitleId(titleId);  //id.setTitleId(titleId);
 
         service.deleteLoan(id);
         return ResponseEntity.noContent().build();
@@ -50,8 +50,8 @@ public class LoanController {
 
         Loan id = new Loan();
         id.setCreationDate(creationDate);
-        id.setTaxCode(taxCode);
-        id.setTitleId(titleId);
+        id.getLoanid().setTaxCode(taxCode); //id.setTaxCode(taxCode)
+        id.getLoanid().setTitleId(titleId); //id.setTitleId(titleId);
 
         Loan response = service.getLoan(id);
         return ResponseEntity.ok(response);
