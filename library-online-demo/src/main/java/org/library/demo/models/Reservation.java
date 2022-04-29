@@ -12,12 +12,14 @@ public class Reservation {
     @EmbeddedId
     private ReservationId reservationId;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @MapsId("taxCode")
+    @JoinColumn(name = "tax_code")
     private UserLibrary userLibrary;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @MapsId("titleId")
+    @JoinColumn(name = "title_id")
     private Title title;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
