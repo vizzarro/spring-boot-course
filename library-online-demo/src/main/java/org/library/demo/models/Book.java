@@ -1,9 +1,8 @@
 package org.library.demo.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "title")
@@ -23,6 +22,13 @@ public class Book implements Title {
     public Book(String name) {
         this.name = name;
     }
+
+    @OneToMany
+    @JoinTable(name = "reservation",
+            joinColumns = @JoinColumn(name = "tax_code"),
+            inverseJoinColumns = @JoinColumn(name = "title_id"))
+    private List<Reservation> reservations;
+
 
     @Override
     public String getName() {
