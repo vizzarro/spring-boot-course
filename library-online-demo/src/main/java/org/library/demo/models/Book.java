@@ -24,10 +24,12 @@ public class Book implements Title {
         this.name = name;
     }
 
-    @OneToMany(mappedBy =  "reservation.titleId")
+    @OneToMany(mappedBy =  "reservationId.titleId")
     private List<Reservation> reservations;
 
-    @OneToMany(mappedBy =  "loan.titleId")
+
+
+    @OneToMany(mappedBy =  "loanId.titleId")
     private List<Loan> loans;
 
 
@@ -49,4 +51,35 @@ public class Book implements Title {
         this.titleId = titleId;
     }
 
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public List<Loan> getLoans() {
+        return loans;
+    }
+
+    public void setLoans(List<Loan> loans) {
+        this.loans = loans;
+    }
+
+    public void addReservation(Reservation reservation){
+        if(null == reservations){
+            reservations = new ArrayList<>();
+        }
+
+        reservations.add(reservation);
+    }
+
+    public void addLoans(Loan loan){
+        if(null == loans){
+            loans = new ArrayList<>();
+        }
+
+        loans.add(loan);
+    }
 }
