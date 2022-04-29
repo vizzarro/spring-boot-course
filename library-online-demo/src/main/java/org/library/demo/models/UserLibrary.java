@@ -25,7 +25,7 @@ public class UserLibrary {
     @OneToMany(mappedBy = "reservationId.taxCode")
     private List<Reservation> reservations;
 
-    @OneToMany(mappedBy = "reservationId.taxCode")
+    @OneToMany(mappedBy = "loanId.taxCode")
     private List<Loan> loans;
 
     public UserLibrary() {
