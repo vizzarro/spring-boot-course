@@ -83,6 +83,7 @@ public class UserLibrary {
         }
 
         reservations.add(reservation);
+        reservation.setUserLibrary(this);
     }
 
     public void addLoans(Loan loan){
@@ -91,6 +92,7 @@ public class UserLibrary {
         }
 
         loans.add(loan);
+
     }
 
 }
