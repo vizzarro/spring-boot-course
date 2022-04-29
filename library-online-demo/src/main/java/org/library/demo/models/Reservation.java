@@ -10,7 +10,7 @@ import java.util.Date;
 public class Reservation {
 
     @EmbeddedId
-    private ReservationId reservationId;
+    private ReservationId reservationId = new ReservationId();
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @MapsId("taxCode")
@@ -35,5 +35,29 @@ public class Reservation {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public ReservationId getReservationId() {
+        return reservationId;
+    }
+
+    public void setReservationId(ReservationId reservationId) {
+        this.reservationId = reservationId;
+    }
+
+    public UserLibrary getUserLibrary() {
+        return userLibrary;
+    }
+
+    public void setUserLibrary(UserLibrary userLibrary) {
+        this.userLibrary = userLibrary;
+    }
+
+    public Title getTitle() {
+        return title;
+    }
+
+    public void setTitle(Title title) {
+        this.title = title;
     }
 }
