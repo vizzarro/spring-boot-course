@@ -32,14 +32,14 @@ public class LoanServiceImpl implements LoanService {
             throw new Exception("No request");
 
         try {
-            UserLibrary u = ulDao.get(newLoan.getTaxCode());
+            UserLibrary u = ulDao.get(newLoan.getLoanid().getTaxCode());
         } catch (Exception e) {
-            throw new Exception("No Borrower found for id " + newLoan.getTaxCode());
+            throw new Exception("No Borrower found for id " + newLoan.getLoanid().getTaxCode());
         }
 
-        Title exists = titleDao.get(newLoan.getTitleId());
+        Title exists = titleDao.get(newLoan.getLoanid().getTitleId());
         if (exists == null)
-            throw new Exception("No Title found for id " + newLoan.getTitleId());
+            throw new Exception("No Title found for id " + newLoan.getLoanid().getTitleId());
 
 
         loanDao.create(newLoan);
