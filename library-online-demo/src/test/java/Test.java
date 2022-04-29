@@ -1,5 +1,19 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 public class Test {
 
+    public static void main(String[] args) {
+        String jdbcUrl = "jdbc:postgresql://localhost:5432/AcademyJava?useSSL=false&serverTimezone=UTC";
+        String user = "postgres";
+        String password = "password";
 
+        try {
+            Connection myConn = DriverManager.getConnection(jdbcUrl,user,password);
+            System.out.println("connessione al db riuscita");
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
