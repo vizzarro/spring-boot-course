@@ -2,15 +2,26 @@ package org.library.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
+@Entity
 public class Reservation {
 
-    @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
+    @EmbeddedId
+    private ReservationId reservationId;
+
+    @ManyToOne
+    @MapsId("taxCode")
+    private UserLibrary userLibrary;
+
+    @ManyToOne
+    @MapsId("titleId")
+    private Title title;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date creationDate;
-    private String titleId;
-    private String taxCode;
 
     public Reservation() {
         this.creationDate = new Date();
@@ -21,22 +32,6 @@ public class Reservation {
     }
 
     public void setCreationDate(Date creationDate) {
-        if (creationDate != null) this.creationDate = creationDate;
-    }
-
-    public String getTitleId() {
-        return titleId;
-    }
-
-    public void setTitleId(String titleId) {
-        this.titleId = titleId;
-    }
-
-    public String getTaxCode() {
-        return taxCode;
-    }
-
-    public void setTaxCode(String taxCode) {
-        this.taxCode = taxCode;
+        this.creationDate = creationDate;
     }
 }
