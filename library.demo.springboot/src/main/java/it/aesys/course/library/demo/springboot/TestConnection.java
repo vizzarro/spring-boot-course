@@ -7,7 +7,7 @@ public class TestConnection {
     public static void main(String[] args) {
         String jdbcUrl="jdbc:postgresql://localhost:5432/AcademyJava";
         String user="postgres";
-        String password="andrea";
+        String password="admin";
 
         try {
             Connection conn= DriverManager.getConnection(jdbcUrl,user,password );
