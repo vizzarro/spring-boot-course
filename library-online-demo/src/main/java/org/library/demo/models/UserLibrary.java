@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.lang.invoke.SerializedLambda;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,17 +22,11 @@ public class UserLibrary {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToMany
-    @JoinTable(name = "reservation",
-            joinColumns=@JoinColumn(name="tax_code"),
-            inverseJoinColumns=@JoinColumn(name="title_id"))
-    private List<Title> titlesR;
+    @OneToMany(mappedBy = "reservationId.taxCode")
+    private List<Reservation> reservations;
 
-    @ManyToMany
-    @JoinTable(name = "loan",
-            joinColumns=@JoinColumn(name="tax_code"),
-            inverseJoinColumns=@JoinColumn(name="title_id"))
-    private List<Title> titlesL;
+    @OneToMany(mappedBy = "reservationId.taxCode")
+    private List<Loan> loans;
 
     public UserLibrary() {
     }
@@ -66,21 +61,36 @@ public class UserLibrary {
         this.taxCode = taxCode;
     }
 
-    public List<Title> getTitlesR() {
-        return titlesR;
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 
-    public void setTitlesR(List<Title> titlesR) {
-        this.titlesR = titlesR;
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
-    public List<Title> getTitlesL() {
-        return titlesL;
+    public List<Loan> getLoans() {
+        return loans;
     }
 
-    public void setTitlesL(List<Title> titlesL) {
-        this.titlesL = titlesL;
+    public void setLoans(List<Loan> loans) {
+        this.loans = loans;
     }
 
+    public void addReservation(Reservation reservation){
+        if(null == reservations){
+            reservations = new ArrayList<>();
+        }
+
+        reservations.add(reservation);
+    }
+
+    public void addLoans(Loan loan){
+        if(null == loans){
+            loans = new ArrayList<>();
+        }
+
+        loans.add(loan);
+    }
 
 }
