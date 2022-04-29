@@ -17,8 +17,11 @@ public class TitleServiceImpl implements GenericService<TitleDto, String> {
 
     @Autowired
     private TitleDao titleDao;
-    @Autowired
     private ModelMapper modelMapper;
+
+    public TitleServiceImpl(){
+        this.modelMapper = new ModelMapper();
+    }
 
     @Override
     public TitleDto add(TitleDto dtoObject) throws ServiceException {

@@ -15,7 +15,7 @@ public class UserLibraryController {
     @Autowired
     private UserServiceImpl userServiceImpl;
 
-    @GetMapping
+    @GetMapping("{id}")
     public ResponseEntity<UserLibraryDto> getUser(@PathVariable String id) throws ServiceException {
         UserLibraryDto response = userServiceImpl.get(id);
         return ResponseEntity.ok().body(response);

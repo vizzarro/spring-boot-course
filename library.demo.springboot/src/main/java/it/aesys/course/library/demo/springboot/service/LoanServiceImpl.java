@@ -14,8 +14,12 @@ import org.springframework.stereotype.Service;
 public class LoanServiceImpl implements GenericService<LoanDto, LoanDto>{
     @Autowired
     private LoanDao loanDao;
-    @Autowired
+
     private ModelMapper modelMapper;
+
+    public LoanServiceImpl(){
+        this.modelMapper = new ModelMapper();
+    }
 
     @Override
     public LoanDto add(LoanDto dtoObject) throws ServiceException {

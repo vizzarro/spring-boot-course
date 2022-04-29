@@ -2,6 +2,7 @@ package it.aesys.course.library.demo.springboot.controller;
 
 import it.aesys.course.library.demo.springboot.errors.ApiError;
 import it.aesys.course.library.demo.springboot.service.exception.ServiceException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,6 +20,6 @@ public class LibraryControllerAdvice {
         error.setPath(ex.getPath());
         error.getErrors().addAll(ex.getErrors());
 
-        return ResponseEntity.status(ex.getStatusCode()).body(error);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 }

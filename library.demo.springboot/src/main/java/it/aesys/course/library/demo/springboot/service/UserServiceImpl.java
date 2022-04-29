@@ -14,8 +14,11 @@ public class UserServiceImpl implements GenericService<UserLibraryDto, String> {
 
     @Autowired
     private UserLibraryDao userDao;
-    @Autowired
     private ModelMapper modelMapper;
+
+    public UserServiceImpl(){
+        this.modelMapper = new ModelMapper();
+    }
 
     @Override
     public UserLibraryDto add(UserLibraryDto dtoObject) throws ServiceException {

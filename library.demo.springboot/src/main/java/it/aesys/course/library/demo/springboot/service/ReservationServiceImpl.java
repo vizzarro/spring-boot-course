@@ -14,8 +14,12 @@ import org.springframework.stereotype.Service;
 public class ReservationServiceImpl implements GenericService<ReservationDto, ReservationDto> {
     @Autowired
     private ReservationDao reservationDao;
-    @Autowired
+
     private ModelMapper modelMapper;
+
+    public ReservationServiceImpl(){
+        this.modelMapper = new ModelMapper();
+    }
 
     @Override
     public ReservationDto add(ReservationDto dtoObject) throws ServiceException {

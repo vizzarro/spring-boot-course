@@ -5,5 +5,5 @@ database-setting:
   schema: "AcademyJava"
   driver: "org.postgresql.Driver"
   credentials:
-    username:
-    password:
+    username: "postgres"
+    password: "naomi92"
