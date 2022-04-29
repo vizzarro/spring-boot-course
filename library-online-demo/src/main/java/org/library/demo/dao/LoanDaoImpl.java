@@ -4,7 +4,7 @@ import org.library.demo.models.Loan;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
-
+/*
 @Repository
 public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
 
@@ -60,5 +60,5 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
 
         statement.executeUpdate();
     }
-}
+}*/
 

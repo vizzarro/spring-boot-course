@@ -4,7 +4,7 @@ import java.sql.*;
 
 import org.library.demo.models.Reservation;
 import org.springframework.stereotype.Repository;
-
+/*
 @Repository
 public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Reservation> implements ReservationDao {
 
@@ -60,4 +60,4 @@ public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Reservation> im
 
         statement.executeUpdate();
     }
-}
+}*/
