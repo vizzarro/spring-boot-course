@@ -20,14 +20,13 @@ public class Book implements Title {
     public Book() {
     }
 
-    public Book(String name) {
+    public Book(String name, String titleId) {
         this.name = name;
+        this.titleId = titleId;
     }
 
     @OneToMany(mappedBy =  "reservationId.titleId")
     private List<Reservation> reservations;
-
-
 
     @OneToMany(mappedBy =  "loanId.titleId")
     private List<Loan> loans;

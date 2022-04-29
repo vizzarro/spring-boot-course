@@ -12,6 +12,30 @@ public class Loan {
     @EmbeddedId
     private LoanId loanid;
 
+    public LoanId getLoanid() {
+        return loanid;
+    }
+
+    public void setLoanid(LoanId loanid) {
+        this.loanid = loanid;
+    }
+
+    public UserLibrary getUserLibrary() {
+        return userLibrary;
+    }
+
+    public void setUserLibrary(UserLibrary userLibrary) {
+        this.userLibrary = userLibrary;
+    }
+
+    public Title getTitle() {
+        return title;
+    }
+
+    public void setTitle(Title title) {
+        this.title = title;
+    }
+
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
     @MapsId("taxCode")
