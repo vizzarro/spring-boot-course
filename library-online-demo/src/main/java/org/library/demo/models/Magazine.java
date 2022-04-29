@@ -13,7 +13,7 @@ public class Magazine implements Title {
     @Column(name = "title_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String titleId;
-
+// Ho
     @Column(name = "name")
     private String name;
 
