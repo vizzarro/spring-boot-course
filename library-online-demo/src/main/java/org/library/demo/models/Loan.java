@@ -12,12 +12,16 @@ public class Loan {
     @EmbeddedId
     private LoanId loanid;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
     @MapsId("taxCode")
+    @JoinColumn(name = "tax_code")
     private UserLibrary userLibrary;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
     @MapsId("titleId")
+    @JoinColumn(name = "title_id")
     private Title title;
 
     @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
@@ -27,7 +31,6 @@ public class Loan {
     public Loan() {
         this.creationDate = new Date();
     }
-
 
     public Date getCreationDate() {
         return creationDate;

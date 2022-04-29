@@ -13,6 +13,8 @@ public class LoanId {
         this.taxCode = taxCode;
     }
 
+    public  LoanId() { }
+
     public String getTitleId() {
         return titleId;
     }

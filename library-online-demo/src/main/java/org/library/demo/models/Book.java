@@ -2,6 +2,7 @@ package org.library.demo.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,11 +24,11 @@ public class Book implements Title {
         this.name = name;
     }
 
-    @OneToMany
-    @JoinTable(name = "reservation",
-            joinColumns = @JoinColumn(name = "tax_code"),
-            inverseJoinColumns = @JoinColumn(name = "title_id"))
+    @OneToMany(mappedBy =  "reservation.titleId")
     private List<Reservation> reservations;
+
+    @OneToMany(mappedBy =  "loan.titleId")
+    private List<Loan> loans;
 
 
     @Override
