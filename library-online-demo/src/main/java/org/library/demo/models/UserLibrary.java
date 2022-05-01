@@ -1,14 +1,24 @@
 package org.library.demo.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
+@Table(name = "user")
 public class UserLibrary {
+  @Column(name = "first_name")
   private String firstName;
+  @Column(name = "last_name")
   private String lastName;
+  @Id
+  @Column(name = "tax_code")
   private String taxCode;
-  private List<Title> titleMockedDb;
-  private List<Reservation> mockedTable;
+ // private List<Title> titleMockedDb;
+  //private List<Reservation> mockedTable;
 
   public UserLibrary() { }
 
@@ -16,8 +26,8 @@ public class UserLibrary {
     this.firstName = firstName;
     this.lastName = lastName;
     this.taxCode = taxCode;
-    this.titleMockedDb = new ArrayList<>();
-    this.mockedTable = new ArrayList<>();
+   // this.titleMockedDb = new ArrayList<>();
+    //this.mockedTable = new ArrayList<>();
   }
 
   public String getFirstName() {

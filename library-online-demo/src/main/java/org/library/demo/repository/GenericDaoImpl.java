@@ -1,47 +1,39 @@
 package org.library.demo.repository;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Repository;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
 
 @Repository
 public abstract class GenericDaoImpl<T,K> implements GenericDao<T,K> {
-    private Connection conn;
+    private SessionFactory factory;
 
-    public  Connection getConnection() {
-Connection conn=null;
-        try {
-            Class.forName("org.postgresql.Driver");
+    public SessionFactory getSessionFactory() {
+        //creazione Session factory
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(UserLibrary.class)
+                .buildSessionFactory();
 
-            String url = "jdbc:postgresql://localhost:5432/AcademyJava";
-            Properties propr = new Properties();
-            propr.setProperty("user", "postgres");
-            propr.setProperty("password", "andrea");
-
-             conn = DriverManager.getConnection(url, propr);
-
-        } catch (ClassNotFoundException e) {
-            System.out.println("DB connection Error");
-        }  catch (SQLException e) {
-            System.out.println("DB connection Error");
-        }
-        return conn;
+return factory;
     }
 
 
 
-    public void deleteConnection(Connection conn)  {
-        if(null!=conn){
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            conn = null;
+    public void deleteSession(SessionFactory session)  {
+        if(null!=session){
+            session.close();
+            session = null;
         }
+    }
+
+    public SessionFactory getFactory() {
+        return factory;
+    }
+
+    public void setFactory(SessionFactory factory) {
+        this.factory = factory;
     }
 
 }

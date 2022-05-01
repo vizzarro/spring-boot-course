@@ -22,79 +22,19 @@ public class TitleDao extends GenericDaoImpl<Title,String> {
     public TitleDao() {
     }
 
+
     @Override
     public Title getById(String id) {
-        Title title = null;
-        try {
-                conn = this.getConnection();
-
-            String query = "SELECT * FROM title WHERE title_id = ? ";
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                if (rs.getString("type").equals("BOOK")) {
-                    title=(new Book(rs.getString("name"), rs.getString("title_id")));
-                } else if (rs.getString("type").equals("MAGAZINE")) {
-                    title = (new Magazine(rs.getString("name"), rs.getString("title_id")));
-                }
-
-            }
-            rs.close();
-            ps.close();
-        } catch (SQLException e) {
-            System.out.println("DB Error");
-        } finally {
-
-                this.deleteConnection(conn);
-
-        }
-        return title;
+        return null;
     }
 
     @Override
-    public void add(Title entity)  {
-        try {
-                conn = this.getConnection();
+    public void add(Title entity) throws ClassNotFoundException, SQLException {
 
-            String query = "INSERT INTO title(title_id, name,type) VALUES (?,?,?);";
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, entity.getTitleId());
-            ps.setString(2, entity.getName());
-            ps.setString(3, entity.getType());
-            ResultSet rs = ps.executeQuery();
-
-            rs.close();
-            ps.close();
-        } catch (SQLException e) {
-            System.out.println("DB Error");
-        } finally {
-
-                this.deleteConnection(conn);
-
-        }
     }
-
 
     @Override
     public void delete(String id) throws ClassNotFoundException, SQLException, DaoException {
-        try {
-            conn = this.getConnection();
-
-            String query = "DELETE FROM title WHERE title_id=?;";
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, id);
-            ResultSet rs = ps.executeQuery();
-
-            rs.close();
-            ps.close();
-        } catch (SQLException e) {
-            System.out.println("DB  Error");
-        } finally {
-
-                this.deleteConnection(conn);
-
-        }
 
     }
 
@@ -102,6 +42,4 @@ public class TitleDao extends GenericDaoImpl<Title,String> {
     public Title update(String id, Title updated) {
         return null;
     }
-
-
 }
