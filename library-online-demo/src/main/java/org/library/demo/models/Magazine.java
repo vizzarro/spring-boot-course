@@ -1,9 +1,21 @@
 package org.library.demo.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "title")
 public class Magazine implements Title {
+  @Column(name = "name")
   private String name;
+  @Id
+  @Column(name = "title_id")
   private String titleId;
+  @Column(name = "lending_time")
   private int lendingTime = 10;
+  @Column(name = "type")
   private  String type="MAGAZINE";
 
   public Magazine() { }
@@ -26,7 +38,7 @@ public class Magazine implements Title {
     return name;
   }
 
-  @Override
+
   public int getLendingTime() {
     return lendingTime;
   }

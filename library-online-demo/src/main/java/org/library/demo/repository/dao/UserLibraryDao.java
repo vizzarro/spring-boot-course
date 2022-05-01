@@ -15,13 +15,31 @@ public class UserLibraryDao extends GenericDaoImpl<UserLibrary, String> {
 
     @Override
     public UserLibrary getById(String id) {
-        return null;
+        UserLibrary user =null;
+        Session session = getSessionFactory().getCurrentSession();
+
+        try {
+            //inizio transazione
+            session.beginTransaction();
+
+            // query che restituisce tutta la tabella
+            user = session.get(UserLibrary.class, id);
+
+            //commit
+            session.getTransaction().commit();
+            System.out.println("commit effettuato");
+
+        }finally {
+            deleteSession(getSessionFactory());
+        }
+
+        return user;
     }
 
     @Override
     public void add(UserLibrary entity) throws ClassNotFoundException, SQLException {
-        Session session = getSessionFactory().getCurrentSession();
 
+        Session session = getSessionFactory().getCurrentSession();
         try {
 
 
@@ -48,11 +66,48 @@ public class UserLibraryDao extends GenericDaoImpl<UserLibrary, String> {
 
     @Override
     public void delete(String id) throws ClassNotFoundException, SQLException, DaoException {
+        UserLibrary user =null;
+        Session session = getSessionFactory().getCurrentSession();
 
+        try {
+            //inizio transazione
+            session.beginTransaction();
+
+            // query che restituisce tutta la tabella
+            user = session.get(UserLibrary.class, id);
+session.delete(user);
+            //commit
+            session.getTransaction().commit();
+            System.out.println("delete succesfull");
+
+        }finally {
+            deleteSession(getSessionFactory());
+        }
     }
+
 
     @Override
     public UserLibrary update(String id, UserLibrary updated) {
-        return null;
+        UserLibrary user =null;
+        Session session = getSessionFactory().getCurrentSession();
+
+        try {
+            //inizio transazione
+            session.beginTransaction();
+
+            // query che restituisce tutta la tabella
+            user = session.get(UserLibrary.class, id);
+            user.setFirstName(updated.getFirstName());
+            user.setLastName(updated.getLastName());
+
+            //commit
+            session.getTransaction().commit();
+            System.out.println("commit effettuato");
+
+        }finally {
+            deleteSession(getSessionFactory());
+        }
+
+        return user;
     }
 }

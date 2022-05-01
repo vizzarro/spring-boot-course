@@ -2,6 +2,9 @@ package org.library.demo.repository;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.library.demo.models.Book;
+import org.library.demo.models.Magazine;
+import org.library.demo.models.Title;
 import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +17,8 @@ public abstract class GenericDaoImpl<T,K> implements GenericDao<T,K> {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(UserLibrary.class)
+                .addAnnotatedClass(Book.class)
+                .addAnnotatedClass(Magazine.class)
                 .buildSessionFactory();
 
 return factory;
