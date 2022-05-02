@@ -18,7 +18,7 @@ public class PersonServiceImpl implements PersonService {
     private ModelMapper modelMapper;
 
     @Autowired
-    public PersonServiceImpl(PersonRepository repository, ModelMapper modelMapper) {
+    public PersonServiceImpl(PersonRepository repository) {
         this.modelMapper = new ModelMapper();
     }
 
