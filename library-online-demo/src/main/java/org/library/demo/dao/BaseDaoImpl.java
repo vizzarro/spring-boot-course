@@ -39,7 +39,7 @@ public abstract class BaseDaoImpl<T, K> implements BaseDao<T, K> {
         }
     }
 
-    public static Session getSession(){
+    public static SessionFactory getFactory(){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Book.class)
@@ -49,6 +49,6 @@ public abstract class BaseDaoImpl<T, K> implements BaseDao<T, K> {
                 .addAnnotatedClass(UserLibrary.class)
                 .buildSessionFactory();
 
-        return factory.getCurrentSession();
+        return factory;
     }
 }
