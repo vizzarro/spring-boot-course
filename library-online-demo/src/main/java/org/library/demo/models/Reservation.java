@@ -29,6 +29,11 @@ public class Reservation {
         this.creationDate = new Date();
     }
 
+    public Reservation(UserLibrary userLibrary, Title title) {
+        this.userLibrary = userLibrary;
+        this.title = title;
+    }
+
     public Date getCreationDate() {
         return creationDate;
     }
