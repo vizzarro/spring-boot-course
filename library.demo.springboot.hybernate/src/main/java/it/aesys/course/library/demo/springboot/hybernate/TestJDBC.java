@@ -9,23 +9,14 @@ import org.hibernate.cfg.Configuration;
 public class TestJDBC {
 
     public static void main(String[] args) {
-        SessionFactory sessionFactory = new Configuration().addAnnotatedClass(UserLibrary.class).configure("hibernate.cfg.xml").buildSessionFactory();
+
         try {
-
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
             System.out.println("Ciao!");
-
-            Session session = sessionFactory.getCurrentSession();
-            session.beginTransaction();
-            UserLibrary user = new UserLibrary();
-            user.setFirstName("Nicola");
-            user.setId("48fnf4834f");
-            user.setLastName("Rossi");
-            session.save(user);
-            session.getTransaction().commit();
         } catch (HibernateException exception) {
             System.out.println("Not succesful!");
-        }finally{
-            sessionFactory.close();
+
         }
+
     }
 }
