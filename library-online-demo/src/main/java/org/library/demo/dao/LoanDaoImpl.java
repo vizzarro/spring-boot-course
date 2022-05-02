@@ -1,17 +1,40 @@
 package org.library.demo.dao;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.library.demo.models.Loan;
+
+import org.library.demo.models.LoanId;
+import org.library.demo.models.Title;
+import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
 @Repository
-public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
+public class LoanDaoImpl extends BaseDaoImpl<Loan, LoanId> implements LoanDao {
 
     @Override
-    public Loan get(Loan loan) throws SQLException {
-        return null;
+    public Loan get(LoanId loanId) throws SQLException {
+        SessionFactory factory = getFactory();
+        Session session = factory.getCurrentSession();
+        Loan loan = null;
+        try {
+            session.beginTransaction();
+            loan = session.get(Loan.class, loanId.getTaxCode());
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+            factory.close();
+            if(loan != null){
+                return loan;
+            } else{
+                return null;
+            }
+        }
     }
+
+
         /**
         Connection conn = super.connect();
         PreparedStatement statement = conn.prepareStatement("SELECT * FROM LOANS WHERE TITLE_ID=? AND TAX_CODE=?");
@@ -31,7 +54,18 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
          */
 
     @Override
-    public void create(Loan l) throws SQLException {
+    public void create(Loan loan) throws SQLException {
+        SessionFactory factory = getFactory();
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+            session.save(loan);
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+            factory.close();
+        }
     }
 
         /**
@@ -51,7 +85,18 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
 
 
     @Override
-    public void delete(Loan loan) throws SQLException {
+    public void delete(LoanId loanId) throws SQLException {
+        SessionFactory factory = getFactory();
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+            session.delete(session.get(Loan.class, loanId.getTaxCode()));
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+            factory.close();
+        }
     }
         /**
         Connection conn = super.connect();
@@ -65,7 +110,18 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
 
     @Override
     public void update(Loan updated) throws SQLException {
-
+        SessionFactory factory = getFactory();
+        Session session = factory.getCurrentSession();
+        try {
+            session.beginTransaction();
+            Loan toUpdate = session.get(Loan.class, updated.getLoanid().getTaxCode());
+            toUpdate.setLoanid(new LoanId(updated.getLoanid().getTitleId() , updated.getLoanid().getTaxCode()));
+            toUpdate.setCreationDate(updated.getCreationDate());
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+            factory.close();
+        }
     }
     /**
      Connection conn = super.connect();
