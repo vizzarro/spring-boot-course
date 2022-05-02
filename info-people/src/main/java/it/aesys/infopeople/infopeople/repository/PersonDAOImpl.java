@@ -1,7 +1,6 @@
 package it.aesys.infopeople.infopeople.repository;
 
 import it.aesys.infopeople.infopeople.model.Person;
-import it.aesys.infopeople.infopeople.model.Persons;
 import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import it.aesys.infopeople.infopeople.model.errors.ErrorModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,15 +39,11 @@ public class PersonDAOImpl implements PersonDAO {
 
     @Override
     public void deletePerson(String taxCode) throws DaoException{
-        Person delPers = null;
-        for (Person pers : persons) {
-            if (pers.getTaxCode().equals(taxCode)) {
-                delPers = pers;
-            }
-        }
-        if (delPers != null) {
-            persons.remove(delPers);
+        Person person = null;
+        person = entityManager.find(Person.class, taxCode);
 
+        if (person != null) {
+            entityManager.remove(person);
         }else {
             DaoException de = new DaoException();
             de.setStatusCode(HttpStatus.NOT_FOUND.value());
