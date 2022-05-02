@@ -16,6 +16,7 @@ public abstract class BaseDaoImpl<T, K> implements BaseDao<T, K> {
     private static final String PWD = "password";
     private static final String DRIVER_NAME = "org.postgresql.Driver";
     protected Connection connection = null;
+    /**
 
     @Override
     public Connection connect() {
@@ -35,10 +36,10 @@ public abstract class BaseDaoImpl<T, K> implements BaseDao<T, K> {
         if (connection != null) {
             try {
                 connection.close();
-            } catch (SQLException e) {/*Do Nothing*/}
+            } catch (SQLException e) { //Do Nothing//}
         }
     }
-
+*/
     public static SessionFactory getFactory(){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")

@@ -8,6 +8,6 @@ public interface TitleService {
   Title getTitle(String id) throws SQLException;
   void addTitle(Title newTitle) throws SQLException;
   void deleteTitle(String id) throws SQLException;
-  Title updateTitle(Title updated) throws SQLException;
+  void updateTitle(Title updated) throws SQLException;
 
 }

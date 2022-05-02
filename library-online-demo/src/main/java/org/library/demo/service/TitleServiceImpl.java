@@ -34,8 +34,8 @@ public class TitleServiceImpl implements TitleService {
     }
 
     @Override
-    public Title updateTitle(Title updated) throws SQLException {
-        return titleDao.update(updated);
+    public void updateTitle(Title updated) throws SQLException {
+        titleDao.update(updated);
     }
 
 }

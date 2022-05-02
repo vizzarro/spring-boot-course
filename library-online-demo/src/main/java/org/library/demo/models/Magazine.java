@@ -17,6 +17,9 @@ public class Magazine implements Title {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "type")
+    private static String TYPE = "MAGAZINE";
+
     private static int lendingTime = 10;
 
     @OneToMany(mappedBy = "reservationId.titleId")
@@ -57,6 +60,10 @@ public class Magazine implements Title {
         this.titleId = titleId;
     }
 
+    public String getTYPE(){
+        return TYPE;
+    }
+
     public List<Reservation> getReservations() {
         return reservations;
     }
@@ -64,6 +71,7 @@ public class Magazine implements Title {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
+
     public void addReservation(Reservation tempReservation) {
 
         if (null == reservations) {

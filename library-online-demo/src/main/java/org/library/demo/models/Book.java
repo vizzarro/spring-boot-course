@@ -15,6 +15,10 @@ public class Book implements Title {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "type")
+    private static String TYPE = "BOOK";
+
     private static int lendingTime = 30;
 
     public Book() {
@@ -48,6 +52,10 @@ public class Book implements Title {
 
     public void setTitleId(String titleId) {
         this.titleId = titleId;
+    }
+
+    public String getTYPE(){
+        return TYPE;
     }
 
     public List<Reservation> getReservations() {
