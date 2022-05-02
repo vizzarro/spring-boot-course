@@ -78,7 +78,10 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
+    @Transactional
     public Person getPerson(String taxCode) throws DaoException{
+
+        Person thePerson = entityManager.find(Person.class, taxCode);
         for (Person pers : persons) {
             if (pers.getTaxCode().equals(taxCode)) {
                 return pers;
@@ -86,8 +89,8 @@ public class PersonDAOImpl implements PersonDAO {
         }
         DaoException de = new DaoException();
         de.setStatusCode(HttpStatus.NOT_FOUND.value());
-        throw de;    }
-
+        throw de;
+}
 
     @Override
     @Transactional
