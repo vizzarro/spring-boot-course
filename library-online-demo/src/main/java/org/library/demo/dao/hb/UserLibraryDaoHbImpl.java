@@ -1,9 +1,11 @@
-package org.library.demo.dao;
+package org.library.demo.dao.hb;
 
 import java.sql.SQLException;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.library.demo.dao.BaseDaoImpl;
+import org.library.demo.dao.UserLibraryDao;
 import org.library.demo.models.Title;
 import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package org.library.demo.dao.hb;
+package org.library.demo.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
