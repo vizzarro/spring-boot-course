@@ -2,6 +2,7 @@ package org.library.demo.service;
 
 import org.library.demo.dao.*;
 import org.library.demo.models.Loan;
+import org.library.demo.models.LoanId;
 import org.library.demo.models.Title;
 import org.library.demo.models.UserLibrary;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,13 +48,13 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
-    public Loan getLoan(String id) throws SQLException {
-        return loanDao.get(id);
+    public Loan getLoan(Loan id) throws SQLException {
+        return loanDao.get(id.getLoanid());
     }
 
     @Override
-    public Loan deleteLoan(String id) throws SQLException {
-        this.loanDao.delete(id);
+    public Loan deleteLoan(Loan id) throws SQLException {
+        this.loanDao.delete(id.getLoanid());
         return null;
     }
 

@@ -46,12 +46,12 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public Reservation getReservation(Reservation id) throws SQLException {
-        return reservationDao.get(id);
+        return reservationDao.get(id.getReservationId().getTaxCode());
     }
 
     @Override
     public void deleteReservation(Reservation id) throws SQLException {
-        this.reservationDao.delete(id);
+        this.reservationDao.delete(id.getReservationId().getTaxCode());
     }
 
     @Override
