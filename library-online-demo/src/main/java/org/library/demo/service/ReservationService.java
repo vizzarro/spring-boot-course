@@ -11,4 +11,6 @@ public interface ReservationService {
 
     void deleteReservation(Reservation id) throws SQLException;
 
+    void updateReservation(Reservation reservation) throws SQLException;
+
 }

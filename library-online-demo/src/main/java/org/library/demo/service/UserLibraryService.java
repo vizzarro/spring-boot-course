@@ -11,6 +11,6 @@ public interface UserLibraryService {
 
     void deleteUserLibrary (String id) throws SQLException;
 
-    UserLibrary updateUserLibrary(UserLibrary updated) throws SQLException;
+    void updateUserLibrary(UserLibrary updated) throws SQLException;
 
 }

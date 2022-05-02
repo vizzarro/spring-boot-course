@@ -53,4 +53,9 @@ public class ReservationServiceImpl implements ReservationService {
     public void deleteReservation(Reservation id) throws SQLException {
         this.reservationDao.delete(id);
     }
+
+    @Override
+    public void updateReservation(Reservation updated) throws SQLException {
+        this.reservationDao.update(updated);
+    }
 }

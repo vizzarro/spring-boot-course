@@ -29,21 +29,21 @@ public class UserLibraryServiceImpl implements UserLibraryService {
         if (!StringUtils.hasLength(newUserLibrary.getTaxCode()))
             throw new Exception("New UserLibrary must have a valid tax code!");
 
-        dao.create(newUserLibrary);
+        this.dao.create(newUserLibrary);
     }
 
     @Override
     public UserLibrary getUserLibrary(String id) throws SQLException {
-        return dao.get(id);
+        return this.dao.get(id);
     }
 
     @Override
     public void deleteUserLibrary(String id) throws SQLException {
-        dao.delete(id);
+        this.dao.delete(id);
     }
 
     @Override
-    public UserLibrary updateUserLibrary(UserLibrary updated) throws SQLException {
-        return dao.update(updated);
+    public void updateUserLibrary(UserLibrary updated) throws SQLException {
+        this.dao.update(updated);
     }
 }

@@ -4,12 +4,15 @@ import org.library.demo.models.Loan;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
-/*
+
 @Repository
 public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
 
     @Override
     public Loan get(Loan loan) throws SQLException {
+        return null;
+    }
+        /**
         Connection conn = super.connect();
         PreparedStatement statement = conn.prepareStatement("SELECT * FROM LOANS WHERE TITLE_ID=? AND TAX_CODE=?");
         statement.setString(1, loan.getTitleId());
@@ -25,9 +28,14 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
         }
         return loan;
     }
+         */
 
     @Override
     public Loan create(Loan l) throws SQLException {
+        return null;
+    }
+
+        /**
         Connection conn = super.connect();
         PreparedStatement statement = conn.prepareStatement("INSERT INTO LOANS VALUES (?,?,?)");
         statement.setString(1, String.valueOf(l.getTitleId()));
@@ -38,21 +46,15 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
 
         return l;
     }
+         */
+
+
+
 
     @Override
-    public Loan update(Loan l) throws SQLException {
-        Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("UPDATE LOANS SET CREATION_DATE = ? WHERE TITLE_ID = ? AND TAX_CODE=?");
-        statement.setDate(1, (Date) l.getCreationDate());
-        statement.setString(2, l.getTitleId());
-        statement.setString(3, l.getTaxCode());
-        statement.executeUpdate();
-
-        return l;
+    public void delete(Loan loan) throws SQLException {
     }
-
-    @Override
-    public void delete(Loan l) throws SQLException {
+        /**
         Connection conn = super.connect();
         PreparedStatement statement = conn.prepareStatement("DELETE FROM LOANS WHERE TITLE_ID = ? AND TAX_CODE = ?");
         statement.setString(1, l.getTitleId());
@@ -60,5 +62,23 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
 
         statement.executeUpdate();
     }
-}*/
+         */
+
+    @Override
+    public void update(Loan updated) throws SQLException {
+
+    }
+    /**
+     Connection conn = super.connect();
+     PreparedStatement statement = conn.prepareStatement("UPDATE LOANS SET CREATION_DATE = ? WHERE TITLE_ID = ? AND TAX_CODE=?");
+     statement.setDate(1, (Date) l.getCreationDate());
+     statement.setString(2, l.getTitleId());
+     statement.setString(3, l.getTaxCode());
+     statement.executeUpdate();
+
+     return l;
+     }
+     */
+}
+
 

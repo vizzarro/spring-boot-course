@@ -5,6 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.library.demo.models.Book;
+import org.library.demo.models.Magazine;
+import org.library.demo.models.Title;
 import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Repository;
 
@@ -13,53 +18,68 @@ public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> impleme
 
     @Override
     public UserLibrary get(String taxCode) throws SQLException {
-        Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("SELECT * FROM USER_LIBRARY WHERE TAX_CODE=?");
-        statement.setString(1, taxCode.toUpperCase());
-        ResultSet resultSet = statement.executeQuery();
-
-        UserLibrary user = null;
-        if(resultSet.next()) {
-
-            user = new UserLibrary();
-            user.setTaxCode(resultSet.getString("tax_code"));
-            user.setFirstName(resultSet.getString("first_name"));
-            user.setLastName(resultSet.getString("last_name"));
+        SessionFactory factory = getFactory();
+        Session session = factory.getCurrentSession();
+        UserLibrary userLibrary = null;
+        try {
+            session.beginTransaction();
+            userLibrary = session.get(UserLibrary.class, taxCode);
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+            factory.close();
+            if(userLibrary != null){
+                return userLibrary;
+            } else{
+                return null;
+            }
         }
-        return user;
     }
 
     @Override
     public String create(UserLibrary user) throws SQLException {
-        Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("INSERT INTO USER_LIBRARY VALUES (?,?,?)");
-        statement.setString(1, user.getTaxCode());
-        statement.setString(2, user.getFirstName());
-        statement.setString(3, user.getLastName());
-        statement.executeUpdate();
+        SessionFactory factory = getFactory();
+        Session session = factory.getCurrentSession();
 
-        return user.getTaxCode();
+        try {
+            session.beginTransaction();
+            session.save(user);
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+            factory.close();
+            return user.getTaxCode();
+        }
     }
 
     @Override
-    public UserLibrary update(UserLibrary user) throws SQLException {
-        Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("UPDATE USER_LIBRARY SET FIRST_NAME = ?," +
-                "LAST_NAME = ? WHERE TAX_CODE = ?");
-        statement.setString(1, user.getFirstName());
-        statement.setString(2, user.getLastName());
-        statement.setString(3, user.getTaxCode());
-        statement.executeUpdate();
-
-        return user;
+    public void update(UserLibrary user) throws SQLException {
+        SessionFactory factory = getFactory();
+        Session session = factory.getCurrentSession();
+        try {
+            session.beginTransaction();
+            Title toUpdate = session.get(Title.class, user.getTaxCode());
+            toUpdate.setTitleId(user.getTaxCode());
+            toUpdate.setName(user.getTaxCode());
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+            factory.close();
+        }
     }
 
     @Override
     public void delete(String taxCode) throws SQLException {
-        Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("DELETE FROM USER_LIBRARY WHERE TAX_CODE = ?");
-        statement.setString(1, taxCode.toUpperCase());
+        SessionFactory factory = getFactory();
+        Session session = factory.getCurrentSession();
 
-        statement.executeUpdate();
+        try {
+            session.beginTransaction();
+            session.delete(session.get(UserLibrary.class, taxCode));
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+            factory.close();
+        }
     }
 }
