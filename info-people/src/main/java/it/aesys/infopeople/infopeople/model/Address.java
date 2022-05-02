@@ -1,14 +1,33 @@
 package it.aesys.infopeople.infopeople.model;
 
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
+@Entity
+@Table(name = "address")
 public class Address {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "road")
     private String road;
+
+    @Column(name = "house_number")
     private String houseNumber;
+
+    @Column(name = "city")
     private String city;
+
+    @Column(name = "region")
     private String region;
+
+    @Column(name = "country")
     private String country;
+
+    @Column(name = "zip_code")
     private String ZIPCode;
 
     public Address() {}
@@ -69,5 +88,18 @@ public class Address {
 
     public void setZIPCode(String ZIPCode) {
         this.ZIPCode = ZIPCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", road='" + road + '\'' +
+                ", houseNumber='" + houseNumber + '\'' +
+                ", city='" + city + '\'' +
+                ", region='" + region + '\'' +
+                ", country='" + country + '\'' +
+                ", ZIPCode='" + ZIPCode + '\'' +
+                '}';
     }
 }
