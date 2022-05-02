@@ -25,11 +25,11 @@ public class TitleDao extends GenericDaoImpl<Title, String> {
     @Override
     public Title get(String id) throws DaoException {
         Title title;
-        try{
+        try {
             Session session = getNewSession();
             session.beginTransaction();
             title = session.get(Title.class, id);
-            if(title == null){
+            if (title == null) {
                 DaoException daoException = new DaoException("Id does not correspond to any User");
                 daoException.setStatusCode(HttpStatus.NOT_FOUND.value());
                 daoException.setPath("/user");
@@ -37,7 +37,7 @@ public class TitleDao extends GenericDaoImpl<Title, String> {
             }
         } catch (HibernateException e) {
             throw new DaoException(e.getMessage());
-        }finally{
+        } finally {
             closeSession();
         }
         return title;
@@ -45,19 +45,31 @@ public class TitleDao extends GenericDaoImpl<Title, String> {
 
     @Override
     public List<Title> getAll() throws DaoException {
-        return null;
+        try {
+            Session session = getNewSession();
+            session.beginTransaction();
+            List<Title> titles = session.createQuery("from Title").getResultList();
+
+            return titles;
+
+
+        } catch (HibernateException e) {
+            throw new DaoException(e.getMessage());
+        } finally {
+            closeSession();
+        }
     }
 
     @Override
     public Title add(Title entity) throws DaoException {
-        try{
+        try {
             Session session = getNewSession();
             session.beginTransaction();
             session.save(entity);
             session.getTransaction().commit();
         } catch (HibernateException e) {
             throw new DaoException(e.getMessage());
-        }finally{
+        } finally {
             closeSession();
         }
         return entity;
@@ -65,11 +77,11 @@ public class TitleDao extends GenericDaoImpl<Title, String> {
 
     @Override
     public void delete(String id) throws DaoException {
-        try{
+        try {
             Session session = getNewSession();
             session.beginTransaction();
             Title title = session.get(Title.class, id);
-            if(title == null){
+            if (title == null) {
                 DaoException daoException = new DaoException("Id does not correspond to any User");
                 daoException.setStatusCode(HttpStatus.NOT_FOUND.value());
                 daoException.setPath("/user");
@@ -79,7 +91,7 @@ public class TitleDao extends GenericDaoImpl<Title, String> {
             session.getTransaction().commit();
         } catch (HibernateException e) {
             throw new DaoException(e.getMessage());
-        }finally{
+        } finally {
             closeSession();
         }
     }
@@ -90,7 +102,7 @@ public class TitleDao extends GenericDaoImpl<Title, String> {
             Session session = getNewSession();
             session.beginTransaction();
             Title title = session.get(Title.class, id);
-            if(!id.equals(entity.getTitleId())){
+            if (!id.equals(entity.getTitleId())) {
                 closeSession();
                 DaoException daoException = new DaoException("Id does not match!");
                 daoException.setStatusCode(HttpStatus.NOT_FOUND.value());

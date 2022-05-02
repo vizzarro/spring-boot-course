@@ -19,7 +19,19 @@ public class ReservationDao extends GenericDaoImpl<Reservation, Integer> {
 
     @Override
     public List<Reservation> getAll() throws DaoException {
-        return null;
+        try {
+            Session session = getNewSession();
+            session.beginTransaction();
+            List<Reservation> reservations = session.createQuery("from Reservation").getResultList();
+
+            return reservations;
+
+
+        } catch (HibernateException e) {
+            throw new DaoException(e.getMessage());
+        } finally {
+            closeSession();
+        }
     }
 
     @Override
