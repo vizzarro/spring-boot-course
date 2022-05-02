@@ -32,7 +32,7 @@ public class ReservationController {
     return ResponseEntity.ok().build();
   }
 
-  @GetMapping
+  @GetMapping("{id}")
   public ResponseEntity<ReservationDto> getReservation(@PathVariable int id) throws ServiceException {
     ReservationDto response = reservationService.get(id);
     return ResponseEntity.ok().body(response);
