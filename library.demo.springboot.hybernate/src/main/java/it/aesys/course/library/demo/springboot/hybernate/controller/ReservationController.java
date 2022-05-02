@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/reservation")
@@ -42,6 +43,11 @@ public class ReservationController {
   public ResponseEntity<ReservationDto> updateReservation(@RequestBody GenericRequest<ReservationDto> request,
                                                           @PathVariable int id) throws ServiceException {
     ReservationDto response = reservationService.update(id, request.getRequestData());
+    return ResponseEntity.ok().body(response);
+  }
+  @GetMapping
+  public ResponseEntity<List<ReservationDto>> getAllReservation() throws ServiceException {
+    List<ReservationDto> response = reservationService.getAll();
     return ResponseEntity.ok().body(response);
   }
 

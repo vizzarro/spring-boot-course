@@ -5,12 +5,15 @@ import it.aesys.course.library.demo.springboot.hybernate.dao.ReservationDao;
 import it.aesys.course.library.demo.springboot.hybernate.dao.exception.DaoException;
 import it.aesys.course.library.demo.springboot.hybernate.dto.ReservationDto;
 import it.aesys.course.library.demo.springboot.hybernate.dto.ReservationIdDto;
+import it.aesys.course.library.demo.springboot.hybernate.dto.UserLibraryDto;
 import it.aesys.course.library.demo.springboot.hybernate.models.Reservation;
+import it.aesys.course.library.demo.springboot.hybernate.models.UserLibrary;
 import it.aesys.course.library.demo.springboot.hybernate.service.exception.ServiceException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,8 +31,20 @@ public class ReservationServiceImpl implements GenericService<ReservationDto, In
 
     @Override
     public List<ReservationDto> getAll() throws ServiceException {
-        return null;
+        List<ReservationDto> reservationDtos=new ArrayList<>();
+        try {
+            for(Reservation temp : reservationDao.getAll()){
+                reservationDtos.add(modelMapper.map(temp,ReservationDto.class));
+            }
+        } catch (DaoException e) {
+            ServiceException serviceException = new ServiceException(e.getMessage());
+            serviceException.setPath(e.getPath());
+            serviceException.setStatusCode(e.getStatusCode());
+            throw serviceException;
+        }
+        return reservationDtos;
     }
+
 
     @Override
     public ReservationDto add(ReservationDto dtoObject) throws ServiceException {
