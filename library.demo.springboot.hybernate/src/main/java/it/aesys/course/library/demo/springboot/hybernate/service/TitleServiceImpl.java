@@ -6,12 +6,15 @@ import it.aesys.course.library.demo.springboot.hybernate.dao.LoanDao;
 import it.aesys.course.library.demo.springboot.hybernate.dao.TitleDao;
 import it.aesys.course.library.demo.springboot.hybernate.dao.exception.DaoException;
 import it.aesys.course.library.demo.springboot.hybernate.dto.TitleDto;
+import it.aesys.course.library.demo.springboot.hybernate.dto.UserLibraryDto;
 import it.aesys.course.library.demo.springboot.hybernate.models.Title;
+import it.aesys.course.library.demo.springboot.hybernate.models.UserLibrary;
 import it.aesys.course.library.demo.springboot.hybernate.service.exception.ServiceException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,8 +33,20 @@ public class TitleServiceImpl implements GenericService<TitleDto, String> {
 
     @Override
     public List<TitleDto> getAll() throws ServiceException {
-        return null;
+        List<TitleDto> titleDtos=new ArrayList<>();
+        try {
+            for(Title temp : titleDao.getAll()){
+                titleDtos.add(modelMapper.map(temp,TitleDto.class));
+            }
+        } catch (DaoException e) {
+            ServiceException serviceException = new ServiceException(e.getMessage());
+            serviceException.setPath(e.getPath());
+            serviceException.setStatusCode(e.getStatusCode());
+            throw serviceException;
+        }
+        return titleDtos;
     }
+
 
     @Override
     public TitleDto add(TitleDto dtoObject) throws ServiceException {
