@@ -39,10 +39,6 @@ public class UserLibraryDao extends GenericDaoImpl<UserLibrary, String> {
             return entity;
     }
 
-    @Override
-    public List<UserLibrary> getAll() throws DaoException {
-        return null;
-    }
 
     @Override
     public UserLibrary add(UserLibrary entity) throws DaoException {
@@ -102,5 +98,26 @@ public class UserLibraryDao extends GenericDaoImpl<UserLibrary, String> {
             closeSession();
         }
         return user;
+    }
+
+    @Override
+    public List<UserLibrary> getAll() throws DaoException {
+        List<UserLibrary> userLibraryList;
+        try {
+            Session session = getNewSession();
+            session.beginTransaction();
+            userLibraryList = session.createQuery("from UserLibrary").getResultList();
+            if (userLibraryList.isEmpty()){
+                DaoException daoException = new DaoException(("the list is empty"));
+                daoException.setStatusCode((HttpStatus.NOT_FOUND.value()));
+                daoException.setPath("/user");
+                throw daoException;
+            }
+        } catch (HibernateException e) {
+            throw new DaoException(e.getMessage());
+        }finally{
+            closeSession();
+        }
+        return userLibraryList;
     }
 }

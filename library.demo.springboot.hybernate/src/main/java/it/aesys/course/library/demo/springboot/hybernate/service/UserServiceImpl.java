@@ -26,10 +26,7 @@ public class UserServiceImpl implements GenericService<UserLibraryDto, String> {
         this.modelMapper = new ModelMapper();
     }
 
-    @Override
-    public List<UserLibraryDto> getAll() throws ServiceException {
-        return null;
-    }
+
 
     @Override
     public UserLibraryDto add(UserLibraryDto dtoObject) throws ServiceException {
@@ -77,5 +74,10 @@ public class UserServiceImpl implements GenericService<UserLibraryDto, String> {
             serviceException.setStatusCode(e.getStatusCode());
             throw serviceException;
         }
+    }
+
+    @Override
+    public List<UserLibraryDto> getAll() throws ServiceException {
+        return null;
     }
 }
