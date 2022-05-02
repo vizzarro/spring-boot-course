@@ -10,4 +10,6 @@ public interface Title {
 
     void setName(String s);
 
+    String getTYPE();
+
 }

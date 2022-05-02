@@ -9,12 +9,12 @@ public interface BaseDao<T, K> {
 
     K create(T obj) throws SQLException;
 
-    T update(T obj) throws SQLException;
+    void update(T obj) throws SQLException;
 
     void delete(K obj) throws SQLException;
 
-    Connection connect() throws ClassNotFoundException;
+    //Connection connect() throws ClassNotFoundException;
 
-    void disconnect();
+    //void disconnect();
 
 }
