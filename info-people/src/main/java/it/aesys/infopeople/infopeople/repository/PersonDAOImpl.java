@@ -29,34 +29,13 @@ public class PersonDAOImpl implements PersonDAO {
 
     @Override
     public Person addPerson(Person person) {
-        persons.add(person);
-
-        return person;
+        Person p = entityManager.merge(person);
+        return p;
     }
 
     @Override
     public Person updatePerson(Person person, String taxCode) throws  DaoException {
-        if (!taxCode.equals(person.getTaxCode())) {
-            DaoException exception = new DaoException();
-            exception.setStatusCode(HttpStatus.BAD_REQUEST.value());
-            exception.setPath("/people");
-            exception.getErrors().add(new ErrorModel("taxCode", "Tax code not valid"));
-            throw exception;
-        }
-
-        for (Person pers : persons) {
-            if (pers.getTaxCode().equals(taxCode)) {
-                pers.setName(person.getName());
-                pers.setSurname(person.getSurname());
-                pers.setBirthday(person.getBirthday());
-                pers.setAddress(person.getAddress());
-
-                return pers;
-            }
-        }
-        DaoException de = new DaoException();
-        de.setStatusCode(HttpStatus.NOT_FOUND.value());
-        throw de;
+        return addPerson(person);
     }
 
     @Override
