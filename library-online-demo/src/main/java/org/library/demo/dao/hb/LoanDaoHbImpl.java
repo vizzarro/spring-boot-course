@@ -1,18 +1,18 @@
-package org.library.demo.dao;
+package org.library.demo.dao.hb;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.library.demo.dao.BaseDaoImpl;
+import org.library.demo.dao.LoanDao;
 import org.library.demo.models.Loan;
 
 import org.library.demo.models.LoanId;
-import org.library.demo.models.Title;
-import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
 @Repository
-public class LoanDaoImpl extends BaseDaoImpl<Loan, LoanId> implements LoanDao {
+public class LoanDaoHbImpl extends BaseDaoImpl<Loan, LoanId> implements LoanDao {
 
     @Override
     public Loan get(LoanId loanId) throws SQLException {
