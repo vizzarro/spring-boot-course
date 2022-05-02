@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/user")
 public class UserLibraryController {
@@ -36,5 +38,11 @@ public class UserLibraryController {
     public ResponseEntity<Void> removeUser(@PathVariable String id) throws ServiceException {
         userServiceImpl.delete(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<UserLibraryDto>> getAllUser () throws ServiceException{
+        List<UserLibraryDto> response =  userServiceImpl.getAll();
+        return ResponseEntity.ok().body(response);
     }
 }
