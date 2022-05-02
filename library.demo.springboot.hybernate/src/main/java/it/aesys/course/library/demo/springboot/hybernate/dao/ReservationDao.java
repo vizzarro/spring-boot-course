@@ -19,19 +19,23 @@ public class ReservationDao extends GenericDaoImpl<Reservation, Integer> {
 
     @Override
     public List<Reservation> getAll() throws DaoException {
+        List<Reservation> reservationList;
         try {
             Session session = getNewSession();
             session.beginTransaction();
-            List<Reservation> reservations = session.createQuery("from Reservation").getResultList();
-
-            return reservations;
-
-
+            reservationList = session.createQuery("from Reservation").getResultList();
+            if (reservationList.isEmpty()) {
+                DaoException daoException = new DaoException(("the list is empty"));
+                daoException.setStatusCode((HttpStatus.NOT_FOUND.value()));
+                daoException.setPath("/user");
+                throw daoException;
+            }
         } catch (HibernateException e) {
             throw new DaoException(e.getMessage());
         } finally {
             closeSession();
         }
+        return reservationList;
     }
 
     @Override

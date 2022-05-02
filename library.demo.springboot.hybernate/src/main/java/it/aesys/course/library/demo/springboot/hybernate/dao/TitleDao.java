@@ -45,19 +45,23 @@ public class TitleDao extends GenericDaoImpl<Title, String> {
 
     @Override
     public List<Title> getAll() throws DaoException {
+        List<Title> titleList;
         try {
             Session session = getNewSession();
             session.beginTransaction();
-            List<Title> titles = session.createQuery("from Title").getResultList();
-
-            return titles;
-
-
+             titleList = session.createQuery("from Title").getResultList();
+            if (titleList.isEmpty()) {
+                DaoException daoException = new DaoException(("the list is empty"));
+                daoException.setStatusCode((HttpStatus.NOT_FOUND.value()));
+                daoException.setPath("/user");
+                throw daoException;
+            }
         } catch (HibernateException e) {
             throw new DaoException(e.getMessage());
         } finally {
             closeSession();
         }
+        return titleList;
     }
 
     @Override
