@@ -40,6 +40,25 @@ public class ReservationDao extends GenericDaoImpl<Reservation, Integer> {
 
     @Override
     public void delete(Integer id) throws DaoException {
+        Reservation reservation;
+        try{
+            Session session = getNewSession();
+            session.beginTransaction();
+            reservation = session.get(Reservation.class, id);
+
+            if(reservation == null){
+                DaoException daoException = new DaoException("Id does not correspond to any reservation");
+                daoException.setStatusCode(HttpStatus.NOT_FOUND.value());
+                daoException.setPath("/user");
+                throw daoException;
+            }
+            session.delete(reservation);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            throw new DaoException(e.getMessage());
+        }finally{
+            closeSession();
+        }
 
     }
 
