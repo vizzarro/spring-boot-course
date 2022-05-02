@@ -1,10 +1,11 @@
 package it.aesys.infopeople.infopeople.services;
 
 import it.aesys.infopeople.infopeople.dtos.PersonDto;
-import it.aesys.infopeople.infopeople.model.errors.ErrorModel;
+import it.aesys.infopeople.infopeople.model.Person;
 import it.aesys.infopeople.infopeople.repository.PersonRepository;
 import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import it.aesys.infopeople.infopeople.services.exceptions.ServiceException;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +25,13 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public PersonDto createPersonDto(PersonDto personDto) {
-        return modelMapper.toPersonDto(repository.addPerson(modelMapper.toPerson(personDto)));
+        return modelMapper.map(repository.addPerson(modelMapper.map(personDto, Person.class)), PersonDto.class);
     }
 
     @Override
     public PersonDto updatePersonDto(PersonDto personDto, int id) throws ServiceException {
         try {
-            return this.modelMapper.toPersonDto(repository.updatePerson(modelMapper.toPerson(personDto), id));
+            return this.modelMapper.map(repository.updatePerson(modelMapper.map(personDto, Person.class), id), PersonDto.class);
         } catch (DaoException e) {
             ServiceException ex = new ServiceException();
             ex.setPath(e.getPath());
@@ -42,7 +43,7 @@ public class PersonServiceImpl implements PersonService {
         @Override
         public PersonDto getPersonDto (int id) throws ServiceException {
             try {
-                return this.modelMapper.toPersonDto(repository.getPerson(id));
+                return this.modelMapper.map(repository.getPerson(id), PersonDto.class);
             } catch (DaoException e) {
                 ServiceException ex = new ServiceException();
                 ex.setPath(e.getPath());
