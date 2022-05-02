@@ -64,8 +64,23 @@ public class ReservationDao extends GenericDaoImpl<Reservation, Integer> {
 
     @Override
     public Reservation update(Integer id, Reservation entity) throws DaoException {
+        try {
+            Session session = getNewSession();
+            session.beginTransaction();
+            Reservation reservation = session.get(Reservation.class, id);
 
-            return entity;
+            reservation.setTitleId(entity.getTitleId());
+            reservation.setCreationDate(entity.getCreationDate());
+            reservation.setTaxCode(entity.getTaxCode());
+
+            session.save(reservation);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            throw new DaoException(e.getMessage());
+        } finally {
+            closeSession();
+        }
+        return entity;
     }
 
     @Override

@@ -38,7 +38,7 @@ public class ReservationController {
     return ResponseEntity.ok().body(response);
   }
 
-  @PutMapping
+  @PutMapping("{id}")
   public ResponseEntity<ReservationDto> updateReservation(@RequestBody GenericRequest<ReservationDto> request,
                                                           @PathVariable int id) throws ServiceException {
     ReservationDto response = reservationService.update(id, request.getRequestData());
