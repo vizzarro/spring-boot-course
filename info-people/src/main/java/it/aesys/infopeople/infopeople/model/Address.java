@@ -1,17 +1,29 @@
 package it.aesys.infopeople.infopeople.model;
 
-import javax.validation.constraints.Size;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "address")
 public class Address {
-
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "road")
     private String road;
+    @Column(name = "house_number")
     private String houseNumber;
+    @Column(name = "city")
     private String city;
+    @Column(name = "region")
     private String region;
+    @Column(name = "country")
     private String country;
+    @Column(name = "zip_Code")
     private String ZIPCode;
 
-    public Address() {}
+    public Address() {
+    }
 
     public Address(String road, String houseNumber, String city, String region, String country, String ZIPCode) {
 
