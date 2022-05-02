@@ -30,7 +30,7 @@ public class TitleDaoImpl extends BaseDaoImpl<Title, String> implements TitleDao
             if(title != null && "BOOK".equals(title.getTYPE())){
                 return (Book)title;
             }
-            if(title != null && "BOOK".equals(title.getTYPE())){
+            if(title != null && "MAGAZINE".equals(title.getTYPE())){
                 return (Magazine)title;
             }
 
