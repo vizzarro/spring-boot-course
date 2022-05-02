@@ -11,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReservationServiceImpl implements GenericService<ReservationDto, Integer> {
 
@@ -22,6 +24,11 @@ public class ReservationServiceImpl implements GenericService<ReservationDto, In
     public ReservationServiceImpl(){
         this.reservationDao = new ReservationDao();
         this.modelMapper = new ModelMapper();
+    }
+
+    @Override
+    public List<ReservationDto> getAll() throws ServiceException {
+        return null;
     }
 
     @Override

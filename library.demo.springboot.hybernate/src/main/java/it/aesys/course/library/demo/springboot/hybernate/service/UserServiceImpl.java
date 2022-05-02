@@ -11,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements GenericService<UserLibraryDto, String> {
 
@@ -22,6 +24,11 @@ public class UserServiceImpl implements GenericService<UserLibraryDto, String> {
     public UserServiceImpl(){
         this.userDao = new UserLibraryDao();
         this.modelMapper = new ModelMapper();
+    }
+
+    @Override
+    public List<UserLibraryDto> getAll() throws ServiceException {
+        return null;
     }
 
     @Override

@@ -11,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LoanServiceImpl implements GenericService<LoanDto, LoanDto>{
     private LoanDao loanDao;
@@ -22,6 +24,11 @@ public class LoanServiceImpl implements GenericService<LoanDto, LoanDto>{
     public LoanServiceImpl(){
         this.loanDao = new LoanDao();
         this.modelMapper = new ModelMapper();
+    }
+
+    @Override
+    public List<LoanDto> getAll() throws ServiceException {
+        return null;
     }
 
     @Override
