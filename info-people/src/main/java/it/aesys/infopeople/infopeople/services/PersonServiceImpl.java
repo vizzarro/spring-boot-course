@@ -3,6 +3,7 @@ package it.aesys.infopeople.infopeople.services;
 import it.aesys.infopeople.infopeople.dtos.PersonDto;
 import it.aesys.infopeople.infopeople.model.Person;
 import it.aesys.infopeople.infopeople.repository.PersonRepository;
+import it.aesys.infopeople.infopeople.repository.PersonRepositoryDaoImpl;
 import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import it.aesys.infopeople.infopeople.services.exceptions.ServiceException;
 import org.modelmapper.ModelMapper;
@@ -12,14 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonServiceImpl implements PersonService {
 
-
+    @Autowired
     private PersonRepository repository;
     private ModelMapper modelMapper;
 
     @Autowired
     public PersonServiceImpl(PersonRepository repository, ModelMapper modelMapper) {
-        this.repository = repository;
-        this.modelMapper = modelMapper;
+        this.modelMapper = new ModelMapper();
     }
 
 
