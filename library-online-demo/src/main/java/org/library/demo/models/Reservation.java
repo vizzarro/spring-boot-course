@@ -1,52 +1,66 @@
 package org.library.demo.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
+import jakarta.persistence.*;
+
 import java.util.Date;
 
+@Entity
+@Table(name = "reservation")
 public class Reservation {
 //  @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
-  private Date creationDate;
-  private String titleId;
-  private String userTaxCode;
+  @Column(name = "creation_date")
+  private String creationDate;
+
+  @ManyToOne
+  @JoinColumn(name = "tax_code")
+  private UserLibrary userLibrary;
+  @ManyToOne
+  @JoinColumn(name = "title_id")
+  private Book book;
+
+  @EmbeddedId
+  private ReservationKey id = new ReservationKey();
 
   public Reservation() {
   }
 
-  public Reservation(String title_id, String tax_code, java.sql.Date creation_date) {
-    this.creationDate = creation_date;
-    this.titleId = title_id;
-    this.userTaxCode = tax_code;
+  public Reservation(String creationDate, UserLibrary userLibrary, Book book) {
+    this.creationDate = creationDate;
+    this.userLibrary = userLibrary;
+    this.book = book;
   }
 
-  public Reservation(String title_id, String tax_code) {
-    this.titleId = title_id;
-    this.userTaxCode = tax_code;
-  }
-
-
-  public Date getCreationDate() {
+  public String getCreationDate() {
     return creationDate;
   }
 
-  public void setCreationDate(Date creationDate) {
-    if (creationDate != null)
-      this.creationDate = creationDate;
+
+  public void setCreationDate(String creationDate) {
+    this.creationDate = creationDate;
   }
 
-  public String getTitleId() {
-    return titleId;
+  public UserLibrary getUserLibrary() {
+    return userLibrary;
   }
 
-  public void setTitleId(String titleId) {
-    this.titleId = titleId;
+  public void setUserLibrary(UserLibrary userLibrary) {
+    this.userLibrary = userLibrary;
   }
 
-  public String getUserTaxCode() {
-    return userTaxCode;
+  public Book getBook() {
+    return book;
   }
 
-  public void setUserTaxCode(String userTaxCode) {
-    this.userTaxCode = userTaxCode;
+  public void setBook(Book book) {
+    this.book = book;
+  }
+
+  public ReservationKey getId() {
+    return id;
+  }
+
+  public void setId(ReservationKey id) {
+    this.id = id;
   }
 }

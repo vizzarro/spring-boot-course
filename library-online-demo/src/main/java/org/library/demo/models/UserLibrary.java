@@ -1,9 +1,6 @@
 package org.library.demo.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +15,8 @@ public class UserLibrary {
   @Column(name = "tax_code")
   private String taxCode;
  //private List<Title> titleMockedDb;
-  //private List<Reservation> mockedTable;
+ @OneToMany(mappedBy = "userLibrary")
+  private List<Reservation> reservations = new ArrayList<>();
 
   public UserLibrary() { }
 

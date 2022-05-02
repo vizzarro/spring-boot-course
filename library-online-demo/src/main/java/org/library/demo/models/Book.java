@@ -1,12 +1,12 @@
 package org.library.demo.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "title")
+@Table(name = "title1")
 public class Book implements Title {
   @Column(name = "name")
   private String name;
@@ -18,11 +18,22 @@ public class Book implements Title {
   @Column(name = "type")
   private String type="BOOK";
 
+  @OneToMany(mappedBy = "book")
+  private List<Reservation> reservations = new ArrayList<>();
+
   public Book() { }
 
   public Book(String name, String titleId) {
     this.name = name;
     this.titleId = titleId;
+  }
+
+  public List<Reservation> getReservations() {
+    return reservations;
+  }
+
+  public void setReservations(List<Reservation> reservations) {
+    this.reservations = reservations;
   }
 
   public Book(String name) {
