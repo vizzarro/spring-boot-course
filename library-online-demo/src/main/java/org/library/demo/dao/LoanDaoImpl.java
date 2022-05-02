@@ -31,8 +31,7 @@ public class LoanDaoImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
          */
 
     @Override
-    public Loan create(Loan l) throws SQLException {
-        return null;
+    public void create(Loan l) throws SQLException {
     }
 
         /**

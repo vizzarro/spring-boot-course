@@ -11,4 +11,6 @@ public interface LoanService {
 
     Loan deleteLoan(Loan id) throws SQLException;
 
+    void updateLoan(Loan updeted) throws SQLException;
+
 }

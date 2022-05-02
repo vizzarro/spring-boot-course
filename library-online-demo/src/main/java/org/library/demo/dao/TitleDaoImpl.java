@@ -58,7 +58,7 @@ public class TitleDaoImpl extends BaseDaoImpl<Title, String> implements TitleDao
 
 
     @Override
-    public String create(Title title) throws SQLException {
+    public void create(Title title) throws SQLException {
         SessionFactory factory = getFactory();
         Session session = factory.getCurrentSession();
 
@@ -69,7 +69,6 @@ public class TitleDaoImpl extends BaseDaoImpl<Title, String> implements TitleDao
         } finally {
             session.close();
             factory.close();
-            return title.getTitleId();
         }
     }
         /**

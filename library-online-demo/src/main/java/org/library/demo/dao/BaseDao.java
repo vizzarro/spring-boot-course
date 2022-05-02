@@ -7,7 +7,7 @@ public interface BaseDao<T, K> {
 
     T get(K id) throws SQLException;
 
-    K create(T obj) throws SQLException;
+    void create(T obj) throws SQLException;
 
     void update(T obj) throws SQLException;
 

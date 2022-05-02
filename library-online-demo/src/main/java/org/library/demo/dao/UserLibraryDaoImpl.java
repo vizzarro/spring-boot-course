@@ -37,7 +37,7 @@ public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> impleme
     }
 
     @Override
-    public String create(UserLibrary user) throws SQLException {
+    public void create(UserLibrary user) throws SQLException {
         SessionFactory factory = getFactory();
         Session session = factory.getCurrentSession();
 
@@ -48,7 +48,6 @@ public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> impleme
         } finally {
             session.close();
             factory.close();
-            return user.getTaxCode();
         }
     }
 
