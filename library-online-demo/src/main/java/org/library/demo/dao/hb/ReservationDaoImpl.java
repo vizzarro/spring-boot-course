@@ -1,4 +1,4 @@
-package org.library.demo.HibDao;
+package org.library.demo.dao.hb;
 
 
 import org.hibernate.Session;
@@ -10,24 +10,24 @@ import org.springframework.stereotype.Repository;
 import java.sql.SQLException;
 
 @Repository
-public class ReservationDaoImpl extends BaseDaoImpl<String, Reservation> implements ReservationDao {
+public class ReservationDaoImpl extends BaseDaoImpl<Reservation, String> implements ReservationDao {
 
     @Override
-    public String get(Reservation id) {
+    public Reservation get(String id) {
         Session factory = BaseDaoImpl.getFactory().openSession();
         Session session = getFactory().getCurrentSession();
-
+        Reservation reservation = null;
         try {
             session.beginTransaction();
 
-            Reservation reservation = session.get(Reservation.class, id.getReservationId().getTaxCode());
+            reservation = session.get(Reservation.class, id);
             System.out.println("Reservation" + reservation);
 
             session.getTransaction().commit();
 
         } finally {
             BaseDaoImpl.getFactory().close();
-        } return null;
+        } return reservation;
     }
 
     @Override
@@ -81,19 +81,18 @@ public class ReservationDaoImpl extends BaseDaoImpl<String, Reservation> impleme
     }
 
     @Override
-    public void delete(Reservation r) throws SQLException {
+    public void delete(String r) throws SQLException {
 
         Session factory = BaseDaoImpl.getFactory().openSession();
         Session session = getFactory().getCurrentSession();
 
 
         try {
-            int id = 1;
 
             session.beginTransaction();
-            Reservation reservation = session.get(Reservation.class, id);
+            Reservation reservation = session.get(Reservation.class, r);
 
-            if (null != r.getUserLibrary()) {
+            if (null != reservation) {
                 System.out.println("Delete" + reservation);
                 session.delete(reservation);
             }

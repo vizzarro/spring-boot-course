@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/*
 @Repository
-public class UserLibraryDaoHbImpl extends BaseDaoImpl<UserLibrary, String> implements UserLibraryDao {
+public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> implements UserLibraryDao {
 
     @Override
     public UserLibrary get(String taxCode) throws SQLException {
@@ -35,7 +35,7 @@ public class UserLibraryDaoHbImpl extends BaseDaoImpl<UserLibrary, String> imple
     }
 
     @Override
-    public String create(UserLibrary user) throws SQLException {
+    public void create(UserLibrary user) throws SQLException {
         Connection conn = super.connect();
         PreparedStatement statement = conn.prepareStatement("INSERT INTO USER_LIBRARY VALUES (?,?,?)");
         statement.setString(1, user.getTaxCode());
@@ -43,11 +43,11 @@ public class UserLibraryDaoHbImpl extends BaseDaoImpl<UserLibrary, String> imple
         statement.setString(3, user.getLastName());
         statement.executeUpdate();
 
-        return user.getTaxCode();
+        //return user.getTaxCode();
     }
 
     @Override
-    public UserLibrary update(UserLibrary user) throws SQLException {
+    public void update(UserLibrary user) throws SQLException {
         Connection conn = super.connect();
         PreparedStatement statement = conn.prepareStatement("UPDATE USER_LIBRARY SET FIRST_NAME = ?," +
                 "LAST_NAME = ? WHERE TAX_CODE = ?");
@@ -56,7 +56,7 @@ public class UserLibraryDaoHbImpl extends BaseDaoImpl<UserLibrary, String> imple
         statement.setString(3, user.getTaxCode());
         statement.executeUpdate();
 
-        return user;
+        //return user;
     }
 
     @Override
@@ -67,4 +67,4 @@ public class UserLibraryDaoHbImpl extends BaseDaoImpl<UserLibrary, String> imple
 
         statement.executeUpdate();
     }
-}
+}*/

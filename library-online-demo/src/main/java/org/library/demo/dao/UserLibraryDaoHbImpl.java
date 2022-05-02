@@ -1,20 +1,15 @@
 package org.library.demo.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.library.demo.models.Book;
-import org.library.demo.models.Magazine;
 import org.library.demo.models.Title;
 import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> implements UserLibraryDao {
+public class UserLibraryDaoHbImpl extends BaseDaoImpl<UserLibrary, String> implements UserLibraryDao {
 
     @Override
     public UserLibrary get(String taxCode) throws SQLException {
