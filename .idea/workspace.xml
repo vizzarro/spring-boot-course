@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe555a2b-e471-4497-8dfc-ab7c9994aeca" name="Changes" comment="fix import service">
+    <list default="true" id="fe555a2b-e471-4497-8dfc-ab7c9994aeca" name="Changes" comment="Implements PersonDAO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/model/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/FileSystemRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonFileSystemRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/services/PersonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/services/PersonServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/test/java/it/aesys/infopeople/infopeople/InfoPeopleApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/test/java/it/aesys/infopeople/infopeople/InfoPeopleApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonDAOImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650611894074</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Implements PersonDAO">
+      <created>1651506007765</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651506007765</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,6 +205,7 @@
     <MESSAGE value="add model" />
     <MESSAGE value="update PersonService class" />
     <MESSAGE value="fix model mapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix model mapper" />
+    <MESSAGE value="Implements PersonDAO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implements PersonDAO" />
   </component>
 </project>
