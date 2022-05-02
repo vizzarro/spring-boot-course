@@ -2,7 +2,9 @@ package org.library.demo.controller;
 
 import org.library.demo.dtos.LoanDto;
 import org.library.demo.dtos.MapperDto;
+import org.library.demo.dtos.ReservationDto;
 import org.library.demo.models.Loan;
+import org.library.demo.models.Reservation;
 import org.library.demo.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -55,6 +57,14 @@ public class LoanController {
 
         Loan response = service.getLoan(id);
         return ResponseEntity.ok(response);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity<Void> updateLoan(@RequestBody LoanDto loanDto) throws SQLException {
+
+        Loan loan = MapperDto.refactor(loanDto);
+        service.updateLoan(loan);
+        return ResponseEntity.noContent().build();
     }
 
 }

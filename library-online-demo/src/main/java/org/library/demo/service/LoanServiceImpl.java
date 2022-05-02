@@ -47,13 +47,18 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
-    public Loan getLoan(Loan id) throws SQLException {
+    public Loan getLoan(String id) throws SQLException {
         return loanDao.get(id);
     }
 
     @Override
-    public Loan deleteLoan(Loan id) throws SQLException {
+    public Loan deleteLoan(String id) throws SQLException {
         this.loanDao.delete(id);
         return null;
+    }
+
+    @Override
+    public void updateLoan(Loan updeted) throws SQLException {
+        this.loanDao.update(updeted);
     }
 }

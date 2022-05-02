@@ -43,11 +43,10 @@ public class UserLibraryController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<UserLibrary> updateUserLibrary(@RequestBody UserLibraryDto userLibraryDto) throws SQLException {
+    public ResponseEntity<Void> updateUserLibrary(@RequestBody UserLibraryDto userLibraryDto) throws SQLException {
 
         UserLibrary userLibrary = MapperDto.refactor(userLibraryDto);
-
-        UserLibrary response = service.updateUserLibrary(userLibrary);
-        return ResponseEntity.ok(response);
+        service.updateUserLibrary(userLibrary);
+        return ResponseEntity.noContent().build();
     }
 }

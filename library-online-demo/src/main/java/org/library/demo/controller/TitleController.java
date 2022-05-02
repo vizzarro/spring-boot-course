@@ -49,12 +49,11 @@ public class TitleController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<Title> updateTitle(@RequestBody TitleDto titleDto) throws SQLException {
+    public ResponseEntity<Void> updateTitle(@RequestBody TitleDto titleDto) throws SQLException {
 
         Title title = MapperDto.refactor(titleDto);
-
-        Title response = service.updateTitle(title);
-        return ResponseEntity.ok(response);
+        service.updateTitle(title);
+        return ResponseEntity.noContent().build();
     }
 
 

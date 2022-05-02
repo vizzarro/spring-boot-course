@@ -2,7 +2,9 @@ package org.library.demo.controller;
 
 import org.library.demo.dtos.MapperDto;
 import org.library.demo.dtos.ReservationDto;
+import org.library.demo.dtos.TitleDto;
 import org.library.demo.models.Reservation;
+import org.library.demo.models.Title;
 import org.library.demo.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -59,6 +61,14 @@ public class ReservationController {
 
         Reservation response = service.getReservation(id);
         return ResponseEntity.ok(response);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity<Void> updateReservation(@RequestBody ReservationDto reservationDto) throws SQLException {
+
+        Reservation reservation = MapperDto.refactor(reservationDto);
+        service.updateReservation(reservation);
+        return ResponseEntity.noContent().build();
     }
 
 }
