@@ -34,8 +34,9 @@ public class Magazine implements Title {
     public Magazine() {
     }
 
-    public Magazine(String name) {
+    public Magazine(String name, String titleId) {
         this.name = name;
+        this.titleId = titleId;
     }
 
     public void setName(String name) {
