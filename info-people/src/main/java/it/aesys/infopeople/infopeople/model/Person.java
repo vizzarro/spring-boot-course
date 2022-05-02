@@ -1,27 +1,39 @@
 package it.aesys.infopeople.infopeople.model;
 
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
-
+@Entity
+@Table(name = "person")
 public class Person {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "surname")
     private String surname;
+    @Column(name = "birthday")
     private Date birthday;
+    @Column(name = "tax_code")
     private String taxCode;
+    @Column(name = "adress_id")
     private Address address;
 
     public Person() {}
 
-    public Person(String name, String surname, Date birthday, String taxCode, Address address) {
+    public Person(String name, String surname, Date birthday, String taxCode, Address address, int id) {
         this.name = name;
         this.surname = surname;
         this.birthday = birthday;
         this.taxCode = taxCode;
         this.address = address;
+        this.id = id;
     }
 
     public String getName() {
@@ -62,6 +74,14 @@ public class Person {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

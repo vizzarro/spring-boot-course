@@ -2,14 +2,11 @@ package it.aesys.infopeople.infopeople;
 
 import it.aesys.infopeople.infopeople.model.Person;
 import it.aesys.infopeople.infopeople.model.Persons;
-import it.aesys.infopeople.infopeople.repository.PersonFileSystemRepository;
-import it.aesys.infopeople.infopeople.repository.PersonRepository;
 import it.aesys.infopeople.infopeople.repository.exceptions.EmptyFileSystemRepositoryExcepton;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @SpringBootTest

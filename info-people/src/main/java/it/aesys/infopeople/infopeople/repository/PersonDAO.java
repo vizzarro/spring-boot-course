@@ -5,7 +5,7 @@ import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 
 import java.util.List;
 
-public interface PersonRepository {
+public interface PersonDAO {
     Person addPerson(Person person);
     Person updatePerson(Person person, String taxCode) throws DaoException;
     void deletePerson(String taxCode) throws DaoException;

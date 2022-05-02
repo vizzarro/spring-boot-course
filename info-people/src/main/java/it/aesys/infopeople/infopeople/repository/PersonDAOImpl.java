@@ -4,30 +4,21 @@ import it.aesys.infopeople.infopeople.model.Person;
 import it.aesys.infopeople.infopeople.model.Persons;
 import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import it.aesys.infopeople.infopeople.model.errors.ErrorModel;
-import it.aesys.infopeople.infopeople.repository.exceptions.EmptyFileSystemRepositoryExcepton;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
 import java.util.*;
 
 @Repository
 @Profile("devel")
-public class PersonRepositoryImpl implements PersonRepository {
+public class PersonDAOImpl implements PersonDAO {
 
-    private PersonFileSystemRepository fileSystem;
+    private EntityManager entityManager;
+
     private List<Person> persons = new ArrayList<>();
 
-    @Autowired
-    public PersonRepositoryImpl(PersonFileSystemRepository fileSystem) {
-        this.fileSystem = fileSystem;
-        try {
-            persons.addAll(this.fileSystem.unserialize("personsRepository.json", Persons.class).getCollection());
-        } catch (EmptyFileSystemRepositoryExcepton emptyFileSystemRepositoryExcepton) {
-           System.out.println("Warning empty file repository");
-        }
-    }
 
     @Override
     public Person addPerson(Person person) {

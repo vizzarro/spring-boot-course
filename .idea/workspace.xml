@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="fe555a2b-e471-4497-8dfc-ab7c9994aeca" name="Changes" comment="fix import service">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/UserLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/UserLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info-people/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/model/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/FileSystemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonFileSystemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/services/PersonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/services/PersonServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info-people/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info-people/src/test/java/it/aesys/infopeople/infopeople/InfoPeopleApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/test/java/it/aesys/infopeople/infopeople/InfoPeopleApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +44,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="feature/alessio-wHb" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

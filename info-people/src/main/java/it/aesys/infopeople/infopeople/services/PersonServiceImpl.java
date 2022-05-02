@@ -1,8 +1,7 @@
 package it.aesys.infopeople.infopeople.services;
 
 import it.aesys.infopeople.infopeople.dtos.PersonDto;
-import it.aesys.infopeople.infopeople.model.errors.ErrorModel;
-import it.aesys.infopeople.infopeople.repository.PersonRepository;
+import it.aesys.infopeople.infopeople.repository.PersonDAO;
 import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import it.aesys.infopeople.infopeople.services.exceptions.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +11,11 @@ import org.springframework.stereotype.Service;
 public class PersonServiceImpl implements PersonService {
 
 
-    private PersonRepository repository;
+    private PersonDAO repository;
     private ModelMapper modelMapper;
 
     @Autowired
-    public PersonServiceImpl(PersonRepository repository, ModelMapper modelMapper) {
+    public PersonServiceImpl(PersonDAO repository, ModelMapper modelMapper) {
         this.repository = repository;
         this.modelMapper = modelMapper;
     }
