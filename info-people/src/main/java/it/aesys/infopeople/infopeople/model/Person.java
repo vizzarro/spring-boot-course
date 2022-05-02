@@ -22,7 +22,8 @@ public class Person {
     private Date birthday;
     @Column(name = "tax_code")
     private String taxCode;
-    @Column(name = "adress_id")
+    @OneToOne
+    @Column(name = "address_id")
     private Address address;
 
     public Person() {}
