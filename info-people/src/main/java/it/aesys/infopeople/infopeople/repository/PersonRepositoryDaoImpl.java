@@ -3,10 +3,12 @@ package it.aesys.infopeople.infopeople.repository;
 import it.aesys.infopeople.infopeople.model.Person;
 import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
+@Repository
 public class PersonRepositoryDaoImpl implements PersonRepository{
 
     private EntityManager entityManager;
@@ -18,6 +20,8 @@ public class PersonRepositoryDaoImpl implements PersonRepository{
 
     @Override
     public Person addPerson(Person person) {
+        Person personDb = entityManager.merge(person);
+        person.setId(personDb.getId());
         return null;
     }
 
