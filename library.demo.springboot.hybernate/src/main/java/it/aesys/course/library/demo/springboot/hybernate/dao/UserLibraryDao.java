@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class UserLibraryDao extends GenericDaoImpl<UserLibrary, String> {
 
@@ -35,6 +37,11 @@ public class UserLibraryDao extends GenericDaoImpl<UserLibrary, String> {
                 closeSession();
             }
             return entity;
+    }
+
+    @Override
+    public List<UserLibrary> getAll() throws DaoException {
+        return null;
     }
 
     @Override

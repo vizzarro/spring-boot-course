@@ -4,9 +4,11 @@ package it.aesys.course.library.demo.springboot.hybernate.dao;
 
 import it.aesys.course.library.demo.springboot.hybernate.dao.exception.DaoException;
 import it.aesys.course.library.demo.springboot.hybernate.models.Reservation;
+import it.aesys.course.library.demo.springboot.hybernate.models.Title;
 import it.aesys.course.library.demo.springboot.hybernate.models.UserLibrary;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,6 +16,11 @@ import java.util.List;
 @Repository
 public class ReservationDao extends GenericDaoImpl<Reservation, Integer> {
 
+
+    @Override
+    public List<Reservation> getAll() throws DaoException {
+        return null;
+    }
 
     @Override
     public Reservation add(Reservation entity) throws DaoException {
@@ -45,8 +52,23 @@ public class ReservationDao extends GenericDaoImpl<Reservation, Integer> {
     @Override
     public Reservation get(Integer id) throws DaoException {
 
-
-            return null;
+        Reservation reservation;
+        try{
+            Session session = getNewSession();
+            session.beginTransaction();
+            reservation = session.get(Reservation.class, id);
+            if(reservation == null){
+                DaoException daoException = new DaoException("Id does not correspond to any reservation");
+                daoException.setStatusCode(HttpStatus.NOT_FOUND.value());
+                daoException.setPath("/user");
+                throw daoException;
+            }
+        } catch (HibernateException e) {
+            throw new DaoException(e.getMessage());
+        }finally{
+            closeSession();
+        }
+        return reservation;
     }
 
     public List<Reservation> getUserReservation(String id){

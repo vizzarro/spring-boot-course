@@ -8,11 +8,17 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.List;
 
 @Repository
 public class LoanDao extends GenericDaoImpl<Loan, Loan> {
     @Autowired
     private ApplicationContext ctx;
+
+    @Override
+    public List<Loan> getAll() throws DaoException {
+        return null;
+    }
 
     @Override
     public Loan add(Loan entity) throws DaoException {

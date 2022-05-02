@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class TitleDao extends GenericDaoImpl<Title, String> {
@@ -40,6 +41,11 @@ public class TitleDao extends GenericDaoImpl<Title, String> {
             closeSession();
         }
         return title;
+    }
+
+    @Override
+    public List<Title> getAll() throws DaoException {
+        return null;
     }
 
     @Override
