@@ -11,12 +11,11 @@ import java.util.Date;
 
 public class PersonDto {
 
-
+private String id;
     @Pattern(regexp = "^([a-z,A-Z]|\\'|[ÀÈÌÒÙYàèìòù])+$")
     private String name;
     @Pattern(regexp = "^([a-z,A-Z]|\\'|[ÀÈÌÒÙYàèìòù])+$")
     private String surname;
-    @NotNull
     private Date birthday;
     @Pattern(regexp = "^(\\w{6}\\d{2}\\w\\d{2}\\w\\d{3}\\w)$")
     private String taxCode;
@@ -29,6 +28,14 @@ public class PersonDto {
         this.birthday = birthday;
         this.taxCode = taxCode;
         this.addressDto = address;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public PersonDto() {

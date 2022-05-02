@@ -7,8 +7,11 @@ import it.aesys.infopeople.infopeople.repository.PersonRepositoryDaoImpl;
 import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import it.aesys.infopeople.infopeople.services.exceptions.ServiceException;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -20,12 +23,17 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     public PersonServiceImpl(PersonRepository repository) {
         this.modelMapper = new ModelMapper();
+        this.modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
     }
 
 
     @Override
+    @Transactional
     public PersonDto createPersonDto(PersonDto personDto) {
-        return modelMapper.map(repository.addPerson(modelMapper.map(personDto, Person.class)), PersonDto.class);
+
+        Person person = modelMapper.map(personDto, Person.class);
+
+        return modelMapper.map(repository.addPerson(person), PersonDto.class);
     }
 
     @Override

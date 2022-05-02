@@ -20,7 +20,7 @@ public class Address {
     @Column(name = "country")
     private String country;
     @Column(name = "zip_Code")
-    private String ZIPCode;
+    private String zipCode;
 
     public Address() {
     }
@@ -32,7 +32,7 @@ public class Address {
         this.city = city;
         this.region = region;
         this.country = country;
-        this.ZIPCode = ZIPCode;
+        this.zipCode = ZIPCode;
     }
 
     public String getRoad() {
@@ -75,11 +75,11 @@ public class Address {
         this.country = country;
     }
 
-    public String getZIPCode() {
-        return ZIPCode;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setZIPCode(String ZIPCode) {
-        this.ZIPCode = ZIPCode;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 }

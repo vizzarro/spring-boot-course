@@ -2,7 +2,6 @@ package it.aesys.infopeople.infopeople.dtos;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 public class AddressDto {
     @NotBlank
@@ -16,7 +15,7 @@ public class AddressDto {
     @Pattern(regexp = "^[a-z,A-Z]+$")
     private String country;
     @Pattern(regexp = "^\\d{5}$")
-    private String ZIPCode;
+    private String zipCode;
 
     public AddressDto() {}
 
@@ -26,7 +25,7 @@ public class AddressDto {
         this.city = city;
         this.region = region;
         this.country = country;
-        this.ZIPCode = ZIPCode;
+        this.zipCode = ZIPCode;
     }
 
     public String getRoad() {
@@ -69,11 +68,11 @@ public class AddressDto {
         this.country = country;
     }
 
-    public String getZIPCode() {
-        return ZIPCode;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setZIPCode(String ZIPCode) {
-        this.ZIPCode = ZIPCode;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 }

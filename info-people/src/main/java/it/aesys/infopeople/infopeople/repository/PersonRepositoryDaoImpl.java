@@ -23,7 +23,7 @@ public class PersonRepositoryDaoImpl implements PersonRepository{
         Person personDb = entityManager.merge(person);
 
         person.setId(personDb.getId());
-        return null;
+        return person;
     }
 
     @Override
