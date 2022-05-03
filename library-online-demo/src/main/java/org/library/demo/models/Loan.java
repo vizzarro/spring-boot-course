@@ -11,7 +11,7 @@ public class Loan {
 
     @Id
     @Column(name = "loan_id")
-    
+
     private Loan loanId;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
@@ -62,4 +62,11 @@ public class Loan {
         if (creationDate != null) this.creationDate = creationDate;
     }
 
+    public Loan getLoanId() {
+        return loanId;
+    }
+
+    public void setLoanId(Loan loanId) {
+        this.loanId = loanId;
+    }
 }

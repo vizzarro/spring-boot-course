@@ -34,6 +34,11 @@ public class Reservation {
         this.creationDate = new Date();
     }
 
+    public Reservation(UserLibrary userLibrary, Title title) {
+        this.userLibrary = userLibrary;
+        this.title = title;
+    }
+
     public Date getCreationDate() {
         return creationDate;
     }
@@ -58,4 +63,11 @@ public class Reservation {
         this.title = title;
     }
 
+    public Reservation getReservationId() {
+        return reservationId;
+    }
+
+    public void setReservationId(Reservation reservationId) {
+        this.reservationId = reservationId;
+    }
 }

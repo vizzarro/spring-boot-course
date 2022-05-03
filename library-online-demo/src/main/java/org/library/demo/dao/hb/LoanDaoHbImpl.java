@@ -8,19 +8,20 @@ import org.library.demo.models.Loan;
 
 import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
 import java.sql.*;
 
 @Repository
-public class LoanDaoHbImpl extends BaseDaoImpl<Loan, LoanId> implements LoanDao {
+public class LoanDaoHbImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
 
     @Override
-    public Loan get(LoanId loanId) throws SQLException {
+    public Loan get(Loan loanId) throws SQLException {
         SessionFactory factory = getFactory();
         Session session = factory.getCurrentSession();
         Loan loan = null;
         try {
             session.beginTransaction();
-            loan = session.get(Loan.class, loanId.getTaxCode());
+            loan = session.get(Loan.class, (Serializable) loanId);
             session.getTransaction().commit();
         } finally {
             session.close();
@@ -84,13 +85,13 @@ public class LoanDaoHbImpl extends BaseDaoImpl<Loan, LoanId> implements LoanDao 
 
 
     @Override
-    public void delete(LoanId loanId) throws SQLException {
+    public void delete(Loan loanId) throws SQLException {
         SessionFactory factory = getFactory();
         Session session = factory.getCurrentSession();
 
         try {
             session.beginTransaction();
-            session.delete(session.get(Loan.class, loanId.getTaxCode()));
+            session.delete(session.get(Loan.class, (Serializable) loanId));
             session.getTransaction().commit();
         } finally {
             session.close();
@@ -113,8 +114,8 @@ public class LoanDaoHbImpl extends BaseDaoImpl<Loan, LoanId> implements LoanDao 
         Session session = factory.getCurrentSession();
         try {
             session.beginTransaction();
-            Loan toUpdate = session.get(Loan.class, updated.getLoanid().getTaxCode());
-            toUpdate.setLoanid(new LoanId(updated.getLoanid().getTitleId() , updated.getLoanid().getTaxCode()));
+            Loan toUpdate = session.get(Loan.class, (Serializable) updated.getLoanId());
+            toUpdate.setLoanId(new Loan(updated.getLoanId()));
             toUpdate.setCreationDate(updated.getCreationDate());
             session.getTransaction().commit();
         } finally {
