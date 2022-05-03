@@ -34,6 +34,10 @@ public class Loan {
         this.creationDate = creationDate;
     }
 
+    public Loan() {
+        this.creationDate = new Date();
+    }
+
     public UserLibrary getUserLibrary() {
         return userLibrary;
     }
@@ -48,10 +52,6 @@ public class Loan {
 
     public void setTitle(Title title) {
         this.title = title;
-    }
-
-    public Loan() {
-        this.creationDate = new Date();
     }
 
     public Date getCreationDate() {
