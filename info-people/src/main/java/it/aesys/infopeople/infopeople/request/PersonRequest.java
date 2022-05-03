@@ -13,8 +13,6 @@ public class PersonRequest {
         this.personDto = personDto;
     }
 
-
-
     public PersonDto getPersonDto() {
         return personDto;
     }

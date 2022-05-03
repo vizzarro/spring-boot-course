@@ -3,7 +3,6 @@ package it.aesys.infopeople.infopeople.services;
 import it.aesys.infopeople.infopeople.dtos.PersonDto;
 import it.aesys.infopeople.infopeople.model.Person;
 import it.aesys.infopeople.infopeople.repository.PersonRepository;
-import it.aesys.infopeople.infopeople.repository.PersonRepositoryDaoImpl;
 import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import it.aesys.infopeople.infopeople.services.exceptions.ServiceException;
 import org.modelmapper.ModelMapper;
@@ -12,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -21,57 +22,45 @@ public class PersonServiceImpl implements PersonService {
     private ModelMapper modelMapper;
 
     @Autowired
-    public PersonServiceImpl(PersonRepository repository) {
+    public PersonServiceImpl(PersonRepository repository, PersonRepository personRepository) {
+        this.repository=personRepository;
         this.modelMapper = new ModelMapper();
         this.modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
     }
 
 
     @Override
+    public List<PersonDto> getAllPersonDto() {
+        List<PersonDto> persons = new ArrayList<>();
+        for(Person temp : repository.findAll()){
+            persons.add(modelMapper.map(temp,PersonDto.class));
+        }
+        return persons;
+    }
+
+    @Override
     @Transactional
     public PersonDto createPersonDto(PersonDto personDto) {
 
         Person person = modelMapper.map(personDto, Person.class);
+        return modelMapper.map(repository.save(person),PersonDto.class );
 
-        return modelMapper.map(repository.addPerson(person), PersonDto.class);
+        //return modelMapper.map(repository.addPerson(person), PersonDto.class);
     }
 
     @Override
     public PersonDto updatePersonDto(PersonDto personDto, int id) throws ServiceException {
-        try {
-            return this.modelMapper.map(repository.updatePerson(modelMapper.map(personDto, Person.class), id), PersonDto.class);
-        } catch (DaoException e) {
-            ServiceException ex = new ServiceException();
-            ex.setPath(e.getPath());
-            ex.setStatusCode(e.getStatusCode());
-            ex.setErrors(e.getErrors());
-            throw ex;
-        }
+        return null;
     }
         @Override
         public PersonDto getPersonDto (int id) throws ServiceException {
-            try {
-                return this.modelMapper.map(repository.getPerson(id), PersonDto.class);
-            } catch (DaoException e) {
-                ServiceException ex = new ServiceException();
-                ex.setPath(e.getPath());
-                ex.setStatusCode(e.getStatusCode());
-                ex.setErrors(e.getErrors());
-                throw ex;
-            }
+            return this.modelMapper.map(repository.getById(id), PersonDto.class);
         }
 
         @Override
         public void deletePersonDto (int id) throws ServiceException {
-            try {
-                repository.deletePerson(id);
-            } catch (DaoException e) {
-                ServiceException ex = new ServiceException();
-                ex.setPath(e.getPath());
-                ex.setStatusCode(e.getStatusCode());
-                ex.setErrors(e.getErrors());
+                repository.deleteById(id);
 
-                throw ex;
             }
         }
-    }
+

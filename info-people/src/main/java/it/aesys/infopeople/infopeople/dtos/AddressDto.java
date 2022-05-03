@@ -4,6 +4,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 public class AddressDto {
+    private int id;
     @NotBlank
     private String road;
     @Pattern(regexp = "^([1-9])(\\d*)(\\{1}[A-Z,a-z])?$")

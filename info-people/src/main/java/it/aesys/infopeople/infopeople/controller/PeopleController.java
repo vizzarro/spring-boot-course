@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(value="/people")
@@ -20,6 +21,11 @@ public class PeopleController {
     @GetMapping("{id}")
     public PersonDto getPerson(@Valid @PathVariable int id) throws ServiceException, DaoException {
         return  personService.getPersonDto(id);
+        // DTO return
+    }
+    @GetMapping
+    public List<PersonDto> getAllPerson() throws ServiceException, DaoException {
+        return  personService.getAllPersonDto();
         // DTO return
     }
 
