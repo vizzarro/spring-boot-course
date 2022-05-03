@@ -1,18 +1,16 @@
-package org.library.demo.dao.hb;
+package org.library.demo.dao;
 
 import java.sql.SQLException;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.library.demo.dao.BaseDaoImpl;
-import org.library.demo.dao.TitleDao;
 import org.library.demo.models.Book;
 import org.library.demo.models.Magazine;
 import org.library.demo.models.Title;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TitleDaoHbImpl extends BaseDaoImpl<Title, String> implements TitleDao {
+public class TitleDaoImpl extends BaseDaoImpl<Title, String> implements TitleDao {
 
     @Override
     public Title get(String id) throws SQLException {

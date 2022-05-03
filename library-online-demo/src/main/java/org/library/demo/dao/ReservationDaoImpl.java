@@ -1,63 +1,115 @@
 package org.library.demo.dao;
 
-import java.sql.*;
 
-import org.library.demo.models.Reservation;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.library.demo.dao.BaseDaoImpl;
+import org.library.demo.dao.ReservationDao;
+import org.library.demo.models.*;
 import org.springframework.stereotype.Repository;
-/*
+
+import java.io.Serializable;
+import java.sql.SQLException;
+
 @Repository
-public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Reservation> implements ReservationDao {
+public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Integer> implements ReservationDao {
 
     @Override
-    public Reservation get(Reservation r) throws SQLException {
-        Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("SELECT * FROM RESERVATION WHERE TITLE_ID=? AND TAX_CODE=?");
-        statement.setString(1, r.getTitleId());
-        statement.setString(2, r.getTaxCode());
-        ResultSet resultSet = statement.executeQuery();
+    public Reservation get(Integer id) {
+        SessionFactory factory = getFactory();
+        Session session = factory.getCurrentSession();
+        Reservation reservation = null;
+        try {
+            session.beginTransaction();
 
-        r = null;
-        if(resultSet.next()) {
-            r = new Reservation();
-            r.setTitleId(resultSet.getString("title_id"));
-            r.setTaxCode(resultSet.getString("tax_code"));
-            r.setCreationDate(resultSet.getDate("creation_date"));
+            reservation = session.get(Reservation.class, id);
+            System.out.println("Reservation" + reservation);
+
+            session.getTransaction().commit();
+
+        } finally {
+            session.close();
+            factory.close();
+        } return reservation;
+    }
+
+    @Override
+    public void create(Reservation r) throws SQLException {
+
+        SessionFactory factory = getFactory();
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+
+            UserLibrary userLibrary = new UserLibrary("Lucia", "Verdi", "VRDLCU45RD4638HD");
+
+            Title title = new Book("Cime Tempestose", "12");
+            Title title1 = new Magazine("Focus", "13");
+
+            Reservation reservationBook = new Reservation(userLibrary, title);
+            Reservation reservationMag = new Reservation(userLibrary, title1);
+
+            userLibrary.addReservation(reservationBook);
+            userLibrary.addReservation(reservationMag);
+
+            session.save(userLibrary);
+            session.save(reservationBook);
+            session.save(reservationMag);
+
+            session.getTransaction().commit();
+
+        } finally {
+            session.close();
+            factory.close();
         }
-        return r;
+    }
+
+
+    @Override
+    public void update(Reservation r) {
+        SessionFactory factory = getFactory();
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+
+            Reservation reservation = session.get(Reservation.class, (Serializable) r.getReservationId());
+            reservation.setReservationId(r.getReservationId());
+            System.out.println("Reservation" + reservation);
+
+            session.getTransaction().commit();
+
+        } finally {
+            session.close();
+            factory.close();
+        }
     }
 
     @Override
-    public Reservation create(Reservation r) throws SQLException {
-        Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("INSERT INTO RESERVATION VALUES (?,?,?)");
-        statement.setString(1, r.getTitleId());
-        statement.setString(2, r.getTaxCode());
-        statement.setDate(3, new java.sql.Date(r.getCreationDate().getTime()) );
+    public void delete(Integer r) throws SQLException {
 
-        statement.executeUpdate();
+        SessionFactory factory = getFactory();
+        Session session = factory.getCurrentSession();
 
-        return r;
+
+        try {
+
+            session.beginTransaction();
+            Reservation reservation = session.get(Reservation.class, r);
+
+            if (null != reservation) {
+                System.out.println("Delete" + reservation);
+                session.delete(reservation);
+            }
+
+            session.getTransaction().commit();
+
+        } finally {
+            session.close();
+            factory.close();
+        }
     }
 
-    @Override
-    public Reservation update(Reservation r) throws SQLException {
-        Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("UPDATE RESERVATION SET CREATION_DATE = ? WHERE TITLE_ID = ? AND TAX_CODE=?");
-        statement.setDate(1, (Date) r.getCreationDate());
-        statement.setString(2, r.getTitleId());
-        statement.setString(3, r.getTaxCode());
-        statement.executeUpdate();
-
-        return r;
     }
 
-    @Override
-    public void delete(Reservation r) throws SQLException {
-        Connection conn = super.connect();
-        PreparedStatement statement = conn.prepareStatement("DELETE FROM RESERVATION WHERE TITLE_ID = ? AND TAX_CODE = ?");
-        statement.setString(1, r.getTitleId());
-        statement.setString(2, r.getTaxCode());
-
-        statement.executeUpdate();
-    }
-}*/

@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="loan &lt;T,K&gt;">
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/ReservationDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/ReservationDaoImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="reservation &lt;T,K&gt;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -253,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651589279860</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="reservation &lt;T,K&gt;">
+      <created>1651589460066</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1651589460066</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -278,7 +283,8 @@
     <MESSAGE value="add changes mapper on Loan, Reservation and UserLibrary classes" />
     <MESSAGE value="aggiornati Loan, LoanDaoHbImpl, LoanServiceImpl, LoanController" />
     <MESSAGE value="loan &lt;T,K&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="loan &lt;T,K&gt;" />
+    <MESSAGE value="reservation &lt;T,K&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="reservation &lt;T,K&gt;" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
