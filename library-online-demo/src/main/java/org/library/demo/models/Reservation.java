@@ -26,12 +26,12 @@ public class Reservation {
     private Date creationDate;
 
     public Reservation() {
-        this.creationDate = new Date();
     }
 
-    public Reservation(UserLibrary userLibrary, Title title) {
+    public Reservation(UserLibrary userLibrary, Title title, Date creationDate) {
         this.userLibrary = userLibrary;
         this.title = title;
+        this.creationDate = new Date();
     }
 
     public Date getCreationDate() {
@@ -57,4 +57,5 @@ public class Reservation {
     public void setTitle(Title title) {
         this.title = title;
     }
+
 }

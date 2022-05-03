@@ -19,10 +19,10 @@ public class UserLibrary {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy = "reservationId.taxCode")
+    @OneToMany(mappedBy = "reservation_id")
     private List<Reservation> reservations;
 
-    @OneToMany(mappedBy = "loanId.taxCode")
+    @OneToMany(mappedBy = "loan_id")
     private List<Loan> loans;
 
     public UserLibrary() {

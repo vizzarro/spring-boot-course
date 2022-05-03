@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="Implements PersonDAOImpl getAllPerson">
+    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="add changes on mapper Database on classes Reservation,Loan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/LoanDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/LoanDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/LoanDaoHbImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/LoanDaoHbImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/LoanId.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/ReservationId.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/UserLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/UserLibrary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651507010369</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add changes on mapper Database on classes Reservation,Loan">
+      <created>1651583316645</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1651583316645</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -231,7 +234,8 @@
     <MESSAGE value="Implements PersonDAO" />
     <MESSAGE value="Implements PersonDAOImpl" />
     <MESSAGE value="Implements PersonDAOImpl getAllPerson" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implements PersonDAOImpl getAllPerson" />
+    <MESSAGE value="add changes on mapper Database on classes Reservation,Loan" />
+    <option name="LAST_COMMIT_MESSAGE" value="add changes on mapper Database on classes Reservation,Loan" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

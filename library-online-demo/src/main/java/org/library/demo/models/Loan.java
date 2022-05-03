@@ -11,7 +11,8 @@ public class Loan {
 
     @Id
     @Column(name = "loan_id")
-    private Reservation reservationId;
+    
+    private Loan loanId;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
     @MapsId("taxCode")
@@ -26,6 +27,12 @@ public class Loan {
 
     @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
     private Date creationDate;
+
+    public Loan( UserLibrary userLibrary, Title title, Date creationDate) {
+        this.userLibrary = userLibrary;
+        this.title = title;
+        this.creationDate = creationDate;
+    }
 
     public UserLibrary getUserLibrary() {
         return userLibrary;
