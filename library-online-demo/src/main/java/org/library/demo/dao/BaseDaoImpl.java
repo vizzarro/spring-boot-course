@@ -15,8 +15,8 @@ public abstract class BaseDaoImpl<T, K> implements BaseDao<T, K> {
     private static final String USER = "postgres";
     private static final String PWD = "password";
     private static final String DRIVER_NAME = "org.postgresql.Driver";
-    protected Connection connection = null;
-    /**
+    /**protected Connection connection = null;
+
 
     @Override
     public Connection connect() {
@@ -43,9 +43,8 @@ public abstract class BaseDaoImpl<T, K> implements BaseDao<T, K> {
     public static SessionFactory getFactory(){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Book.class)
                 .addAnnotatedClass(Loan.class)
-                .addAnnotatedClass(Magazine.class)
+                .addAnnotatedClass(Title.class)
                 .addAnnotatedClass(Reservation.class)
                 .addAnnotatedClass(UserLibrary.class)
                 .buildSessionFactory();

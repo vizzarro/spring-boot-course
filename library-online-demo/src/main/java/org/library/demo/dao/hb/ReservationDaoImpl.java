@@ -44,18 +44,15 @@ public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Integer> implem
 
             UserLibrary userLibrary = new UserLibrary("Lucia", "Verdi", "VRDLCU45RD4638HD");
 
-            Title title = new Book("Cime Tempestose", "12");
-            Title title1 = new Magazine("Focus", "13");
+            Title title = new Title("Cime Tempestose", "12", "book");
 
             Reservation reservationBook = new Reservation(userLibrary, title);
-            Reservation reservationMag = new Reservation(userLibrary, title1);
 
             userLibrary.addReservation(reservationBook);
-            userLibrary.addReservation(reservationMag);
 
             session.save(userLibrary);
             session.save(reservationBook);
-            session.save(reservationMag);
+
 
             session.getTransaction().commit();
 

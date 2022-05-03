@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="loan &lt;T,K&gt;">
+    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="add changes Reservation">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/LoanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/LoanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/BaseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/BaseDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/ReservationDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/ReservationDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/TitleDaoHbImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/TitleDaoHbImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dtos/MapperDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dtos/MapperDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Magazine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Title.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Title.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +83,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Application.HibernateConnection">
+  <component name="RunManager" selected="Smart Tomcat.LibraryDemo">
     <configuration name="HibernateConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.library.demo.HibernateConnection" />
       <module name="LibraryDemo" />
@@ -128,9 +138,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LibraryDemo" type="com.poratu.idea.plugins.tomcat" factoryName="SMART_TOMCAT_FACTORY">
+      <option name="adminPort" value="8005" />
+      <option name="contextPath" value="/LibraryDemo" />
+      <option name="docBase" value="$PROJECT_DIR$/library-online-demo/src/main/webapp" />
+      <option name="envOptions">
+        <map />
+      </option>
+      <option name="passParentEnvironmentVariables" value="true" />
+      <option name="port" value="8080" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/8.5.78" />
+          <option name="number" value="0" />
+          <option name="path" value="C:\apache-tomcat-8.5.78" />
+          <option name="version" value="8.5.78.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.InfoPeopleApplication" />
       <item itemvalue="Application.HibernateConnection" />
+      <item itemvalue="Smart Tomcat.LibraryDemo" />
     </list>
     <recent_temporary>
       <list>

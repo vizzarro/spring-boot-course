@@ -41,7 +41,7 @@ public class LoanController {
         id.getUserLibrary().setTaxCode(taxCode); //id.setTaxCode(taxCode);
         id.getTitle().setTitleId(titleId);  //id.setTitleId(titleId);
 
-        service.deleteLoan(id);
+        service.deleteLoan(id.getLoanId());
         return ResponseEntity.noContent().build();
     }
 
@@ -55,7 +55,7 @@ public class LoanController {
         id.getUserLibrary().setTaxCode(taxCode); //id.setTaxCode(taxCode)
         id.getTitle().setTitleId(titleId); //id.setTitleId(titleId);
 
-        Loan response = service.getLoan(id);
+        Loan response = service.getLoan(id.getLoanId());
         return ResponseEntity.ok(response);
     }
 
