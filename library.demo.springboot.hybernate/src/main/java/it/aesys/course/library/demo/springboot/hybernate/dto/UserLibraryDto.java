@@ -7,7 +7,7 @@ public class UserLibraryDto {
 
     private String firstName;
     private String lastName;
-    private String id;
+    private String taxCode;
 
     public String getFirstName() {
         return firstName;
@@ -26,11 +26,11 @@ public class UserLibraryDto {
     }
 
 
-    public String getId() {
-        return this.id;
+    public String getTaxCode() {
+        return taxCode;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTaxCode(String taxCode) {
+        this.taxCode = taxCode;
     }
 }

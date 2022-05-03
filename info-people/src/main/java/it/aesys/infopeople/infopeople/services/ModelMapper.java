@@ -14,7 +14,7 @@ public class ModelMapper {
         personDto.setName(person.getName());
         personDto.setSurname(person.getSurname());
         personDto.setBirthday(person.getBirthday());
-        personDto.setAddressDto(this.toAddressDto(person.getAddress()));
+        personDto.setAddress(this.toAddressDto(person.getAddress()));
         personDto.setTaxCode(person.getTaxCode());
 
         return personDto;
@@ -25,7 +25,7 @@ public class ModelMapper {
         person.setName(personDto.getName());
         person.setSurname(personDto.getSurname());
         person.setBirthday(personDto.getBirthday());
-        person.setAddress(this.toAddress(personDto.getAddressDto()));
+        person.setAddress(this.toAddress(personDto.getAddress()));
         person.setTaxCode(personDto.getTaxCode());
 
         return person;
@@ -38,7 +38,7 @@ public class ModelMapper {
         addressDto.setHouseNumber(address.getHouseNumber());
         addressDto.setRegion(address.getRegion());
         addressDto.setRoad(address.getRoad());
-        addressDto.setZIPCode(address.getZIPCode());
+        addressDto.setZipCode(address.getZipCode());
 
         return addressDto;
     }
@@ -51,7 +51,7 @@ public class ModelMapper {
         address.setHouseNumber(addressDto.getHouseNumber());
         address.setRegion(addressDto.getRegion());
         address.setRoad(addressDto.getRoad());
-        address.setZIPCode(addressDto.getZIPCode());
+        address.setZipCode(addressDto.getZipCode());
 
         return address;
     }

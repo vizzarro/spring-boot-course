@@ -18,8 +18,12 @@ public class UserLibraryController {
 
     @Autowired
     private UserServiceImpl userServiceImpl;
-    @Autowired
     private PeopleServiceImpl peopleService;
+    @Autowired
+    public UserLibraryController(){
+        this.peopleService = new PeopleServiceImpl();
+    }
+
 
     @GetMapping("{id}")
     public ResponseEntity<UserLibraryDto> getUser(@PathVariable String id) throws ServiceException {
@@ -29,7 +33,7 @@ public class UserLibraryController {
 
     @PostMapping
     public ResponseEntity<UserLibraryDto> addUser(@RequestBody GenericRequest<UserLibraryDto> requestUser) throws ServiceException {
-        if(peopleService.findPerson(requestUser.getRequestData().getId())){
+        if(peopleService.findPerson(requestUser.getRequestData().getTaxCode())){
             UserLibraryDto response = userServiceImpl.add(requestUser.getRequestData());
             return ResponseEntity.ok().body(response);
         }
