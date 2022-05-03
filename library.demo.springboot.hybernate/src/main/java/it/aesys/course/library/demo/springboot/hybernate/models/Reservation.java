@@ -15,14 +15,22 @@ public class Reservation {
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   @Column(name="reservation_id")
   private int reservationId;
-  @Column(name="title_id")
+  @Column(name="title_id", insertable=false, updatable=false)
   private String titleId;
-  @Column(name="tax_code")
+  @Column(name="tax_code", insertable=false, updatable=false)
   private String taxCode;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
   @Column(name="creation_date")
   private Date creationDate;
+
+  @ManyToOne(cascade={CascadeType.DETACH, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
+  @JoinColumn(name="tax_code")
+  private UserLibrary user;
+
+  @ManyToOne(cascade={CascadeType.DETACH, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
+  @JoinColumn(name="title_id")
+  private Title title;
 
   public Reservation() {
   }
@@ -35,12 +43,22 @@ public class Reservation {
     this.reservationId = reservationId;
   }
 
-  public String getTaxCode() {
-    return taxCode;
+  public UserLibrary getUser() {
+    return user;
   }
 
-  public void setTaxCode(String taxCode) {
-    this.taxCode = taxCode;
+
+
+  public void setUser(UserLibrary user) {
+    this.user = user;
+  }
+
+  public Title getTitle() {
+    return title;
+  }
+
+  public void setTitle(Title title) {
+    this.title = title;
   }
 
   public String getTitleId() {
@@ -49,6 +67,14 @@ public class Reservation {
 
   public void setTitleId(String titleId) {
     this.titleId = titleId;
+  }
+
+  public String getTaxCode() {
+    return taxCode;
+  }
+
+  public void setTaxCode(String taxCode) {
+    this.taxCode = taxCode;
   }
 
   public Date getCreationDate() {

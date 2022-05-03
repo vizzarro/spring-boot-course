@@ -6,6 +6,8 @@ import java.util.Date;
 
 @Component
 public class ReservationDto {
+
+
     private int reservationId;
 
     private String taxCode;

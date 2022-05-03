@@ -19,8 +19,7 @@ public class Title {
     @Enumerated(EnumType.STRING)
     private TypeTitle type;
 
-    @ManyToMany(cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(name="reservation", joinColumns = {@JoinColumn(name="title_id")}, inverseJoinColumns = {@JoinColumn(name="reservation_id")})
+    @OneToMany(cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy="title")
     private List<Reservation> titleReservations;
 
 
@@ -49,5 +48,13 @@ public class Title {
 
     public void setType(TypeTitle type) {
         this.type = type;
+    }
+
+    public void addTitle(Reservation reservation){
+        this.titleReservations.add(reservation);
+    }
+
+    public List<Reservation> getTitleReservations(){
+        return this.titleReservations;
     }
 }

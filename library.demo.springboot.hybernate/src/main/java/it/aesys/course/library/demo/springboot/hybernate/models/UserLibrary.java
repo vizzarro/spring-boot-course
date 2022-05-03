@@ -15,8 +15,7 @@ public class UserLibrary {
   @Column(name="tax_code")
   private String id;
 
-  @ManyToMany(cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch=FetchType.EAGER)
-  @JoinTable(name="reservation", joinColumns = {@JoinColumn(name="tax_code")}, inverseJoinColumns = {@JoinColumn(name="reservation_id")})
+  @OneToMany(cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy="user")
   private List<Reservation> userReservations;
 
   public String getFirstName() {
@@ -51,4 +50,9 @@ public class UserLibrary {
   public void setUserReservations(List<Reservation> userReservations) {
     this.userReservations = userReservations;
   }
+
+  public void addUser(Reservation reservation){
+    this.userReservations.add(reservation);
+  }
+
 }
