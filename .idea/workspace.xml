@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="add changes Reservation">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/LoanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/LoanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/BaseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/BaseDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/ReservationDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/ReservationDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/TitleDaoHbImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/TitleDaoHbImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dtos/MapperDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dtos/MapperDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Book.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Magazine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Title.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Title.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
