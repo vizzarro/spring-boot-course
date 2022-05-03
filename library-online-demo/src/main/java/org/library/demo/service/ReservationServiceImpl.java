@@ -32,26 +32,26 @@ public class ReservationServiceImpl implements ReservationService {
             throw new Exception("No request");
 
         try {
-            UserLibrary b = userLibraryDao.get(newReservation.getReservationId().getTaxCode());
+            UserLibrary b = userLibraryDao.get(newReservation.getUserLibrary().getTaxCode());
         } catch (Exception e) {
-            throw new Exception("No UserLibrary found for id " + newReservation.getReservationId().getTaxCode());
+            throw new Exception("No UserLibrary found for id " + newReservation.getUserLibrary().getTaxCode());
         }
 
-        Title exists = titleDao.get(newReservation.getReservationId().getTitleId());
+        Title exists = titleDao.get(newReservation.getTitle().getTitleId());
         if (exists == null)
-            throw new Exception("No Title found for id " + newReservation.getReservationId().getTitleId());
+            throw new Exception("No Title found for id " + newReservation.getTitle().getTitleId());
 
         reservationDao.create(newReservation);
     }
 
     @Override
     public Reservation getReservation(Reservation id) throws SQLException {
-        return reservationDao.get(id.getReservationId().getTaxCode());
+        return reservationDao.get(id.getReservationId());
     }
 
     @Override
     public void deleteReservation(Reservation id) throws SQLException {
-        this.reservationDao.delete(id.getReservationId().getTaxCode());
+        this.reservationDao.delete(id.getReservationId());
     }
 
     @Override

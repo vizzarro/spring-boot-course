@@ -75,6 +75,7 @@ public class ReservationDaoImpl extends BaseDaoImpl<Reservation, String> impleme
             session.beginTransaction();
 
             Reservation reservation = session.get(Reservation.class, (Serializable) r.getReservationId());
+            reservation.setReservationId(r.getReservationId());
             System.out.println("Reservation" + reservation);
 
             session.getTransaction().commit();

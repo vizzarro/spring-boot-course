@@ -35,29 +35,28 @@ public class ReservationController {
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/{titleId}/{taxCode}/{creationDate}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{titleId}/{taxCode}")
     public ResponseEntity<Void> deleteReservation(@PathVariable String titleId,
-                                                  @PathVariable String taxCode,
-                                                  @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date creationDate) throws SQLException {
+                                                  @PathVariable String taxCode
+                                                  ) throws SQLException {
 
         Reservation id = new Reservation();
-        id.setCreationDate(creationDate);
-        id.getReservationId().setTaxCode(taxCode); //id.setTaxCode(taxCode);
-        id.getReservationId().setTitleId(titleId); //id.setTitleId(titleId);
+        id.getUserLibrary().setTaxCode(taxCode); //id.setTaxCode(taxCode);
+        id.getTitle().setTitleId(titleId); //id.setTitleId(titleId);
 
         service.deleteReservation(id);
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{titleId}/{taxCode}/{creationDate}")
+    @RequestMapping(method = RequestMethod.GET, value = "/{titleId}/{taxCode}")
     public ResponseEntity<Reservation> getReservation(@PathVariable String titleId,
-                                                      @PathVariable String taxCode,
-                                                      @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date creationDate) throws SQLException {
+                                                      @PathVariable String taxCode
+                                                      ) throws SQLException {
 
         Reservation id = new Reservation();
-        id.setCreationDate(creationDate);
-        id.getReservationId().setTaxCode(taxCode); //id.setTaxCode(taxCode);
-        id.getReservationId().setTitleId(titleId); //id.setTitleId(titleId);
+
+        id.getUserLibrary().setTaxCode(taxCode); //id.setTaxCode(taxCode);
+        id.getTitle().setTitleId(titleId); //id.setTitleId(titleId);
 
         Reservation response = service.getReservation(id);
         return ResponseEntity.ok(response);
