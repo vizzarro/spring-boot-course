@@ -23,13 +23,13 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public PersonDto createPersonDto(PersonDto personDto) {
-        return modelMapper.toPersonDto(repository.addPerson(modelMapper.toPerson(personDto)));
+        return modelMapper.toPersonDto(personDAO.addPerson(modelMapper.toPerson(personDto)));
     }
 
     @Override
     public PersonDto updatePersonDto(PersonDto personDto, String taxcode) throws ServiceException {
         try {
-            return this.modelMapper.toPersonDto(repository.updatePerson(modelMapper.toPerson(personDto), taxcode));
+            return this.modelMapper.toPersonDto(personDAO.updatePerson(modelMapper.toPerson(personDto), taxcode));
         } catch (DaoException e) {
             ServiceException ex = new ServiceException();
             ex.setPath(e.getPath());
@@ -41,7 +41,7 @@ public class PersonServiceImpl implements PersonService {
         @Override
         public PersonDto getPersonDto (String taxcode) throws ServiceException {
             try {
-                return this.modelMapper.toPersonDto(repository.getPerson(taxcode));
+                return this.modelMapper.toPersonDto(personDAO.getPerson(taxcode));
             } catch (DaoException e) {
                 ServiceException ex = new ServiceException();
                 ex.setPath(e.getPath());
@@ -54,7 +54,7 @@ public class PersonServiceImpl implements PersonService {
         @Override
         public void deletePersonDto (String taxcode) throws ServiceException {
             try {
-                repository.deletePerson(taxcode);
+                personDAO.deletePerson(taxcode);
             } catch (DaoException e) {
                 ServiceException ex = new ServiceException();
                 ex.setPath(e.getPath());
