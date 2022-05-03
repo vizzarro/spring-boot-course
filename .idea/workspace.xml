@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="add changes on mapper Database on classes Reservation,Loan">
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Loan.java" afterDir="false" />
+    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="aggiornati Loan, LoanDaoHbImpl, LoanServiceImpl, LoanController">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/LoanDaoHbImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/LoanDaoHbImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,12 +233,12 @@
       <option name="project" value="LOCAL" />
       <updated>1651584422747</updated>
     </task>
-    <task id="LOCAL-00013" summary="add changes on mapper Database on classes Reservation,Loan">
-      <created>1651587060968</created>
+    <task id="LOCAL-00013" summary="aggiornati Loan, LoanDaoHbImpl, LoanServiceImpl, LoanController">
+      <created>1651586962811</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1651587060968</updated>
+      <updated>1651586962812</updated>
     </task>
     <option name="localTasksCounter" value="14" />
     <servers />
@@ -260,9 +261,10 @@
     <MESSAGE value="Implements PersonDAO" />
     <MESSAGE value="Implements PersonDAOImpl" />
     <MESSAGE value="Implements PersonDAOImpl getAllPerson" />
-    <MESSAGE value="add changes mapper on Loan, Reservation and UserLibrary classes" />
     <MESSAGE value="add changes on mapper Database on classes Reservation,Loan" />
-    <option name="LAST_COMMIT_MESSAGE" value="add changes on mapper Database on classes Reservation,Loan" />
+    <MESSAGE value="add changes mapper on Loan, Reservation and UserLibrary classes" />
+    <MESSAGE value="aggiornati Loan, LoanDaoHbImpl, LoanServiceImpl, LoanController" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiornati Loan, LoanDaoHbImpl, LoanServiceImpl, LoanController" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

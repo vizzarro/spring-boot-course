@@ -9,9 +9,9 @@ public interface BaseDao<T, K> {
 
     void create(T obj) throws SQLException;
 
-    void update(T obj) throws SQLException;
-
     void delete(K obj) throws SQLException;
+
+    void update(T obj) throws SQLException;
 
     //Connection connect() throws ClassNotFoundException;
 
