@@ -3,6 +3,7 @@ package org.library.demo.models;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Date;
 
 @Entity
@@ -11,7 +12,6 @@ public class Loan {
 
     @Id
     @Column(name = "loan_id")
-
     private Integer loanId;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
@@ -34,8 +34,11 @@ public class Loan {
         this.creationDate = creationDate;
     }
 
-    public Loan() {
-        this.creationDate = new Date();
+    public Loan(Integer loadId, UserLibrary userLibrary, Title title, Date creationDate) {
+        this.loanId = loadId;
+        this.userLibrary = userLibrary;
+        this.title = title;
+        this.creationDate = creationDate;
     }
 
     public UserLibrary getUserLibrary() {
