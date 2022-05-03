@@ -1,7 +1,9 @@
-package org.library.demo.dao;
+package org.library.demo.dao.hb;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.library.demo.dao.BaseDaoImpl;
+import org.library.demo.dao.LoanDao;
 import org.library.demo.models.Loan;
 
 import org.springframework.stereotype.Repository;
@@ -10,7 +12,7 @@ import java.io.Serializable;
 import java.sql.*;
 
 @Repository
-public class LoanDaoImpl extends BaseDaoImpl<Loan, Integer> implements LoanDao {
+public class LoanDaoHbImpl extends BaseDaoImpl<Loan, Integer> implements LoanDao {
 
     @Override
     public Loan get(Integer loanId) throws SQLException {

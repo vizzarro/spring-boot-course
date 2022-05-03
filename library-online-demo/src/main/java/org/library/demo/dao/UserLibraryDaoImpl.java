@@ -1,79 +1,70 @@
 package org.library.demo.dao;
 
-import java.sql.SQLException;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.library.demo.models.Title;
+import org.library.demo.dao.BaseDaoImpl;
+import org.library.demo.dao.UserLibraryDao;
 import org.library.demo.models.UserLibrary;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+/*
 @Repository
 public class UserLibraryDaoImpl extends BaseDaoImpl<UserLibrary, String> implements UserLibraryDao {
 
     @Override
     public UserLibrary get(String taxCode) throws SQLException {
-        SessionFactory factory = getFactory();
+
+        SessionFactory factory = BaseDaoImpl.getFactory();
         Session session = factory.getCurrentSession();
-        UserLibrary userLibrary = null;
+
+        UserLibrary user = null;
+
         try {
             session.beginTransaction();
-            userLibrary = session.get(UserLibrary.class, taxCode);
+
+            user = session.get(UserLibrary.class,taxCode.toUpperCase());
             session.getTransaction().commit();
         } finally {
-            session.close();
             factory.close();
-            if(userLibrary != null){
-                return userLibrary;
-            } else{
-                return null;
-            }
         }
+        return user;
     }
 
     @Override
     public void create(UserLibrary user) throws SQLException {
-        SessionFactory factory = getFactory();
-        Session session = factory.getCurrentSession();
+        Connection conn = super.connect();
+        PreparedStatement statement = conn.prepareStatement("INSERT INTO USER_LIBRARY VALUES (?,?,?)");
+        statement.setString(1, user.getTaxCode());
+        statement.setString(2, user.getFirstName());
+        statement.setString(3, user.getLastName());
+        statement.executeUpdate();
 
-        try {
-            session.beginTransaction();
-            session.save(user);
-            session.getTransaction().commit();
-        } finally {
-            session.close();
-            factory.close();
-        }
+        //return user.getTaxCode();
     }
 
     @Override
     public void update(UserLibrary user) throws SQLException {
-        SessionFactory factory = getFactory();
-        Session session = factory.getCurrentSession();
-        try {
-            session.beginTransaction();
-            Title toUpdate = session.get(Title.class, user.getTaxCode());
-            toUpdate.setTitleId(user.getTaxCode());
-            toUpdate.setName(user.getTaxCode());
-            session.getTransaction().commit();
-        } finally {
-            session.close();
-            factory.close();
-        }
+        Connection conn = super.connect();
+        PreparedStatement statement = conn.prepareStatement("UPDATE USER_LIBRARY SET FIRST_NAME = ?," +
+                "LAST_NAME = ? WHERE TAX_CODE = ?");
+        statement.setString(1, user.getFirstName());
+        statement.setString(2, user.getLastName());
+        statement.setString(3, user.getTaxCode());
+        statement.executeUpdate();
+
+        //return user;
     }
 
     @Override
     public void delete(String taxCode) throws SQLException {
-        SessionFactory factory = getFactory();
-        Session session = factory.getCurrentSession();
+        Connection conn = super.connect();
+        PreparedStatement statement = conn.prepareStatement("DELETE FROM USER_LIBRARY WHERE TAX_CODE = ?");
+        statement.setString(1, taxCode.toUpperCase());
 
-        try {
-            session.beginTransaction();
-            session.delete(session.get(UserLibrary.class, taxCode));
-            session.getTransaction().commit();
-        } finally {
-            session.close();
-            factory.close();
-        }
+        statement.executeUpdate();
     }
-}
+}*/

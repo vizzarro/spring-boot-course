@@ -6,10 +6,7 @@ import org.springframework.beans.BeanUtils;
 public class MapperDto {
 
     public static Title refactor (TitleDto titleDto){
-        Title newTitle;
-        if(titleDto.getType().equals("BOOK"))
-            newTitle = new Book();
-        else newTitle = new Magazine();
+        Title newTitle = new Title();
 
         BeanUtils.copyProperties(titleDto, newTitle);
         return newTitle;

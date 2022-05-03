@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public interface ReservationService {
     void addReservation(Reservation newReservation) throws Exception;
 
-    Reservation getReservation(Integer id) throws SQLException;
+    Reservation getReservation(Reservation id) throws SQLException;
 
-    void deleteReservation(Integer id) throws SQLException;
+    void deleteReservation(Reservation id) throws SQLException;
 
     void updateReservation(Reservation reservation) throws SQLException;
 
