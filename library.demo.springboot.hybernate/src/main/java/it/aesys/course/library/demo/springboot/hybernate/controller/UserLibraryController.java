@@ -33,11 +33,10 @@ public class UserLibraryController {
 
     @PostMapping
     public ResponseEntity<UserLibraryDto> addUser(@RequestBody GenericRequest<UserLibraryDto> requestUser) throws ServiceException {
-        if(peopleService.findPerson(requestUser.getRequestData().getTaxCode())){
+        peopleService.findPerson(requestUser.getRequestData().getTaxCode());
             UserLibraryDto response = userServiceImpl.add(requestUser.getRequestData());
             return ResponseEntity.ok().body(response);
-        }
-        throw new ServiceException("User not validated!");
+
     }
     @PutMapping("{id}")
     public ResponseEntity<UserLibraryDto> updateUser(@RequestBody GenericRequest<UserLibraryDto> requestUser, @PathVariable String id) throws ServiceException {
