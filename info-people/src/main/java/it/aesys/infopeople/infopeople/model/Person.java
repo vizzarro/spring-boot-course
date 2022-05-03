@@ -19,7 +19,7 @@ public class Person {
     private String taxCode;
     @OneToOne
     @JoinColumn(name = "address_id")
-    private Address address = null;
+    private Address address;
 
     public Person() {}
 

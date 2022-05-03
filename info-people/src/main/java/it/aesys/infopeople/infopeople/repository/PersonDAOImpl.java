@@ -15,7 +15,7 @@ import java.util.*;
 
 @Repository
 @Profile("devel")
-public class PersonDAOImpl implements PersonDAO {
+public class PersonDAOImpl  {
 
     private EntityManager entityManager;
 
@@ -24,18 +24,18 @@ public class PersonDAOImpl implements PersonDAO {
         entityManager = theEntityManager;
     }
 
-    @Override
+    //@Override
     public Person addPerson(Person person) {
         Person p = entityManager.merge(person);
         return p;
     }
 
-    @Override
+    //@Override
     public Person updatePerson(Person person, String taxCode) throws  DaoException {
         return addPerson(person);
     }
 
-    @Override
+    //@Override
     public void deletePerson(int id) throws DaoException{
         Person thePerson = null;
         thePerson = entityManager.find(Person.class, id);
@@ -49,7 +49,7 @@ public class PersonDAOImpl implements PersonDAO {
         }
     }
 
-    @Override
+    //@Override
     @Transactional
     public Person getPerson(int id) throws DaoException{
         Person thePerson = null;
@@ -63,7 +63,7 @@ public class PersonDAOImpl implements PersonDAO {
         }
 }
 
-    @Override
+    //@Override
     @Transactional
     public List<Person> getAllPerson() {
         Query theQuery = entityManager.createQuery("from Person");

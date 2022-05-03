@@ -7,7 +7,7 @@ import it.aesys.infopeople.infopeople.services.exceptions.ServiceException;
 public interface PersonService {
 
     public PersonDto createPersonDto(PersonDto personDto);
-    public PersonDto updatePersonDto(PersonDto personDto, String taxcode) throws ServiceException;
+    public PersonDto updatePersonDto(PersonDto personDto, String taxcode);
     public PersonDto getPersonDto(int id) throws DaoException, ServiceException;
     public void deletePersonDto(int id) throws ServiceException;
 

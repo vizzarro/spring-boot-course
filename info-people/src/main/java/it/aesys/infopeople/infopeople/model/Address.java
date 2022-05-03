@@ -29,9 +29,6 @@ public class Address {
     @Column(name = "zip_code")
     private String ZIPCode;
 
-    @OneToOne(mappedBy = "address")
-    private Person person;
-
     public Address() {}
 
     public Address(String road, String houseNumber, String city, String region, String country, String ZIPCode) {

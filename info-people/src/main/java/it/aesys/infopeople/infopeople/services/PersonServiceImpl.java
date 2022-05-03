@@ -2,9 +2,9 @@ package it.aesys.infopeople.infopeople.services;
 
 import it.aesys.infopeople.infopeople.dtos.PersonDto;
 import it.aesys.infopeople.infopeople.repository.PersonDAO;
-import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import it.aesys.infopeople.infopeople.services.exceptions.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,30 +23,21 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public PersonDto createPersonDto(PersonDto personDto) {
-        return modelMapper.toPersonDto(personDAO.addPerson(modelMapper.toPerson(personDto)));
+        return modelMapper.toPersonDto(personDAO.save(modelMapper.toPerson(personDto)));
     }
 
     @Override
-    public PersonDto updatePersonDto(PersonDto personDto, String taxcode) throws ServiceException {
-        try {
-            return this.modelMapper.toPersonDto(personDAO.updatePerson(modelMapper.toPerson(personDto), taxcode));
-        } catch (DaoException e) {
-            ServiceException ex = new ServiceException();
-            ex.setPath(e.getPath());
-            ex.setStatusCode(e.getStatusCode());
-            ex.setErrors(e.getErrors());
-            throw ex;
-        }
+    public PersonDto updatePersonDto(PersonDto personDto, String taxcode) {
+        return createPersonDto(personDto);
     }
         @Override
         public PersonDto getPersonDto (int id) throws ServiceException {
             try {
-                return this.modelMapper.toPersonDto(personDAO.getPerson(id));
-            } catch (DaoException e) {
+                return this.modelMapper.toPersonDto(personDAO.getOne(id));
+            } catch (RuntimeException e) {
                 ServiceException ex = new ServiceException();
-                ex.setPath(e.getPath());
-                ex.setStatusCode(e.getStatusCode());
-                ex.setErrors(e.getErrors());
+                ex.setPath("/people/get");
+                ex.setStatusCode(HttpStatus.BAD_REQUEST.value());
                 throw ex;
             }
         }
@@ -54,13 +45,11 @@ public class PersonServiceImpl implements PersonService {
         @Override
         public void deletePersonDto (int id) throws ServiceException {
             try {
-                personDAO.deletePerson(id);
-            } catch (DaoException e) {
+                personDAO.deleteById(id);
+            } catch (RuntimeException e) {
                 ServiceException ex = new ServiceException();
-                ex.setPath(e.getPath());
-                ex.setStatusCode(e.getStatusCode());
-                ex.setErrors(e.getErrors());
-
+                ex.setPath("/people/get");
+                ex.setStatusCode(HttpStatus.BAD_REQUEST.value());
                 throw ex;
             }
         }
