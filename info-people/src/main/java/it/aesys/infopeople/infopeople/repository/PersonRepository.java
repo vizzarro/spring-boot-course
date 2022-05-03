@@ -1,8 +1,6 @@
 package it.aesys.infopeople.infopeople.repository;
 
-import it.aesys.infopeople.infopeople.dtos.PersonDto;
 import it.aesys.infopeople.infopeople.model.Person;
-import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
