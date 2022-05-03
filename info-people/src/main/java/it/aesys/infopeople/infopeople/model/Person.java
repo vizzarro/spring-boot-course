@@ -23,7 +23,7 @@ public class Person {
     @Column(name = "tax_code")
     private String taxCode;
     @OneToOne
-    @Column(name = "address_id")
+    @JoinColumn(name = "address_id")
     private Address address;
 
     public Person() {}
