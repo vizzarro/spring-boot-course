@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public interface LoanService {
     Loan addLoan(Loan newLoan) throws Exception;
 
-    Loan getLoan(Loan id) throws SQLException;
+    Loan getLoan(Integer id) throws SQLException;
 
-    Loan deleteLoan(Loan id) throws SQLException;
+    Loan deleteLoan(Integer id) throws SQLException;
 
     void updateLoan(Loan updeted) throws SQLException;
 

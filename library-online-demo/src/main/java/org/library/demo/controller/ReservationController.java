@@ -35,30 +35,15 @@ public class ReservationController {
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/{titleId}/{taxCode}")
-    public ResponseEntity<Void> deleteReservation(@PathVariable String titleId,
-                                                  @PathVariable String taxCode
-                                                  ) throws SQLException {
-
-        Reservation id = new Reservation();
-        id.getUserLibrary().setTaxCode(taxCode); //id.setTaxCode(taxCode);
-        id.getTitle().setTitleId(titleId); //id.setTitleId(titleId);
-
-        service.deleteReservation(id);
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{reservationId}")
+    public ResponseEntity<Void> deleteReservation(@PathVariable Integer reservationId) throws SQLException {
+        service.deleteReservation(reservationId);
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{titleId}/{taxCode}")
-    public ResponseEntity<Reservation> getReservation(@PathVariable String titleId,
-                                                      @PathVariable String taxCode
-                                                      ) throws SQLException {
-
-        Reservation id = new Reservation();
-
-        id.getUserLibrary().setTaxCode(taxCode); //id.setTaxCode(taxCode);
-        id.getTitle().setTitleId(titleId); //id.setTitleId(titleId);
-
-        Reservation response = service.getReservation(id);
+    @RequestMapping(method = RequestMethod.GET, value = "/{reservationId}")
+    public ResponseEntity<Reservation> getReservation(@PathVariable Integer reservationId) throws SQLException {
+        Reservation response = service.getReservation(reservationId);
         return ResponseEntity.ok(response);
     }
 

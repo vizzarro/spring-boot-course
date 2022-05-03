@@ -31,31 +31,15 @@ public class LoanController {
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/{titleId}/{taxCode}/{creationDate}")
-    public ResponseEntity<Void> deleteLoan(@PathVariable String titleId,
-                                           @PathVariable String taxCode,
-                                           @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date creationDate) throws SQLException {
-
-        Loan id = new Loan();
-        id.setCreationDate(creationDate);
-        id.getUserLibrary().setTaxCode(taxCode); //id.setTaxCode(taxCode);
-        id.getTitle().setTitleId(titleId);  //id.setTitleId(titleId);
-
-        service.deleteLoan(id);
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{loadId}}")
+    public ResponseEntity<Void> deleteLoan(@PathVariable Integer loanId) throws SQLException {
+        service.deleteLoan(loanId);
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{titleId}/{taxCode}/{creationDate}")
-    public ResponseEntity<Loan> getLoan(@PathVariable String titleId,
-                                        @PathVariable String taxCode,
-                                        @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date creationDate) throws SQLException {
-
-        Loan id = new Loan();
-        id.setCreationDate(creationDate);
-        id.getUserLibrary().setTaxCode(taxCode); //id.setTaxCode(taxCode)
-        id.getTitle().setTitleId(titleId); //id.setTitleId(titleId);
-
-        Loan response = service.getLoan(id);
+    @RequestMapping(method = RequestMethod.GET, value = "/{loanId}")
+    public ResponseEntity<Loan> getLoan(@PathVariable Integer loanId) throws SQLException {
+        Loan response = service.getLoan(loanId);
         return ResponseEntity.ok(response);
     }
 
