@@ -1,23 +1,21 @@
 package it.aesys.infopeople.infopeople.dtos;
 
-import it.aesys.infopeople.infopeople.model.Address;
-
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class PersonDto {
 
     private int id;
-    @Pattern(regexp = "^([a-z,A-Z]|\\'|[ÀÈÌÒÙYàèìòù])+$")
+    @Pattern(regexp = "^([a-z,A-Z]|\\'|[ÀÈÌÒÙYàèìòù])+$",
+            message = "wrong formatting for name")
     private String name;
-    @Pattern(regexp = "^([a-z,A-Z]|\\'|[ÀÈÌÒÙYàèìòù])+$")
+    @Pattern(regexp = "^([a-z,A-Z]|\\'|[ÀÈÌÒÙYàèìòù])+$",
+    message = "wrong formatting for surname")
     private String surname;
     private Date birthday;
-    @Pattern(regexp = "^(\\w{6}\\d{2}\\w\\d{2}\\w\\d{3}\\w)$")
+    @Pattern(regexp = "^(\\w{6}\\d{2}\\w\\d{2}\\w\\d{3}\\w)$",
+            message = "wrong formatting for tax code")
     private String taxCode;
     @Valid
     private AddressDto address;

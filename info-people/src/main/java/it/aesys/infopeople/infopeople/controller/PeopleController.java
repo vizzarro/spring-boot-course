@@ -23,6 +23,11 @@ public class PeopleController {
         return  personService.getPersonDto(id);
         // DTO return
     }
+    @GetMapping("taxCode/{taxCode}")
+    public PersonDto getPersonFromTaxCode(@Valid @PathVariable String taxCode) throws ServiceException, DaoException {
+        return  personService.getPersonDtoFromTaxCode(taxCode);
+        // DTO return
+    }
     @GetMapping
     public List<PersonDto> getAllPerson() throws ServiceException, DaoException {
         return  personService.getAllPersonDto();

@@ -7,15 +7,20 @@ public class AddressDto {
     private int id;
     @NotBlank
     private String road;
-    @Pattern(regexp = "^([1-9])(\\d*)(\\{1}[A-Z,a-z])?$")
+    @Pattern(regexp = "^([1-9])(\\d*)(\\{1}[A-Z,a-z])?$"
+    ,message = "wrong formatting for house number")
     private String houseNumber;
-    @Pattern(regexp = "^[a-z,A-Z]+$")
+    @Pattern(regexp = "^[a-z,A-Z]+$",
+            message = "wrong formatting for house city")
     private String city;
-    @Pattern(regexp = "^[a-z,A-Z]+$")
+    @Pattern(regexp = "^[a-z,A-Z]+$",
+            message = "wrong formatting for region")
     private String region;
-    @Pattern(regexp = "^[a-z,A-Z]+$")
+    @Pattern(regexp = "^[a-z,A-Z]+$",
+            message = "wrong formatting for country")
     private String country;
-    @Pattern(regexp = "^\\d{5}$")
+    @Pattern(regexp = "^\\d{5}$",
+            message = "wrong formatting for zip code")
     private String zipCode;
 
     public AddressDto() {}

@@ -2,17 +2,11 @@ package it.aesys.infopeople.infopeople.repository;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import it.aesys.infopeople.infopeople.model.Persons;
-import it.aesys.infopeople.infopeople.repository.exceptions.DaoException;
 import it.aesys.infopeople.infopeople.repository.exceptions.EmptyFileSystemRepositoryExcepton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.thymeleaf.util.StringUtils;
-
 import java.io.*;
-import java.util.Collection;
-import java.util.List;
-
 
 public class FileSystemRepository<P> {
 

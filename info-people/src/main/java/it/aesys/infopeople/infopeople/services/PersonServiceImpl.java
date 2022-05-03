@@ -8,6 +8,7 @@ import it.aesys.infopeople.infopeople.services.exceptions.ServiceException;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -28,6 +29,13 @@ public class PersonServiceImpl implements PersonService {
         this.modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
     }
 
+
+    @Override
+    public PersonDto getPersonDtoFromTaxCode(String taxCode) throws DaoException, ServiceException {
+        List<Person> persons = repository.getPersonFromTaxCode(taxCode);
+
+        return modelMapper.map(persons.get(0),PersonDto.class);
+    }
 
     @Override
     public List<PersonDto> getAllPersonDto() {

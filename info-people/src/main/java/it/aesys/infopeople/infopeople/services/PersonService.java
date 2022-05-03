@@ -7,6 +7,8 @@ import it.aesys.infopeople.infopeople.services.exceptions.ServiceException;
 import java.util.List;
 
 public interface PersonService {
+
+    public PersonDto getPersonDtoFromTaxCode(String taxCode) throws DaoException, ServiceException;
     public List<PersonDto> getAllPersonDto();
     public PersonDto createPersonDto(PersonDto personDto);
     public PersonDto updatePersonDto(PersonDto personDto, int id) throws ServiceException;
