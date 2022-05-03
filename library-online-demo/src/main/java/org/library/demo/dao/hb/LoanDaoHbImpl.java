@@ -12,16 +12,16 @@ import java.io.Serializable;
 import java.sql.*;
 
 @Repository
-public class LoanDaoHbImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
+public class LoanDaoHbImpl extends BaseDaoImpl<Loan, Integer> implements LoanDao {
 
     @Override
-    public Loan get(Loan loanId) throws SQLException {
+    public Loan get(Integer loanId) throws SQLException {
         SessionFactory factory = getFactory();
         Session session = factory.getCurrentSession();
         Loan loan = null;
         try {
             session.beginTransaction();
-            loan = session.get(Loan.class, (Serializable) loanId);
+            loan = session.get(Loan.class, loanId);
             session.getTransaction().commit();
         } finally {
             session.close();
@@ -85,13 +85,13 @@ public class LoanDaoHbImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
 
 
     @Override
-    public void delete(Loan loanId) throws SQLException {
+    public void delete(Integer loan) throws SQLException {
         SessionFactory factory = getFactory();
         Session session = factory.getCurrentSession();
 
         try {
             session.beginTransaction();
-            session.delete(session.get(Loan.class, (Serializable) loanId));
+            session.delete(session.get(Loan.class, loan));
             session.getTransaction().commit();
         } finally {
             session.close();
