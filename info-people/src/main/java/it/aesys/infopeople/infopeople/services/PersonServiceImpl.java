@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 public class PersonServiceImpl implements PersonService {
 
 
-    private PersonDAO repository;
+    private PersonDAO personDAO;
     private ModelMapper modelMapper;
 
     @Autowired
     public PersonServiceImpl(PersonDAO repository, ModelMapper modelMapper) {
-        this.repository = repository;
+        this.personDAO = repository;
         this.modelMapper = modelMapper;
     }
 

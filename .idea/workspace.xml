@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe555a2b-e471-4497-8dfc-ab7c9994aeca" name="Changes" comment="mapping Address">
+    <list default="true" id="fe555a2b-e471-4497-8dfc-ab7c9994aeca" name="Changes" comment="Implements PersonDAOImpl getAllPerson">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/model/Persons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/info-people/src/main/java/it/aesys/infopeople/infopeople/repository/PersonDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +116,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.InfoPeopleApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.InfoPeopleApplication" />
@@ -188,14 +190,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651506007765</updated>
     </task>
-    <task id="LOCAL-00009" summary="mapping Address">
-      <created>1651506640110</created>
+    <task id="LOCAL-00009" summary="Implements PersonDAOImpl">
+      <created>1651506597421</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1651506640110</updated>
+      <updated>1651506597421</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Implements PersonDAOImpl getAllPerson">
+      <created>1651507010369</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651507010369</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -214,7 +223,17 @@
     <MESSAGE value="update PersonService class" />
     <MESSAGE value="fix model mapper" />
     <MESSAGE value="Implements PersonDAO" />
-    <MESSAGE value="mapping Address" />
-    <option name="LAST_COMMIT_MESSAGE" value="mapping Address" />
+    <MESSAGE value="Implements PersonDAOImpl" />
+    <MESSAGE value="Implements PersonDAOImpl getAllPerson" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implements PersonDAOImpl getAllPerson" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.lang.Class" memberName="annotationData" />
+        <PinnedItemInfo parentTag="org.hibernate.cfg.Settings" memberName="sessionFactoryOptions" />
+        <PinnedItemInfo parentTag="org.hibernate.internal.SessionFactoryImpl" memberName="namedQueryRepository" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
