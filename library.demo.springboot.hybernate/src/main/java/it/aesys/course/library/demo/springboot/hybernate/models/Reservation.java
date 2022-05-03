@@ -24,11 +24,11 @@ public class Reservation {
   @Column(name="creation_date")
   private Date creationDate;
 
-  @ManyToOne(cascade={CascadeType.DETACH, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
+  @ManyToOne(cascade={CascadeType.REFRESH, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
   @JoinColumn(name="tax_code")
   private UserLibrary user;
 
-  @ManyToOne(cascade={CascadeType.DETACH, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
+  @ManyToOne(cascade={CascadeType.REFRESH, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
   @JoinColumn(name="title_id")
   private Title title;
 

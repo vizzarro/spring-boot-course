@@ -4,6 +4,7 @@ package it.aesys.course.library.demo.springboot.hybernate.controller;
 import it.aesys.course.library.demo.springboot.hybernate.dto.UserLibraryDto;
 import it.aesys.course.library.demo.springboot.hybernate.request.GenericRequest;
 import it.aesys.course.library.demo.springboot.hybernate.service.UserServiceImpl;
+import it.aesys.course.library.demo.springboot.hybernate.service.client.PeopleServiceImpl;
 import it.aesys.course.library.demo.springboot.hybernate.service.exception.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,8 @@ public class UserLibraryController {
 
     @Autowired
     private UserServiceImpl userServiceImpl;
+    @Autowired
+    private PeopleServiceImpl peopleService;
 
     @GetMapping("{id}")
     public ResponseEntity<UserLibraryDto> getUser(@PathVariable String id) throws ServiceException {
@@ -26,8 +29,11 @@ public class UserLibraryController {
 
     @PostMapping
     public ResponseEntity<UserLibraryDto> addUser(@RequestBody GenericRequest<UserLibraryDto> requestUser) throws ServiceException {
-        UserLibraryDto response = userServiceImpl.add(requestUser.getRequestData());
-        return ResponseEntity.ok().body(response);
+        if(peopleService.findPerson(requestUser.getRequestData().getId())){
+            UserLibraryDto response = userServiceImpl.add(requestUser.getRequestData());
+            return ResponseEntity.ok().body(response);
+        }
+        throw new ServiceException("User not validated!");
     }
     @PutMapping("{id}")
     public ResponseEntity<UserLibraryDto> updateUser(@RequestBody GenericRequest<UserLibraryDto> requestUser, @PathVariable String id) throws ServiceException {

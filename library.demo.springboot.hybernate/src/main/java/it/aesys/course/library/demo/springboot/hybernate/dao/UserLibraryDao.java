@@ -19,7 +19,7 @@ public class UserLibraryDao extends GenericDaoImpl<UserLibrary, String> {
                 Session session = getNewSession();
                 session.beginTransaction();
                 UserLibrary user = session.get(UserLibrary.class, id);
-                if(!id.equals(entity.getId())){
+                if(!id.equals(entity.getTaxCode())){
                     closeSession();
                     DaoException daoException = new DaoException("Id does not match!");
                     daoException.setStatusCode(HttpStatus.NOT_FOUND.value());
@@ -28,7 +28,7 @@ public class UserLibraryDao extends GenericDaoImpl<UserLibrary, String> {
                 }
                 user.setFirstName(entity.getFirstName());
                 user.setLastName(entity.getLastName());
-                user.setId(entity.getId());
+                user.setTaxCode(entity.getTaxCode());
                 session.save(user);
                 session.getTransaction().commit();
             } catch (HibernateException e) {

@@ -13,7 +13,7 @@ public class UserLibrary {
   private String lastName;
   @Id
   @Column(name="tax_code")
-  private String id;
+  private String taxCode;
 
   @OneToMany(cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy="user")
   private List<Reservation> userReservations;
@@ -35,12 +35,12 @@ public class UserLibrary {
   }
 
 
-  public String getId() {
-    return this.id;
+  public String getTaxCode() {
+    return taxCode;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setTaxCode(String taxCode) {
+    this.taxCode = taxCode;
   }
 
   public List<Reservation> getUserReservations() {

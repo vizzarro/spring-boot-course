@@ -43,6 +43,10 @@ public class ReservationDao extends GenericDaoImpl<Reservation, Integer> {
         try{
             Session session = getNewSession();
             session.beginTransaction();
+            UserLibrary user = session.get(UserLibrary.class, entity.getTaxCode());
+            Title title = session.get(Title.class, entity.getTitleId());
+            entity.setTitle(title);
+            entity.setUser(user);
             session.save(entity);
             session.getTransaction().commit();
         } catch (HibernateException e) {
@@ -85,9 +89,9 @@ public class ReservationDao extends GenericDaoImpl<Reservation, Integer> {
             session.beginTransaction();
             Reservation reservation = session.get(Reservation.class, id);
 
-            reservation.setTitleId(entity.getTitleId());
+           // reservation.setTitleId(entity.getTitleId());
             reservation.setCreationDate(entity.getCreationDate());
-            reservation.setTaxCode(entity.getTaxCode());
+           // reservation.setTaxCode(entity.getTaxCode());
 
             session.save(reservation);
             session.getTransaction().commit();
