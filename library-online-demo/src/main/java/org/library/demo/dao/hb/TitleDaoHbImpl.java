@@ -26,10 +26,10 @@ public class TitleDaoHbImpl extends BaseDaoImpl<Title, String> implements TitleD
         } finally {
             session.close();
             factory.close();
-            if(title != null && "BOOK".equals(title.getTYPE())){
+            if(title != null && "BOOK".equals(title.getType())){
                 return (Book)title;
             }
-            if(title != null && "MAGAZINE".equals(title.getTYPE())){
+            if(title != null && "MAGAZINE".equals(title.getType())){
                 return (Magazine)title;
             }
 

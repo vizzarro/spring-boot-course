@@ -1,6 +1,6 @@
 package org.library.demo.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,27 +11,20 @@ public class Magazine implements Title {
 
     @Id
     @Column(name = "title_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String titleId;
-// Ho
+
     @Column(name = "name")
     private String name;
 
     @Column(name = "type")
-    private static String TYPE = "MAGAZINE";
+    private String type;
 
     private static int lendingTime = 10;
 
     @OneToMany(mappedBy = "reservationId.titleId")
-//    @JoinTable(name = "reservation",
-//            joinColumns = @JoinColumn(name = "tax_code"),
-//            inverseJoinColumns = @JoinColumn(name = "title_id"))
     private List<Reservation> reservations;
 
     @OneToMany(mappedBy = "loanId.titleId")
-//    @JoinTable(name = "reservation",
-//            joinColumns = @JoinColumn(name = "tax_code"),
-//            inverseJoinColumns = @JoinColumn(name = "title_id"))
     private List<Loan> loans;
 
     public Magazine() {
@@ -60,8 +53,8 @@ public class Magazine implements Title {
         this.titleId = titleId;
     }
 
-    public String getTYPE(){
-        return TYPE;
+    public String getType(){
+        return type;
     }
 
     public List<Reservation> getReservations() {
@@ -97,10 +90,6 @@ public class Magazine implements Title {
     }
 
     public void setLoans(List<Loan> loans) {
-        this.loans = loans;
-    }
-
-    public Magazine(List<Loan> loans) {
         this.loans = loans;
     }
 

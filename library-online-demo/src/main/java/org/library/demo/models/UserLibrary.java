@@ -1,9 +1,7 @@
 package org.library.demo.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
-import java.io.Serializable;
-import java.lang.invoke.SerializedLambda;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +11,6 @@ public class UserLibrary {
 
     @Id
     @Column(name = "tax_code")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String taxCode;
 
     @Column(name = "first_name")

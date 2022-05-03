@@ -1,6 +1,6 @@
 package org.library.demo.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,15 @@ public class Book implements Title {
     private String name;
 
     @Column(name = "type")
-    private static String TYPE = "BOOK";
+    private String type;
 
     private static int lendingTime = 30;
+
+    @OneToMany(mappedBy =  "reservationId.titleId")
+    private List<Reservation> reservations;
+
+    @OneToMany(mappedBy =  "loanId.titleId")
+    private List<Loan> loans;
 
     public Book() {
     }
@@ -28,13 +34,6 @@ public class Book implements Title {
         this.name = name;
         this.titleId = titleId;
     }
-
-    @OneToMany(mappedBy =  "reservationId.titleId")
-    private List<Reservation> reservations;
-
-    @OneToMany(mappedBy =  "loanId.titleId")
-    private List<Loan> loans;
-
 
     @Override
     public String getName() {
@@ -54,8 +53,8 @@ public class Book implements Title {
         this.titleId = titleId;
     }
 
-    public String getTYPE(){
-        return TYPE;
+    public String getType(){
+        return type;
     }
 
     public List<Reservation> getReservations() {

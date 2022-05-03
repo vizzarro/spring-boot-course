@@ -8,7 +8,7 @@ public class HibernateConnection {
 	public static void main(String[] args) {
 		String jdbcUrl = "jdbc:postgresql://localhost:5432/AcademyJava?useSSL=false&serverTimezone=UTC";
 		String user = "postgres";
-		String password = "29081990";
+		String password = "password";
 
 		try {
 			Connection myConn = DriverManager.getConnection(jdbcUrl,user,password);
