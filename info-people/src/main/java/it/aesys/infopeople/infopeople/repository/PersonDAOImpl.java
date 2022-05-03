@@ -18,8 +18,6 @@ public class PersonDAOImpl implements PersonDAO {
 
     private EntityManager entityManager;
 
-    private List<Person> persons = new ArrayList<>();
-
     @Autowired
     public PersonDAOImpl(EntityManager theEntityManager) {
         entityManager = theEntityManager;
@@ -38,11 +36,11 @@ public class PersonDAOImpl implements PersonDAO {
 
     @Override
     public void deletePerson(String taxCode) throws DaoException{
-        Person person = null;
-        person = entityManager.find(Person.class, taxCode);
+        Person thePerson = null;
+        thePerson = entityManager.find(Person.class, taxCode);
 
-        if (person != null) {
-            entityManager.remove(person);
+        if (null != thePerson) {
+            entityManager.remove(thePerson);
         }else {
             DaoException de = new DaoException();
             de.setStatusCode(HttpStatus.NOT_FOUND.value());
@@ -53,16 +51,15 @@ public class PersonDAOImpl implements PersonDAO {
     @Override
     @Transactional
     public Person getPerson(String taxCode) throws DaoException{
-
-        Person thePerson = entityManager.find(Person.class, taxCode);
-        for (Person pers : persons) {
-            if (pers.getTaxCode().equals(taxCode)) {
-                return pers;
-            }
+        Person thePerson = null;
+        thePerson = entityManager.find(Person.class, taxCode);
+        if(null != thePerson){
+            return thePerson;
+        } else {
+            DaoException de = new DaoException();
+            de.setStatusCode(HttpStatus.NOT_FOUND.value());
+            throw de;
         }
-        DaoException de = new DaoException();
-        de.setStatusCode(HttpStatus.NOT_FOUND.value());
-        throw de;
 }
 
     @Override
