@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="eliminati dao spring">
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/LoanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/LoanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/controller/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/ReservationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/ReservationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/ReservationServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="mod controller reservation e loan" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
