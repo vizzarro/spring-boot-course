@@ -1,11 +1,6 @@
 package it.aesys.infopeople.infopeople.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.Date;
 @Entity
 @Table(name = "person")
 public class Person {
@@ -24,7 +19,7 @@ public class Person {
     private String taxCode;
     @OneToOne
     @JoinColumn(name = "address_id")
-    private Address address;
+    private Address address = null;
 
     public Person() {}
 

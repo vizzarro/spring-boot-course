@@ -8,8 +8,8 @@ public interface PersonService {
 
     public PersonDto createPersonDto(PersonDto personDto);
     public PersonDto updatePersonDto(PersonDto personDto, String taxcode) throws ServiceException;
-    public PersonDto getPersonDto(String taxcode) throws DaoException, ServiceException;
-    public void deletePersonDto(String taxcode) throws ServiceException;
+    public PersonDto getPersonDto(int id) throws DaoException, ServiceException;
+    public void deletePersonDto(int id) throws ServiceException;
 
 
 

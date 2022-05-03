@@ -17,9 +17,9 @@ public class PeopleController {
     @Autowired
     private PersonService personService;
 
-    @GetMapping("{taxCode}")
-    public PersonDto getPerson(@Valid @PathVariable String taxCode) throws ServiceException, DaoException {
-        return  personService.getPersonDto(taxCode);
+    @GetMapping("{id}")
+    public PersonDto getPerson(@Valid @PathVariable int id) throws ServiceException, DaoException {
+        return  personService.getPersonDto(id);
         // DTO return
     }
 
@@ -28,9 +28,9 @@ public class PeopleController {
        return personService.createPersonDto(request.getPersonDto());
     }
 
-    @DeleteMapping("{taxCode}")
-    public void  deletePerson(@Valid @PathVariable String taxCode) throws ServiceException {
-        personService.deletePersonDto(taxCode);
+    @DeleteMapping("{id}")
+    public void  deletePerson(@Valid @PathVariable int id) throws ServiceException {
+        personService.deletePersonDto(id);
     }
 
     @PutMapping("{taxCode}")
