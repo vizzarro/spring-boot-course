@@ -28,7 +28,10 @@ public class Loan {
     @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
     private Date creationDate;
 
-    public Loan( UserLibrary userLibrary, Title title, Date creationDate) {
+    public Loan() {
+    }
+
+    public Loan(UserLibrary userLibrary, Title title, Date creationDate) {
         this.userLibrary = userLibrary;
         this.title = title;
         this.creationDate = creationDate;
