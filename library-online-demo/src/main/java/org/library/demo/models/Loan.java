@@ -11,7 +11,6 @@ public class Loan {
 
     @Id
     @Column(name = "loan_id")
-
     private Loan loanId;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
