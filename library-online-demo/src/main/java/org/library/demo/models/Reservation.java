@@ -6,11 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "reservation")
 public class Reservation {
 
-    @EmbeddedId
-    private ReservationId reservationId = new ReservationId();
-
+    @Id
+    @Column(name = "reservation_id")
+    private Reservation reservationId;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @MapsId("taxCode")
     @JoinColumn(name = "tax_code")
@@ -39,14 +40,6 @@ public class Reservation {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
-    }
-
-    public ReservationId getReservationId() {
-        return reservationId;
-    }
-
-    public void setReservationId(ReservationId reservationId) {
-        this.reservationId = reservationId;
     }
 
     public UserLibrary getUserLibrary() {

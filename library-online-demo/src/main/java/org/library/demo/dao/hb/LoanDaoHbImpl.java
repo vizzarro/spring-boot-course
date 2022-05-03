@@ -6,7 +6,6 @@ import org.library.demo.dao.BaseDaoImpl;
 import org.library.demo.dao.LoanDao;
 import org.library.demo.models.Loan;
 
-import org.library.demo.models.LoanId;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;

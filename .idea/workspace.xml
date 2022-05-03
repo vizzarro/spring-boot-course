@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe555a2b-e471-4497-8dfc-ab7c9994aeca" name="Changes" comment="Implements PersonDAOImpl getAllPerson">
+    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="Implements PersonDAOImpl getAllPerson">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/LoanDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/LoanDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/LoanDaoHbImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/LoanDaoHbImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/LoanId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/models/ReservationId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/service/LoanServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +134,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fe555a2b-e471-4497-8dfc-ab7c9994aeca" name="Changes" comment="update PersonService class" />
+      <changelist id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="Implements PersonServiceImpl" />
       <created>1650542610826</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

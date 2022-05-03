@@ -2,7 +2,6 @@ package org.library.demo.service;
 
 import org.library.demo.dao.*;
 import org.library.demo.models.Loan;
-import org.library.demo.models.LoanId;
 import org.library.demo.models.Title;
 import org.library.demo.models.UserLibrary;
 import org.springframework.beans.factory.annotation.Autowired;
