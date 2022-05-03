@@ -3,6 +3,7 @@ package org.library.demo.models;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Date;
 
 @Entity
@@ -11,7 +12,7 @@ public class Loan {
 
     @Id
     @Column(name = "loan_id")
-    private Loan loanId;
+    private Integer loanId;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
     @MapsId("taxCode")
@@ -27,7 +28,17 @@ public class Loan {
     @JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
     private Date creationDate;
 
-    public Loan( UserLibrary userLibrary, Title title, Date creationDate) {
+    public Loan() {
+    }
+
+    public Loan(UserLibrary userLibrary, Title title, Date creationDate) {
+        this.userLibrary = userLibrary;
+        this.title = title;
+        this.creationDate = creationDate;
+    }
+
+    public Loan(Integer loadId, UserLibrary userLibrary, Title title, Date creationDate) {
+        this.loanId = loadId;
         this.userLibrary = userLibrary;
         this.title = title;
         this.creationDate = creationDate;
@@ -49,10 +60,6 @@ public class Loan {
         this.title = title;
     }
 
-    public Loan() {
-        this.creationDate = new Date();
-    }
-
     public Date getCreationDate() {
         return creationDate;
     }
@@ -61,11 +68,11 @@ public class Loan {
         if (creationDate != null) this.creationDate = creationDate;
     }
 
-    public Loan getLoanId() {
+    public Integer getLoanId() {
         return loanId;
     }
 
-    public void setLoanId(Loan loanId) {
+    public void setLoanId(Integer loanId) {
         this.loanId = loanId;
     }
 }

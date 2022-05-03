@@ -115,7 +115,9 @@ public class LoanDaoHbImpl extends BaseDaoImpl<Loan, Loan> implements LoanDao {
         try {
             session.beginTransaction();
             Loan toUpdate = session.get(Loan.class, (Serializable) updated.getLoanId());
-            toUpdate.setLoanId(new Loan(updated.getLoanId()));
+            toUpdate.setLoanId(updated.getLoanId());
+            toUpdate.setTitle(updated.getTitle());
+            toUpdate.setUserLibrary(updated.getUserLibrary());
             toUpdate.setCreationDate(updated.getCreationDate());
             session.getTransaction().commit();
         } finally {
