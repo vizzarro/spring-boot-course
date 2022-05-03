@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="aggiornati Loan, LoanDaoHbImpl, LoanServiceImpl, LoanController">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/LoanDaoHbImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/LoanDaoHbImpl.java" afterDir="false" />
+    <list default="true" id="63eecaeb-0943-47b9-aff5-8ac762f7a2f9" name="Changes" comment="loan &lt;T,K&gt;">
+      <change beforePath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/ReservationDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-online-demo/src/main/java/org/library/demo/dao/hb/ReservationDaoImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +239,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651586962812</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="loan &lt;T,K&gt;">
+      <created>1651588970972</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1651588970972</updated>
+    </task>
+    <task id="LOCAL-00015" summary="loan &lt;T,K&gt;">
+      <created>1651589279860</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1651589279860</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -264,7 +277,8 @@
     <MESSAGE value="add changes on mapper Database on classes Reservation,Loan" />
     <MESSAGE value="add changes mapper on Loan, Reservation and UserLibrary classes" />
     <MESSAGE value="aggiornati Loan, LoanDaoHbImpl, LoanServiceImpl, LoanController" />
-    <option name="LAST_COMMIT_MESSAGE" value="aggiornati Loan, LoanDaoHbImpl, LoanServiceImpl, LoanController" />
+    <MESSAGE value="loan &lt;T,K&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="loan &lt;T,K&gt;" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

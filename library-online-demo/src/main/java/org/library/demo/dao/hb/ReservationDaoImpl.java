@@ -12,10 +12,10 @@ import java.io.Serializable;
 import java.sql.SQLException;
 
 @Repository
-public class ReservationDaoImpl extends BaseDaoImpl<Reservation, String> implements ReservationDao {
+public class ReservationDaoImpl extends BaseDaoImpl<Reservation, Integer> implements ReservationDao {
 
     @Override
-    public Reservation get(String id) {
+    public Reservation get(Integer id) {
         SessionFactory factory = getFactory();
         Session session = factory.getCurrentSession();
         Reservation reservation = null;
@@ -87,7 +87,7 @@ public class ReservationDaoImpl extends BaseDaoImpl<Reservation, String> impleme
     }
 
     @Override
-    public void delete(String r) throws SQLException {
+    public void delete(Integer r) throws SQLException {
 
         SessionFactory factory = getFactory();
         Session session = factory.getCurrentSession();
