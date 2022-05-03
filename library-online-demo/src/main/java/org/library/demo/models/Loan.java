@@ -12,7 +12,7 @@ public class Loan {
     @Id
     @Column(name = "loan_id")
 
-    private Loan loanId;
+    private Integer loanId;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
     @MapsId("taxCode")
@@ -62,11 +62,11 @@ public class Loan {
         if (creationDate != null) this.creationDate = creationDate;
     }
 
-    public Loan getLoanId() {
+    public Integer getLoanId() {
         return loanId;
     }
 
-    public void setLoanId(Loan loanId) {
+    public void setLoanId(Integer loanId) {
         this.loanId = loanId;
     }
 }

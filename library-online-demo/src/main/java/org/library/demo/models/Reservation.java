@@ -11,7 +11,7 @@ public class Reservation {
 
     @Id
     @Column(name = "reservation_id")
-    private Reservation reservationId;
+    private Integer reservationId;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @MapsId("taxCode")
     @JoinColumn(name = "tax_code")
@@ -63,11 +63,11 @@ public class Reservation {
         this.title = title;
     }
 
-    public Reservation getReservationId() {
+    public Integer getReservationId() {
         return reservationId;
     }
 
-    public void setReservationId(Reservation reservationId) {
+    public void setReservationId(Integer reservationId) {
         this.reservationId = reservationId;
     }
 }

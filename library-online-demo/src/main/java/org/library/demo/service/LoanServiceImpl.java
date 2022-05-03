@@ -32,14 +32,14 @@ public class LoanServiceImpl implements LoanService {
             throw new Exception("No request");
 
         try {
-            UserLibrary u = ulDao.get(newLoan.getLoanid().getTaxCode());
+            UserLibrary u = ulDao.get(newLoan.getUserLibrary().getTaxCode());
         } catch (Exception e) {
-            throw new Exception("No Borrower found for id " + newLoan.getLoanid().getTaxCode());
+            throw new Exception("No Borrower found for id " + newLoan.getUserLibrary().getTaxCode());
         }
 
-        Title exists = titleDao.get(newLoan.getLoanid().getTitleId());
+        Title exists = titleDao.get(newLoan.getTitle().getTitleId());
         if (exists == null)
-            throw new Exception("No Title found for id " + newLoan.getLoanid().getTitleId());
+            throw new Exception("No Title found for id " + newLoan.getTitle().getTitleId());
 
 
         loanDao.create(newLoan);
@@ -48,12 +48,12 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public Loan getLoan(Loan id) throws SQLException {
-        return loanDao.get(id.getLoanid());
+        return loanDao.get(id);
     }
 
     @Override
     public Loan deleteLoan(Loan id) throws SQLException {
-        this.loanDao.delete(id.getLoanid());
+        this.loanDao.delete(id);
         return null;
     }
 
