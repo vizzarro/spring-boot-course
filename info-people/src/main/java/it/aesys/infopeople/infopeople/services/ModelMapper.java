@@ -24,7 +24,7 @@ public class ModelMapper {
         Person person = new Person();
         person.setName(personDto.getName());
         person.setSurname(personDto.getSurname());
-        person.setBirthday(personDto.getBirthday());
+        person.setBirthday((java.sql.Date)personDto.getBirthday());
         person.setAddress(this.toAddress(personDto.getAddressDto()));
         person.setTaxCode(personDto.getTaxCode());
 

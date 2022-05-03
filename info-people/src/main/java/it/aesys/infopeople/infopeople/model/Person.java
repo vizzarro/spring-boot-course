@@ -13,13 +13,13 @@ public class Person {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
     @Column(name = "name")
     private String name;
     @Column(name = "surname")
     private String surname;
     @Column(name = "birthday")
-    private Date birthday;
+    private java.sql.Date birthday;
     @Column(name = "tax_code")
     private String taxCode;
     @OneToOne
@@ -28,7 +28,7 @@ public class Person {
 
     public Person() {}
 
-    public Person(String name, String surname, Date birthday, String taxCode, Address address, int id) {
+    public Person(String name, String surname, java.sql.Date birthday, String taxCode, Address address, int id) {
         this.name = name;
         this.surname = surname;
         this.birthday = birthday;
@@ -53,11 +53,11 @@ public class Person {
         this.surname = surname;
     }
 
-    public Date getBirthday() {
+    public java.sql.Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(java.sql.Date birthday) {
         this.birthday = birthday;
     }
 
