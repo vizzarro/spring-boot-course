@@ -1,0 +1,27 @@
+package it.aesys.demo.LibraryDemoSpringBoot.models;
+
+public class Book implements Title {
+  private String name;
+  private int lendingTime = 30;
+
+  public Book() { }
+
+  public Book(String name) {
+    this.name = name;
+  }
+
+  @Override
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  @Override
+  public int getLendingTime() {
+    return lendingTime;
+  }
+
+}
